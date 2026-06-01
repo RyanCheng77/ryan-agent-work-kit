@@ -1,16 +1,57 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-target="${1:-}"
+lang="${RYAN_AGENT_WORK_KIT_LANG:-en}"
+target=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --lang)
+      lang="${2:-}"
+      shift 2
+      ;;
+    --lang=*)
+      lang="${1#--lang=}"
+      shift
+      ;;
+    -h|--help)
+      echo "Usage: ./scripts/init-ryan-agent-work-kit.sh [--lang en|zh-CN] /path/to/project"
+      exit 0
+      ;;
+    *)
+      if [[ -z "$target" ]]; then
+        target="$1"
+        shift
+      else
+        echo "Unexpected argument: $1" >&2
+        exit 2
+      fi
+      ;;
+  esac
+done
 
 if [[ -z "$target" ]]; then
-  echo "Usage: ./scripts/init-ryan-agent-work-kit.sh /path/to/project" >&2
+  echo "Usage: ./scripts/init-ryan-agent-work-kit.sh [--lang en|zh-CN] /path/to/project" >&2
   exit 2
 fi
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 kit_root="$(cd "$script_dir/.." && pwd)"
-template_root="$kit_root/templates/project-governance"
+
+case "$lang" in
+  en)
+    template_root="$kit_root/templates/project-governance"
+    ;;
+  zh-CN|zh|cn)
+    lang="zh-CN"
+    template_root="$kit_root/templates/project-governance.zh-CN"
+    ;;
+  *)
+    echo "Unsupported language: $lang" >&2
+    echo "Supported languages: en, zh-CN" >&2
+    exit 2
+    ;;
+esac
 
 if [[ ! -d "$target" ]]; then
   mkdir -p "$target"
@@ -41,4 +82,5 @@ copy_if_missing "$template_root/docs/plans/README.md" "$target/docs/plans/README
 
 echo
 echo "Ryan Agent Work Kit installed for: $target"
+echo "Language: $lang"
 echo "Next: open the project and tell your AI tool: Read AGENTS.md first."

@@ -1,0 +1,10 @@
+---
+description: Ryan Agent Work Kit 项目规则
+alwaysApply: true
+---
+
+先读 `AGENTS.md`，并把它作为共享项目事实来源。
+
+修改文件前，检查 `docs/current-goal.md`、任务范围、预计修改文件和验证计划。
+
+优先遵守一个任务一个 lane。

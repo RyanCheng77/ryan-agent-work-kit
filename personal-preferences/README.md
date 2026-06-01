@@ -13,7 +13,8 @@ They tell your AI tool how you want it to behave across projects:
 
 ## Which Template Should I Use?
 
-- New users: start with [codex.md](codex.md). It is short and easy to paste.
+- Chinese new users: start with [codex.zh-CN.md](codex.zh-CN.md). It is short and easy to paste.
+- English new users: start with [codex.md](codex.md).
 - Ryan-style power users: use [ryan-full.md](ryan-full.md). It includes lead-agent behavior, external CLI boundaries, hook checks, and skill recommendations.
 - Claude Code users who want a short template: use [claude-code.md](claude-code.md).
 

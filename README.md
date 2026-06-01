@@ -4,6 +4,8 @@ Turn any project into an AI-ready project in 60 seconds.
 
 Ryan Agent Work Kit helps Codex, Claude Code, Cursor, and other AI coding agents understand your project faster, work in safer lanes, and leave clear handoffs.
 
+中文说明：[README.zh-CN.md](README.zh-CN.md)
+
 ## Why
 
 Many new AI coding users hit the same problems:
@@ -36,6 +38,7 @@ There are two layers:
 
 Copy one of these templates into your AI tool's custom instructions or personal preferences:
 
+- [Codex Chinese preferences](personal-preferences/codex.zh-CN.md) for a Chinese beginner-friendly version
 - [Codex preferences](personal-preferences/codex.md) for a short beginner-friendly version
 - [Ryan full preferences](personal-preferences/ryan-full.md) for the complete Ryan method
 - [Claude Code preferences](personal-preferences/claude-code.md)
@@ -46,6 +49,12 @@ This makes the agent remember your default style: one task lane, safer Git behav
 
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh ./my-project
+```
+
+Chinese project templates:
+
+```bash
+./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
 ```
 
 This creates:

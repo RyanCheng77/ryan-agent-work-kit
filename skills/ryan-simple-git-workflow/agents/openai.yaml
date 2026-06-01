@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ryan Simple Git Workflow"
+  short_description: "Safe beginner-friendly Git flow for Ryan"
+  default_prompt: "Use $ryan-simple-git-workflow to safely check my repo, manage a task branch, and explain Git risks before acting."

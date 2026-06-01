@@ -1,0 +1,10 @@
+---
+description: Ryan Agent Work Kit project rules
+alwaysApply: true
+---
+
+Read `AGENTS.md` first. Use it as the shared project source of truth.
+
+Before changing files, check `docs/current-goal.md`, task scope, likely changed files, and validation plan.
+
+Prefer one task, one lane.

@@ -1,0 +1,13 @@
+.DS_Store
+._*
+*.log
+*.tmp
+*.tar
+*.tar.gz
+*.zip
+node_modules/
+dist/
+build/
+.cache/
+.tmp/
+scratch/

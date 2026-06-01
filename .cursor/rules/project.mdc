@@ -1,0 +1,10 @@
+---
+description: Project AI governance rules
+alwaysApply: true
+---
+
+Before working in this repository, read `AGENTS.md` and follow it as the source of truth.
+
+Start by checking the current branch, `git status --short`, `docs/current-goal.md`, the intended task lane, likely changed files, and validation plan.
+
+Do not perform high-risk git operations unless explicitly requested.

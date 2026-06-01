@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ryan Multi-AI Repo Governance"
+  short_description: "Create AI-ready project docs and handoffs"
+  default_prompt: "Use $ryan-multi-ai-repo-governance to make this project easier for AI agents to understand, continue, validate, and hand off."

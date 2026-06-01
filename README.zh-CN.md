@@ -4,7 +4,7 @@
 
 Ryan Agent Work Kit 帮助 Codex、Claude Code、Cursor 和其他 AI coding agent 更快理解你的项目，在更安全的边界内工作，并留下清楚的交接记录。
 
-English: [README.md](README.md)
+English: [README.en.md](README.en.md)
 
 ## 为什么需要
 

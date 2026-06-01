@@ -10,6 +10,13 @@
 - Init script.
 - Demo project.
 
+## v0.2
+
+- Task Card standard for scoped, resumable AI work.
+- Recommended task-card location under `docs/plans/`.
+- Clear rules for when the lead agent should create a Task Card.
+- Multi-agent delegation format built around Task Cards.
+
 ## Later
 
 - Optional product workflow skills.

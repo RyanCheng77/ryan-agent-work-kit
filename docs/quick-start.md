@@ -42,3 +42,20 @@ The agent should:
 ```bash
 ./scripts/check-ai-ready.sh ./my-project
 ```
+
+## Optional: Use A Task Card
+
+For complex or resumable work, copy `templates/task-card.md` into your project and fill it before asking an agent to execute.
+
+Recommended location:
+
+```bash
+cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
+```
+
+Task Cards are useful when:
+
+- A task will continue in a new thread.
+- A helper agent or CLI will handle part of the work.
+- The task has strict scope or validation.
+- You want to reduce repeated context.

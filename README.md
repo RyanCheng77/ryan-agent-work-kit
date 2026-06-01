@@ -23,6 +23,7 @@ Ryan Agent Work Kit gives the project a simple operating standard:
 | Work may happen on the wrong branch | One task uses one clear lane |
 | Different tools overwrite each other | Agents get scope, boundaries, and handoff rules |
 | No proof at the end | Every task reports validation, risks, and next step |
+| Complex tasks are hard to resume | Task Cards keep goal, scope, files, validation, and handoff together |
 
 ## Quick Start
 
@@ -70,6 +71,16 @@ Read AGENTS.md first, then help me start this task safely.
 
 If you already set the personal preferences, the agent should recommend this flow by itself when a project is missing `AGENTS.md` or project memory.
 
+### 3. Use A Task Card When Work Gets Complex
+
+For a complex, delegated, or resumable task, copy:
+
+```bash
+cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
+```
+
+Task Cards are optional. They help when a task needs exact scope, allowed files, validation, or a clean handoff to another AI tool.
+
 ## What It Does
 
 Ryan Agent Work Kit makes a project easier for AI to understand:
@@ -82,6 +93,8 @@ User asks for work
 Agent reads AGENTS.md
   ↓
 Agent checks current goal and project state
+  ↓
+Agent creates or reads a Task Card when needed
   ↓
 Agent works in one task lane
   ↓
@@ -104,7 +117,7 @@ You do not need to understand skills before using this kit. Start with the proje
 - `ryan-simple-git-workflow`: safe Git and task-lane guidance for beginners.
 - `ryan-multi-ai-repo-governance`: project docs, AI collaboration, and repository governance.
 
-Future optional skills can cover product workflow, quality gates, hooks, and GenUI work. They should stay optional so the first experience remains simple.
+Task Cards are the v0.2 standard for scoped, resumable AI work. Future optional skills can cover product workflow, quality gates, hooks, and GenUI work. They should stay optional so the first experience remains simple.
 
 ## Philosophy
 

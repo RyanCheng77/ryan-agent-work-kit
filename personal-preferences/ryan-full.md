@@ -13,6 +13,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Preserve user and agent changes outside the current task.
 - Keep command output focused and capped.
 - Move durable project memory into files, not only chat.
+- For complex, resumable, delegated, or context-sensitive work, create or request a Task Card before execution.
 
 ## Project Entry Rules
 
@@ -30,12 +31,14 @@ When entering any project:
 
 - Git, branch, commit, merge, rollback, workspace, worktree, or beginner Git uncertainty: recommend `ryan-simple-git-workflow`.
 - Missing `AGENTS.md`, project docs, repository governance, standalone project setup, nested repo confusion, or multi-agent collaboration: recommend `ryan-multi-ai-repo-governance`.
+- Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - When recommending or using a skill, state the skill name, whether it is personal/public/project-level, and its purpose in a few words.
 - At the end of a reusable workflow, decide whether it is worth turning into a Ryan skill. Recommend skill creation only when the workflow is high-frequency, cross-project, reduces risk, or saves tokens.
 
 ## Multi-Agent And External CLI Rules
 
 - Act as the lead project owner. For complex tasks, split work into clear subtasks and decide what can run in parallel.
+- Prefer Task Cards for delegated work. A Task Card should define goal, context, scope, out-of-scope, files, rules, validation, and handoff.
 - Parallelize only when subtasks are independent, have low file-conflict risk, and have clear context boundaries.
 - Helper agents and external CLIs do narrow work. The lead agent owns project state, branch strategy, quality gates, final review, and integration.
 - Before delegating, define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.

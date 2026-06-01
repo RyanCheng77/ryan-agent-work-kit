@@ -16,6 +16,7 @@ Use this skill to make a project easier for AI agents to understand, continue, a
 - Multiple AI tools need to work on the same project.
 - The user is unsure how to organize AI-friendly project docs.
 - Work needs a clear task lane, validation record, or handoff.
+- A complex task needs a scoped, resumable Task Card.
 
 ## Default Project Standard
 
@@ -45,10 +46,26 @@ Before work starts, the agent should:
 ## Task Lane Rules
 
 - One task should use one lane.
+- Complex or resumable work should use a Task Card.
 - Avoid direct work on `main` unless the user asks.
 - Keep changes small and reviewable.
 - Do not overwrite unrelated user or agent work.
 - If helpers are used, give each helper one narrow scope.
+
+## Task Card Standard
+
+Use a Task Card when work is complex, delegated, long-running, or likely to continue in a new thread.
+
+A Task Card should define:
+
+- Goal
+- Context
+- Scope
+- Out of scope
+- Files
+- Rules
+- Validation
+- Handoff
 
 ## Handoff Format
 
@@ -66,6 +83,7 @@ Next:
 
 - Git or branch confusion: recommend `ryan-simple-git-workflow`.
 - Missing project docs: recommend this skill.
+- Complex, multi-step, resumable, or delegated work: recommend a Task Card.
 - Product workflow, quality gates, hooks, or GenUI work: recommend optional future Ryan skills only when needed.
 
 ## Public Package Rule

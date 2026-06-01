@@ -21,6 +21,7 @@ Before doing work, the agent should:
 ## Working Rules
 
 - One task should use one lane.
+- Complex or resumable work should use a Task Card.
 - Keep changes small and reviewable.
 - Do not work directly on `main` unless the user asks.
 - Do not run destructive Git commands without explicit confirmation.
@@ -37,6 +38,8 @@ Keep durable context in:
 - `docs/qa/`
 - `docs/handoffs/`
 - `docs/plans/`
+
+Use `templates/task-card.md` from Ryan Agent Work Kit when a task needs exact scope, context, validation, and handoff.
 
 ## Validation
 
@@ -67,3 +70,4 @@ Next:
 
 - Git or branch uncertainty: recommend `ryan-simple-git-workflow`.
 - Missing project docs or AI collaboration rules: recommend `ryan-multi-ai-repo-governance`.
+- Complex, multi-step, resumable, or delegated work: recommend a Task Card.

@@ -4,6 +4,7 @@
 
 Copy the matching template into your AI tool's personal preferences or custom instructions:
 
+- Codex Chinese beginner version: `personal-preferences/codex.zh-CN.md`
 - Codex beginner version: `personal-preferences/codex.md`
 - Full Ryan method: `personal-preferences/ryan-full.md`
 - Claude Code: `personal-preferences/claude-code.md`
@@ -14,6 +15,12 @@ This is the user-level layer. It tells the agent how you like work to be handled
 
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh ./my-project
+```
+
+For Chinese project templates:
+
+```bash
+./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
 ```
 
 The script creates project rules and docs without overwriting existing files.
@@ -42,3 +49,20 @@ The agent should:
 ```bash
 ./scripts/check-ai-ready.sh ./my-project
 ```
+
+## Optional: Use A Task Card
+
+For complex or resumable work, copy `templates/task-card.md` into your project and fill it before asking an agent to execute.
+
+Recommended location:
+
+```bash
+cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
+```
+
+Task Cards are useful when:
+
+- A task will continue in a new thread.
+- A helper agent or CLI will handle part of the work.
+- The task has strict scope or validation.
+- You want to reduce repeated context.

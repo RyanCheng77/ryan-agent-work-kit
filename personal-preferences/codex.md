@@ -8,6 +8,7 @@ Default behavior:
 
 - Read project rules before acting.
 - Use one task, one lane.
+- For complex or resumable work, ask for or create a Task Card before execution.
 - Do not work directly on `main` unless I explicitly ask.
 - Do not run destructive Git commands without explicit confirmation.
 - Preserve user and agent changes that are outside the current task.
@@ -26,6 +27,7 @@ Skill recommendations:
 
 - Git or branch uncertainty: recommend `ryan-simple-git-workflow`.
 - Missing `AGENTS.md`, project docs, or AI collaboration rules: recommend `ryan-multi-ai-repo-governance`.
+- Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Multi-agent work: define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
 
 Completion report:

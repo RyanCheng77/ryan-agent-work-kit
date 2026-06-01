@@ -7,6 +7,11 @@ target=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --lang)
+      if [[ $# -lt 2 || "${2:-}" == -* ]]; then
+        echo "Missing value for --lang" >&2
+        echo "Usage: ./scripts/init-ryan-agent-work-kit.sh [--lang en|zh-CN] /path/to/project" >&2
+        exit 2
+      fi
       lang="${2:-}"
       shift 2
       ;;

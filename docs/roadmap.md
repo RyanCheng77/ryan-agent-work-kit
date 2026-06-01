@@ -16,6 +16,7 @@
 - Recommended task-card location under `docs/plans/`.
 - Clear rules for when the lead agent should create a Task Card.
 - Multi-agent delegation format built around Task Cards.
+- Chinese README, quick start, personal preference, project governance, and task card templates.
 
 ## Later
 

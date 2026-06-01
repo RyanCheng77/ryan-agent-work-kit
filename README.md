@@ -1,63 +1,55 @@
 # Ryan Agent Work Kit
 
-Turn any project into an AI-ready project in 60 seconds.
+一分钟把项目变成 AI 友好项目。
 
-Ryan Agent Work Kit helps Codex, Claude Code, Cursor, and other AI coding agents understand your project faster, work in safer lanes, and leave clear handoffs.
+Ryan Agent Work Kit 帮助 Codex、Claude Code、Cursor 和其他 AI coding agent 更快理解你的项目，在更安全的边界内工作，并留下清楚的交接记录。
 
-中文说明：[README.zh-CN.md](README.zh-CN.md)
+English: [README.en.md](README.en.md)
 
-## Why
+## 为什么需要
 
-Many new AI coding users hit the same problems:
+很多 AI 编程新手会遇到相同问题：
 
-- You do not know Git well and worry that AI will make a mess.
-- Every AI tool asks for the same project context again and again.
-- Different tools do not share memory, so tokens get wasted.
-- AI starts editing before it knows the rules.
-- Nobody knows what was validated, what is risky, or what should happen next.
+- 不懂 Git，担心 AI 把项目弄乱。
+- 每个 AI 工具都要重复解释项目背景。
+- 多工具之间没有共享记忆，浪费 token。
+- AI 还没理解规则就开始改文件。
+- 任务结束后不知道验证了什么、还有什么风险、下一步做什么。
 
-Ryan Agent Work Kit gives the project a simple operating standard:
+Ryan Agent Work Kit 给项目加上一套简单标准：
 
 | Before | After |
 | --- | --- |
-| AI asks for project background every time | AI reads `AGENTS.md` first |
-| Current goal lives only in chat | Current goal lives in `docs/current-goal.md` |
-| Work may happen on the wrong branch | One task uses one clear lane |
-| Different tools overwrite each other | Agents get scope, boundaries, and handoff rules |
-| No proof at the end | Every task reports validation, risks, and next step |
-| Complex tasks are hard to resume | Task Cards keep goal, scope, files, validation, and handoff together |
+| AI 每次都问项目背景 | AI 先读 `AGENTS.md` |
+| 当前目标只在聊天里 | 当前目标写进 `docs/current-goal.md` |
+| 可能改错分支或范围 | 一个任务使用一个清楚 lane |
+| 多个工具容易互相覆盖 | Agent 有范围、边界和交接规则 |
+| 复杂任务难恢复 | 任务卡保存目标、范围、文件、验证和交接 |
 
-## Quick Start
+## 快速开始
 
-There are two layers:
+### 1. 设置个人偏好
 
-1. **Personal preferences**: teach your AI tool how you like agents to work across all projects.
-2. **Project rules**: add `AGENTS.md` and docs so each project is easy for agents to understand.
+把模板复制到你的 AI 工具个人偏好里：
 
-### 1. Set Your Personal Preferences
+- [Codex 中文偏好](personal-preferences/codex.zh-CN.md)
+- [Codex 英文偏好](personal-preferences/codex.md)
+- [Ryan 完整偏好](personal-preferences/ryan-full.md)
+- [Claude Code 偏好](personal-preferences/claude-code.md)
 
-Copy one of these templates into your AI tool's custom instructions or personal preferences:
-
-- [Codex Chinese preferences](personal-preferences/codex.zh-CN.md) for a Chinese beginner-friendly version
-- [Codex preferences](personal-preferences/codex.md) for a short beginner-friendly version
-- [Ryan full preferences](personal-preferences/ryan-full.md) for the complete Ryan method
-- [Claude Code preferences](personal-preferences/claude-code.md)
-
-This makes the agent remember your default style: one task lane, safer Git behavior, project docs first, and clear handoffs.
-
-### 2. Make A Project AI-Ready
-
-```bash
-./scripts/init-ryan-agent-work-kit.sh ./my-project
-```
-
-Chinese project templates:
+### 2. 初始化中文项目骨架
 
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
 ```
 
-This creates:
+英文默认模板：
+
+```bash
+./scripts/init-ryan-agent-work-kit.sh ./my-project
+```
+
+脚本会创建：
 
 ```text
 AGENTS.md
@@ -72,90 +64,82 @@ docs/handoffs/README.md
 docs/plans/README.md
 ```
 
-Then tell your AI tool:
+然后告诉 AI：
 
 ```text
-Read AGENTS.md first, then help me start this task safely.
+先读 AGENTS.md，再帮我安全开始这个任务。
 ```
 
-If you already set the personal preferences, the agent should recommend this flow by itself when a project is missing `AGENTS.md` or project memory.
-
-### 3. Use A Task Card When Work Gets Complex
-
-For a complex, delegated, or resumable task, copy:
+### 3. 复杂任务使用任务卡
 
 ```bash
-cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
+cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 ```
 
-Task Cards are optional. They help when a task needs exact scope, allowed files, validation, or a clean handoff to another AI tool.
+任务卡不是新流程负担。它的作用是用最少上下文固定目标、范围、相关文件、验证方式和交接格式。
 
-## What It Does
-
-Ryan Agent Work Kit makes a project easier for AI to understand:
+## 这个工具包做什么
 
 ```text
-Personal preferences
+个人偏好
   ↓
-User asks for work
+用户提出任务
   ↓
-Agent reads AGENTS.md
+Agent 读取 AGENTS.md
   ↓
-Agent checks current goal and project state
+Agent 检查当前目标和项目状态
   ↓
-Agent creates or reads a Task Card when needed
+必要时创建或读取任务卡
   ↓
-Agent works in one task lane
+Agent 在一个任务 lane 内工作
   ↓
-Agent validates the result
+Agent 验证结果
   ↓
-Agent leaves a handoff
+Agent 留下交接记录
 ```
 
-## Who It Is For
+## 适合谁
 
-- AI coding beginners who do not want to learn Git the hard way.
-- Builders using Codex, Claude Code, Cursor, or several tools together.
-- Small teams that want every AI session to start with the same project facts.
-- People who care about lower token cost, fewer repeated explanations, and fewer AI mistakes.
+- AI 编程新手，不想一开始就被 Git 和仓库管理卡住。
+- 同时使用 Codex、Claude Code、Cursor 或多个 AI 工具的人。
+- 希望每次 AI 会话都先理解同一套项目事实的小团队。
+- 关心低 token 成本、少重复解释、少 AI 乱改的人。
 
-## Core Skills
+## 核心 Skill
 
-You do not need to understand skills before using this kit. Start with the project template. When the situation needs it, the agent can recommend one of these:
+你不需要先理解 skill 系统。先用项目模板即可。遇到需要时，agent 可以推荐：
 
-- `ryan-simple-git-workflow`: safe Git and task-lane guidance for beginners.
-- `ryan-multi-ai-repo-governance`: project docs, AI collaboration, and repository governance.
+- `ryan-simple-git-workflow`：给新手用的安全 Git 和任务 lane 指南。
+- `ryan-multi-ai-repo-governance`：项目文档、AI 协作和仓库治理。
 
-Task Cards are the v0.2 standard for scoped, resumable AI work. Future optional skills can cover product workflow, quality gates, hooks, and GenUI work. They should stay optional so the first experience remains simple.
+任务卡是 v0.2 的核心标准，用于让复杂任务更清晰、可恢复、可交接。未来的产品工作流、质量门禁、hook 和 GenUI 能力都应保持可选。
 
-## Philosophy
+## 核心原则
 
-Ryan Agent Work Kit follows five rules:
+- AI 先理解项目，再开始执行。
+- 项目记忆写进文件，不只留在聊天里。
+- 一个任务使用一个 lane。
+- 主控 agent 负责验收，子 agent 只做窄任务。
+- 少重复解释，少浪费 token，少出错。
 
-- AI should understand the project before acting.
-- Project memory belongs in files, not only in chat.
-- One task should use one lane.
-- The lead agent owns review; sub agents do narrow work.
-- Less repeated context means lower token cost and fewer mistakes.
+更多说明见：[docs/philosophy.md](docs/philosophy.md)。
 
-Read more in [docs/philosophy.md](docs/philosophy.md).
-
-## Try The Demo Project
+## 检查项目是否 AI-ready
 
 ```bash
 ./scripts/check-ai-ready.sh examples/demo-project
 ```
 
-The demo is a small fictional project that shows the expected project shape.
+示例项目是虚构项目，用于展示推荐的项目结构。
 
-## Compatibility
+## 兼容性
 
-The templates are plain Markdown and shell scripts. They work with:
+模板是普通 Markdown，脚本是 shell 脚本，可配合这些工具使用：
 
 - Codex
 - Claude Code
 - Cursor
 - GitHub Copilot
-- Other agents that can read project files
+- 其他能读取项目文件的 agent
 
-See [docs/compatibility.md](docs/compatibility.md).
+更多中文说明见：[docs/quick-start.zh-CN.md](docs/quick-start.zh-CN.md)。

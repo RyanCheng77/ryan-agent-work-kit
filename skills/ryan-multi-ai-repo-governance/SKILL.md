@@ -18,6 +18,7 @@ Use this skill to make a project easier for AI agents to understand, continue, a
 - Work needs a clear task lane, validation record, or handoff.
 - A complex task needs a scoped, resumable Task Card.
 - Project rules need to clarify untrusted external text, non-fabrication, or completion reporting.
+- A repeated or noisy workflow needs review before adding more process.
 
 ## Default Project Standard
 
@@ -91,6 +92,7 @@ Next:
 - Git or branch confusion: recommend `ryan-simple-git-workflow`.
 - Missing project docs: recommend this skill.
 - Complex, multi-step, resumable, or delegated work: recommend a Task Card.
+- Repeated, noisy, or expensive workflow: recommend `templates/workflow-review.md` or `templates/workflow-review.zh-CN.md`.
 - Product workflow, quality gates, hooks, or GenUI work: recommend optional future Ryan skills only when needed.
 
 ## Public Package Rule

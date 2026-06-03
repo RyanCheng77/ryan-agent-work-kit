@@ -66,3 +66,13 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 - 子 agent 或外部 CLI 会处理部分工作。
 - 任务有严格范围或验证要求。
 - 你想减少重复解释和 token 消耗。
+
+## 可选：审视重复工作流
+
+如果一个流程重复 3 次以上，或者开始消耗太多时间、token、沟通和返工成本，可以复制工作流审视模板：
+
+```bash
+cp templates/workflow-review.zh-CN.md ./my-project/docs/plans/<workflow-name>-review.md
+```
+
+用它判断这个流程应该保留、简化、自动化、替换还是停用。

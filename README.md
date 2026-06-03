@@ -78,6 +78,14 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 
 任务卡不是新流程负担。它的作用是用最少上下文固定目标、范围、相关文件、验证方式和交接格式。
 
+### 4. 重复流程做工作流审视
+
+如果一件事重复发生 3 次以上，或者某个流程开始消耗大量时间、token、沟通和返工成本，用工作流审视模板判断它应该保留、简化、自动化、替换还是停用：
+
+```bash
+cp templates/workflow-review.zh-CN.md ./my-project/docs/plans/<workflow-name>-review.md
+```
+
 ## 这个工具包做什么
 
 ```text
@@ -120,6 +128,8 @@ Agent 留下交接记录
 - 项目记忆写进文件，不只留在聊天里。
 - 一个任务使用一个 lane。
 - 主控 agent 负责验收，子 agent 只做窄任务。
+- 重复 3 次的工作要考虑自动化。
+- 旧流程要定期证明自己仍然值得存在。
 - 少重复解释，少浪费 token，少出错。
 
 更多说明见：[docs/philosophy.md](docs/philosophy.md)。

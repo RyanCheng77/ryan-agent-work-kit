@@ -90,6 +90,14 @@ cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
 
 Task Cards are optional. They help when a task needs exact scope, allowed files, validation, or a clean handoff to another AI tool.
 
+### 4. Review Repeated Workflows
+
+If a workflow has happened 3+ times, or starts costing too much time, token context, coordination, or rework, use the workflow review template to decide whether to keep, simplify, automate, replace, or stop it:
+
+```bash
+cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.md
+```
+
 ## What It Does
 
 Ryan Agent Work Kit makes a project easier for AI to understand:
@@ -136,6 +144,8 @@ Ryan Agent Work Kit follows five rules:
 - Project memory belongs in files, not only in chat.
 - One task should use one lane.
 - The lead agent owns review; sub agents do narrow work.
+- Work repeated 3+ times should be considered for automation.
+- Old workflows should periodically prove they still earn their place.
 - Less repeated context means lower token cost and fewer mistakes.
 
 Read more in [docs/philosophy.md](docs/philosophy.md).

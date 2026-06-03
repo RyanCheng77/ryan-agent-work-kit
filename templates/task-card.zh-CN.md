@@ -22,6 +22,10 @@
 
 - <LIKELY_FILE_OR_FOLDER>
 
+## 禁止动作
+
+- <ACTION_NOT_ALLOWED>
+
 ## 规则
 
 - 遵守 `AGENTS.md`。
@@ -35,12 +39,18 @@
 <VALIDATION_COMMAND_OR_MANUAL_CHECK>
 ```
 
+## 停止条件
+
+<WHEN_TO_STOP_AND_HAND_BACK>
+
 ## 交接
 
 ```text
 范围：
 修改文件：
 验证：
+跳过的验证：
 风险：
+经验：
 下一步：
 ```

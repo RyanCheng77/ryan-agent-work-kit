@@ -22,6 +22,10 @@ Use this file to make one AI task scoped, resumable, and easy to hand off.
 
 - <LIKELY_FILE_OR_FOLDER>
 
+## Forbidden Actions
+
+- <ACTION_NOT_ALLOWED>
+
 ## Rules
 
 - Follow `AGENTS.md`.
@@ -35,12 +39,18 @@ Use this file to make one AI task scoped, resumable, and easy to hand off.
 <VALIDATION_COMMAND_OR_MANUAL_CHECK>
 ```
 
+## Stop Condition
+
+<WHEN_TO_STOP_AND_HAND_BACK>
+
 ## Handoff
 
 ```text
 Scope:
 Changed files:
 Validation:
+Skipped validation:
 Risks:
+Learning:
 Next:
 ```

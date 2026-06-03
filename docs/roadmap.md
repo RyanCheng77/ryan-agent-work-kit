@@ -18,6 +18,13 @@
 - Multi-agent delegation format built around Task Cards.
 - Chinese README, quick start, personal preference, project governance, and task card templates.
 
+## v0.3
+
+- Workflow Review template for noisy, repeated, or expensive workflows.
+- Repeat-3-times rule: repeated work should be considered for script, hook, template, skill, or checklist automation.
+- Human judgment boundary: keep people focused on product taste, safety, architecture, and other high-leverage decisions.
+- Process pruning rule: every workflow should periodically prove it still earns its place.
+
 ## Later
 
 - Optional product workflow skills.

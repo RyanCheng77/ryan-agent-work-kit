@@ -66,3 +66,13 @@ Task Cards are useful when:
 - A helper agent or CLI will handle part of the work.
 - The task has strict scope or validation.
 - You want to reduce repeated context.
+
+## Optional: Review Repeated Workflows
+
+If a workflow has happened 3+ times, or starts costing too much time, token context, coordination, or rework, copy:
+
+```bash
+cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.md
+```
+
+Use it to decide whether the workflow should be kept, simplified, automated, replaced, or stopped.

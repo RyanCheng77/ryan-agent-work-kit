@@ -11,6 +11,8 @@ Copy the matching template into your AI tool's personal preferences or custom in
 
 This is the user-level layer. It tells the agent how you like work to be handled across projects.
 
+It also teaches AI-native workflow habits: JIT planning, Task Cards, prototype-based validation, repeated-work automation, and workflow review.
+
 ## 2. Add the kit to a project
 
 ```bash

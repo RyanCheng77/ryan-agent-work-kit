@@ -19,6 +19,14 @@ Default behavior:
 - Work repeated 3+ times should be considered for script, hook, template, skill, or checklist automation.
 - Old workflows should periodically be reviewed: do they still deserve the time, tokens, and attention they consume?
 
+AI-native workflow judgment:
+
+- Assume the bottleneck shifts from writing code to validation, review, safety, judgment, and collaboration flow.
+- Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
+- Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
+- When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
+- Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
+
 When entering any project:
 
 1. Identify the current directory and project root.

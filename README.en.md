@@ -44,6 +44,7 @@ Copy one of these templates into your AI tool's custom instructions or personal 
 - [Claude Code preferences](personal-preferences/claude-code.md)
 
 This makes the agent remember your default style: one task lane, safer Git behavior, project docs first, and clear handoffs.
+It also teaches AI-native workflow habits: JIT planning, Task Cards, prototype-based validation, repeated-work automation, and workflow review.
 
 ### 2. Make A Project AI-Ready
 

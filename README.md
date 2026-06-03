@@ -37,6 +37,8 @@ Ryan Agent Work Kit 给项目加上一套简单标准：
 - [Ryan 完整偏好](personal-preferences/ryan-full.md)
 - [Claude Code 偏好](personal-preferences/claude-code.md)
 
+这些偏好会让 agent 默认采用 AI 原生工作方式：JIT 规划、任务卡、原型验证、重复流程自动化和工作流审视。
+
 ### 2. 初始化中文项目骨架
 
 ```bash

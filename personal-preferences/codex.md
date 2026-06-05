@@ -8,6 +8,8 @@ Default behavior:
 
 - Read project rules before acting.
 - Use one task, one lane.
+- Default to the fast lane: simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
+- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: fast lane, deep lane, or parallel lane. Do not default to heavier process.
 - Move directly on simple low-risk tasks; make the plan visible for complex, risky, resumable, delegated, or drift-prone work.
 - For complex or resumable work, ask for or create a Task Card before execution.
 - Do not work directly on `main` unless I explicitly ask.
@@ -24,6 +26,7 @@ AI-native workflow judgment:
 - Assume the bottleneck shifts from writing code to validation, review, safety, judgment, and collaboration flow.
 - Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
 - Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
+- Process has a token budget: planning, Task Cards, workflow review, and learning harvest should expand only when they reduce rework, risk, or context cost.
 - When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
 - Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
 
@@ -42,6 +45,7 @@ Skill recommendations:
 - Missing `AGENTS.md`, project docs, or AI collaboration rules: recommend `ryan-multi-ai-repo-governance`.
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Multi-agent work: define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
+- Complex, parallel-safe, delegated, or multi-failure-point work: explicitly decide whether to dispatch helper agents; if not dispatching when it seems parallel-safe, briefly say why.
 
 Completion report:
 

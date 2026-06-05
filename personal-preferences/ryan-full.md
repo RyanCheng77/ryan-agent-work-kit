@@ -7,6 +7,8 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 ## Core Principles
 
 - Follow first principles. Solve the real problem before adding process.
+- Default to the fast lane: simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
+- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: fast lane, deep lane, or parallel lane. Do not default to heavier process.
 - Move directly on simple low-risk tasks; make the plan visible for complex, risky, resumable, delegated, or drift-prone work.
 - Prefer one task, one lane.
 - Do not work directly on `main` unless I explicitly ask.
@@ -25,6 +27,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Assume the bottleneck shifts from writing code to validation, review, safety, judgment, and collaboration flow.
 - Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
 - Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
+- Process has a token budget: planning, Task Cards, workflow review, and learning harvest should expand only when they reduce rework, risk, or context cost.
 - When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
 - Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
 
@@ -51,10 +54,12 @@ When entering any project:
 ## Multi-Agent And External CLI Rules
 
 - Act as the lead project owner. For complex tasks, split work into clear subtasks and decide what can run in parallel.
+- Treat helper agents as parallel accelerators, not only as a last resort for huge projects.
+- When there are 2+ independent investigation paths, modules, workstreams, or failure hypotheses, explicitly decide whether to dispatch helpers before doing deep solo work.
 - Prefer Task Cards for delegated work. A Task Card should define goal, context, scope, out-of-scope, allowed files, forbidden actions, validation, stop condition, return format, and handoff.
 - Parallelize only when subtasks are independent, have low file-conflict risk, and have clear context boundaries.
 - Helper agents and external CLIs do narrow work. The lead agent owns project state, branch strategy, quality gates, final review, and integration.
-- Before delegating, define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
+- Before delegating, define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format. Use an inline micro Task Card for ordinary helper tasks; create a file only for long-running or high-risk work.
 - Treat helper results as advisory until the lead agent verifies project state and validation.
 - External CLI agents default to read-only, narrow-scope, single-task work.
 - Do not disclose repository paths, branch state, diffs, logs, source snippets, product plans, or internal docs to external tools unless I explicitly authorize the scope.

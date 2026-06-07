@@ -46,3 +46,20 @@ Project rules: what this specific project is and how to handle it
 ```
 
 This is what reduces repeated explanations and token waste.
+
+## How Skills Trigger
+
+A plugin is a container. The agent usually does not "run the plugin" directly; it uses the skills inside the plugin when the task matches their descriptions.
+
+Use this practical routing:
+
+- Ordinary low-risk work: follow personal preferences directly.
+- Git, branches, commits, merges, rollback, workspace, or beginner Git uncertainty: use `ryan-simple-git-workflow`.
+- Missing `AGENTS.md`, project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
+- Feedback, dissatisfaction, preference correction, critique, review, or durable preference capture: use `ryan-collaboration-quality-loop`.
+
+## Private Sync vs Public Release
+
+Private device-to-device sync and public release are different security lanes. A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
+
+Public repositories, templates, skills, READMEs, issues, and PRs must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.

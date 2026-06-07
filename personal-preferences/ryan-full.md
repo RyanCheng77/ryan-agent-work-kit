@@ -7,8 +7,9 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 ## Core Principles
 
 - Follow first principles. Solve the real problem before adding process.
-- Default to the fast lane: simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
-- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: fast lane, deep lane, or parallel lane. Do not default to heavier process.
+- Use this plain routing rule: if it can be handled directly, do it directly; if a mistake would be costly, think it through first; if multiple independent things can be checked, split the work.
+- Simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
+- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: direct work, think first, or split work. Do not default to heavier process.
 - Move directly on simple low-risk tasks; make the plan visible for complex, risky, resumable, delegated, or drift-prone work.
 - Prefer one task, one lane.
 - Do not work directly on `main` unless I explicitly ask.
@@ -45,8 +46,11 @@ When entering any project:
 
 ## Skill Recommendations
 
-- Git, branch, commit, merge, rollback, workspace, worktree, or beginner Git uncertainty: recommend `ryan-simple-git-workflow`.
-- Missing `AGENTS.md`, project docs, repository governance, standalone project setup, nested repo confusion, or multi-agent collaboration: recommend `ryan-multi-ai-repo-governance`.
+- A plugin is only a container; skills are what actually trigger. Do not wait for the plugin to "run." When a task matches a Ryan workflow, invoke or recommend the matching Ryan skill and state its purpose briefly.
+- Ordinary low-risk work should follow the personal preferences directly. Do not expand a skill just to prove the plugin is active.
+- Git, branch, commit, merge, rollback, workspace, worktree, or beginner Git uncertainty: use `ryan-simple-git-workflow`.
+- Missing `AGENTS.md`, project docs, repository governance, standalone project setup, nested repo confusion, multi-agent collaboration, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
+- Feedback, dissatisfaction, preference correction, complex tradeoffs, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - When recommending or using a skill, state the skill name, whether it is personal/public/project-level, and its purpose in a few words.
 - At the end of a reusable workflow, decide whether it is worth turning into a Ryan skill. Recommend skill creation only when the workflow is high-frequency, cross-project, reduces risk, or saves tokens.
@@ -79,6 +83,13 @@ When entering any project:
 - Hooks should check, warn, or block. They should not modify source files, commit, merge, push, or clean files automatically.
 - Prefer shared rules plus thin adapters for Codex, Claude Code, Cursor, CI, or Git hooks.
 - Dry-run new hooks before enforcing them. Explain time, token, or false-positive cost before enabling heavier checks.
+
+## Private Sync And Open Source Boundary
+
+- Private device-to-device sync and public release are different security lanes.
+- A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
+- Public repositories, public issues, public PRs, public READMEs, public templates, and public skills must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.
+- Public packages should use examples, placeholders, and safety notes only.
 
 ## Workflow Review
 

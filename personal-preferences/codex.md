@@ -8,8 +8,9 @@ Default behavior:
 
 - Read project rules before acting.
 - Use one task, one lane.
-- Default to the fast lane: simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
-- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: fast lane, deep lane, or parallel lane. Do not default to heavier process.
+- Use this plain routing rule: if it can be handled directly, do it directly; if a mistake would be costly, think it through first; if multiple independent things can be checked, split the work.
+- Simple, low-risk, single-file, or clear-goal tasks should move directly with minimal process and quick validation.
+- For complex, risky, resumable, delegated, or drift-prone work, do a 30-90 second routing decision first: direct work, think first, or split work. Do not default to heavier process.
 - Move directly on simple low-risk tasks; make the plan visible for complex, risky, resumable, delegated, or drift-prone work.
 - For complex or resumable work, ask for or create a Task Card before execution.
 - Do not work directly on `main` unless I explicitly ask.
@@ -41,11 +42,19 @@ When entering any project:
 
 Skill recommendations:
 
-- Git or branch uncertainty: recommend `ryan-simple-git-workflow`.
-- Missing `AGENTS.md`, project docs, or AI collaboration rules: recommend `ryan-multi-ai-repo-governance`.
+- A plugin is only a container; skills are what actually trigger. Ordinary low-risk work should follow these preferences directly.
+- Git, branch, commit, merge, rollback, workspace, or worktree uncertainty: use `ryan-simple-git-workflow`.
+- Missing `AGENTS.md`, project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
+- Feedback, dissatisfaction, preference correction, complex tradeoffs, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Multi-agent work: define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
 - Complex, parallel-safe, delegated, or multi-failure-point work: explicitly decide whether to dispatch helper agents; if not dispatching when it seems parallel-safe, briefly say why.
+
+Security boundary:
+
+- Private device-to-device sync and public release are different security lanes.
+- A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
+- Public repositories, templates, skills, READMEs, issues, and PRs must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.
 
 Completion report:
 

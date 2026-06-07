@@ -85,6 +85,21 @@ copy_if_missing "$template_root/docs/qa/README.md" "$target/docs/qa/README.md"
 copy_if_missing "$template_root/docs/handoffs/README.md" "$target/docs/handoffs/README.md"
 copy_if_missing "$template_root/docs/plans/README.md" "$target/docs/plans/README.md"
 
+if [[ "$lang" == "zh-CN" ]]; then
+  copy_if_missing "$kit_root/docs/agent-ops-observability.zh-CN.md" "$target/docs/agent-ops-observability.zh-CN.md"
+  copy_if_missing "$kit_root/docs/obsidian-bridge.zh-CN.md" "$target/docs/obsidian-bridge.zh-CN.md"
+else
+  copy_if_missing "$kit_root/docs/agent-ops-observability.md" "$target/docs/agent-ops-observability.md"
+  copy_if_missing "$kit_root/docs/obsidian-bridge.md" "$target/docs/obsidian-bridge.md"
+fi
+copy_if_missing "$kit_root/scripts/record-agent-ops-observation.sh" "$target/scripts/record-agent-ops-observation.sh"
+copy_if_missing "$kit_root/scripts/setup-obsidian-bridge.sh" "$target/scripts/setup-obsidian-bridge.sh"
+copy_if_missing "$kit_root/scripts/sync-project-learning.sh" "$target/scripts/sync-project-learning.sh"
+copy_if_missing "$kit_root/scripts/sync-project-handoff.sh" "$target/scripts/sync-project-handoff.sh"
+copy_if_missing "$kit_root/scripts/sync-project-retro.sh" "$target/scripts/sync-project-retro.sh"
+copy_if_missing "$kit_root/templates/obsidian-learning-note.md" "$target/templates/obsidian-learning-note.md"
+copy_if_missing "$kit_root/templates/obsidian-retro.md" "$target/templates/obsidian-retro.md"
+
 echo
 echo "Ryan Agent Work Kit installed for: $target"
 echo "Language: $lang"

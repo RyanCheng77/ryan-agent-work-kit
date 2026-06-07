@@ -52,6 +52,8 @@ Skill recommendations:
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Multi-agent work: define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
 - Complex, parallel-safe, delegated, or multi-failure-point work: explicitly decide whether to dispatch helper agents; if not dispatching when it seems parallel-safe, briefly say why.
+- If multi-agent or external CLI-agent work is slow, rejected, error-prone, or causes rework, record a lightweight AgentOps observation: elapsed time, wait time, acceptance, rework, error type, main bottleneck, and next adjustment.
+- AgentOps should not record or estimate tokens. Suspected token waste should be recorded only as observable causes, such as repeated search, repeated failure, over-broad context, or idle waiting.
 
 Security boundary:
 
@@ -68,5 +70,7 @@ Completion report:
 - Validation
 - Skipped validation and why
 - Risks
+- AgentOps record result: for complex tasks or multi-agent/external-agent work, say whether AgentOps was recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
+- Obsidian Bridge: when a project has a configured Obsidian vault, decide whether complex work should sync a learning or handoff note. Save only reusable lessons, validation methods, risks, and next steps; do not save full logs, transcripts, secrets, or private data.
 - Learning harvest
 - Next step

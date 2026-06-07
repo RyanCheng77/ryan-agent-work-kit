@@ -26,3 +26,13 @@ Any agent that can read files can follow this kit:
 2. Read `AGENTS.md`.
 3. Read `docs/current-goal.md`.
 4. Follow the handoff format.
+
+## Obsidian
+
+Obsidian Bridge works with any local folder that acts as an Obsidian vault. The kit writes Markdown files only; sync is handled by whatever the user already uses, such as Obsidian Sync, iCloud, Dropbox, a NAS, or no sync at all.
+
+Use:
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```

@@ -78,3 +78,59 @@ cp templates/workflow-review.zh-CN.md ./my-project/docs/plans/<workflow-name>-re
 ```
 
 用它判断这个流程应该保留、简化、自动化、替换还是停用。
+
+## 可选：记录多 agent 协作质量
+
+如果任务涉及子 agent、外部 CLI agent、等待、返工或低采纳，可以记录一条 AgentOps 观察：
+
+```bash
+cat <<'EOF' | ./scripts/record-agent-ops-observation.sh
+## Observation
+- project: my-project
+- task_id: 2026-06-example
+- trigger_reason: multi_agent
+- route: S2
+- task_type: qa
+- agents_used: 1
+- agent_roles: readonly-reviewer
+- wall_time_min: 12
+- agent_wait_time_min: 3
+- local_work_while_waiting: yes
+- acceptance: partial
+- rework_count: 1
+- error_type: low_quality
+- validation_evidence: test + diff review
+- evidence_ref: local check summary
+- lesson: Use a narrower reviewer task card next time.
+EOF
+```
+
+这个记录不追踪 token。它只帮助你判断下次怎样更少返工、更快交付、更会协作。
+
+## 可选：接入 Obsidian 知识库
+
+如果你想把项目经验、交接、复盘和 AgentOps 写入自己的 Obsidian vault：
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```
+
+之后可以写入项目经验：
+
+```bash
+cat <<'EOF' | ./scripts/sync-project-learning.sh --project "my-project"
+## Summary
+
+- A narrower task card reduced rework.
+
+## Evidence
+
+- Smoke test passed.
+
+## Next Adjustment
+
+- Use the same validation checklist next time.
+EOF
+```
+
+这个能力只写本地 Markdown，不上传、不登录、不读取整个知识库。

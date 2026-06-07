@@ -16,9 +16,20 @@ This project should stay generic and reusable.
 - Real project names.
 - Real people or team details.
 - Local machine paths.
+- Real Obsidian vault paths.
 - Private documents, screenshots, logs, or data.
 - Credentials or access values.
 - Text that points to non-public background material.
+
+## Obsidian Bridge Safety
+
+Obsidian Bridge should write local Markdown only.
+
+- Do not include a real vault path in public examples.
+- Do not commit `.ryan-agent-work-kit/obsidian-bridge.env`.
+- Do not read the whole vault by default.
+- Do not write secrets, auth files, full logs, full conversations, customer data, or non-public organization details.
+- Read only files or folders the user explicitly names.
 
 ## Before Sharing
 

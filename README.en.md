@@ -71,6 +71,15 @@ docs/roadmap.md
 docs/qa/README.md
 docs/handoffs/README.md
 docs/plans/README.md
+docs/agent-ops-observability.md
+docs/obsidian-bridge.md
+scripts/record-agent-ops-observation.sh
+scripts/setup-obsidian-bridge.sh
+scripts/sync-project-learning.sh
+scripts/sync-project-handoff.sh
+scripts/sync-project-retro.sh
+templates/obsidian-learning-note.md
+templates/obsidian-retro.md
 ```
 
 Then tell your AI tool:
@@ -98,6 +107,26 @@ If a workflow has happened 3+ times, or starts costing too much time, token cont
 ```bash
 cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.md
 ```
+
+### 5. Optional: Track Multi-Agent Quality
+
+When you start using subagents, Claude CLI, Codex, Cursor, or other tools together, use lightweight AgentOps records to track elapsed time, wait time, rework, acceptance, and error type:
+
+```bash
+./scripts/record-agent-ops-observation.sh --help
+```
+
+It does not record or estimate tokens. Markdown is for humans; TSV is for later analysis. See [docs/agent-ops-observability.md](docs/agent-ops-observability.md).
+
+### 6. Optional: Connect Your Obsidian Vault
+
+If you have an Obsidian vault, provide its local path to write project learnings, handoffs, retrospectives, and AgentOps records into your knowledge base:
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```
+
+It writes local Markdown only. No login, no upload, no full-vault scan. See [docs/obsidian-bridge.md](docs/obsidian-bridge.md).
 
 ## What It Does
 

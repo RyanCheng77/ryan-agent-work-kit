@@ -73,6 +73,8 @@
 验证：
 跳过的验证：
 风险：
+AgentOps：复杂任务或多 agent/外部 agent 任务结束时，说明已记录/未记录；已记录时给出记录 ID 或任务 ID、写入位置、采纳情况、返工次数、主要瓶颈和下次动作。
+Obsidian：如果项目配置了 Obsidian Bridge，说明是否同步了经验或交接；已同步时给出笔记路径。
 经验：
 下一步：
 ```
@@ -84,6 +86,8 @@
 - 缺少项目文档、AI 协作规则，或想让项目更容易被 AI 接管：调用 `ryan-multi-ai-repo-governance`。
 - 反馈吸收、不满意、偏好修正、复杂判断、批评/评审或偏好沉淀：调用 `ryan-collaboration-quality-loop`。
 - 复杂、多步骤、可恢复或委派任务：推荐使用任务卡。
+- 多 agent 或外部 CLI agent 的任务如果慢、返工、低采纳或出错：推荐使用 `docs/agent-ops-observability.zh-CN.md` 和 `scripts/record-agent-ops-observation.sh` 做轻量观察。
+- 用户想把项目经验、交接、复盘或 AgentOps 写入自己的 Obsidian 知识库：推荐 `docs/obsidian-bridge.zh-CN.md` 和 `scripts/setup-obsidian-bridge.sh`。
 
 ## 安全边界
 

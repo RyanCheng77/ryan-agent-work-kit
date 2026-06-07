@@ -62,6 +62,15 @@ docs/roadmap.md
 docs/qa/README.md
 docs/handoffs/README.md
 docs/plans/README.md
+docs/agent-ops-observability.zh-CN.md
+docs/obsidian-bridge.zh-CN.md
+scripts/record-agent-ops-observation.sh
+scripts/setup-obsidian-bridge.sh
+scripts/sync-project-learning.sh
+scripts/sync-project-handoff.sh
+scripts/sync-project-retro.sh
+templates/obsidian-learning-note.md
+templates/obsidian-retro.md
 ```
 
 然后告诉 AI：
@@ -77,6 +86,26 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 ```
 
 任务卡不是新流程负担。它的作用是用最少上下文固定目标、范围、相关文件、验证方式和交接格式。
+
+### 4. 可选：记录多 agent 协作质量
+
+当任务涉及多个 agent、外部 CLI agent、等待、返工或低采纳时，可以用轻量 AgentOps 记录改善协作：
+
+```bash
+./scripts/record-agent-ops-observation.sh --help
+```
+
+它不记录 token，也不估算 token。详见：[docs/agent-ops-observability.zh-CN.md](docs/agent-ops-observability.zh-CN.md)。
+
+### 5. 可选：接入 Obsidian 知识库
+
+如果你有自己的 Obsidian vault，只提供本地路径即可把项目经验、交接、复盘和 AgentOps 记录写入知识库：
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```
+
+它只写本地 Markdown，不登录、不上传、不读取整个知识库。详见：[docs/obsidian-bridge.zh-CN.md](docs/obsidian-bridge.zh-CN.md)。
 
 ## 核心原则
 

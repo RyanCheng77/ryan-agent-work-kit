@@ -8,6 +8,7 @@ They tell your AI tool how you want it to behave across projects:
 - Use one task, one lane.
 - Avoid risky Git operations without confirmation.
 - Keep project memory in files.
+- Sync reusable learnings or handoffs to Obsidian when Obsidian Bridge is configured.
 - Recommend Ryan skills only when useful.
 - End work with validation, risks, and next step.
 

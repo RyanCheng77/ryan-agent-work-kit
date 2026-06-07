@@ -78,3 +78,31 @@ cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.m
 ```
 
 Use it to decide whether the workflow should be kept, simplified, automated, replaced, or stopped.
+
+## Optional: Connect Your Obsidian Vault
+
+If you want project learnings, handoffs, retrospectives, and AgentOps records in your own Obsidian vault:
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```
+
+Then write a learning note:
+
+```bash
+cat <<'EOF' | ./scripts/sync-project-learning.sh --project "my-project"
+## Summary
+
+- A narrower task card reduced rework.
+
+## Evidence
+
+- Smoke test passed.
+
+## Next Adjustment
+
+- Use the same validation checklist next time.
+EOF
+```
+
+This writes local Markdown only. No upload, no login, no full-vault scan.

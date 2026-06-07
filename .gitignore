@@ -11,3 +11,4 @@ build/
 .cache/
 .tmp/
 scratch/
+.ryan-agent-work-kit/*.env

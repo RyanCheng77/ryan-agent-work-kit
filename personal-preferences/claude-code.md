@@ -9,6 +9,8 @@ Prefer:
 - Project memory in files, not only chat.
 - Clear handoffs after each task.
 - No risky Git operations without explicit confirmation.
+- Lightweight AgentOps records for slow, rejected, error-prone, or rework-heavy multi-agent work.
+- No token metrics in AgentOps; record only observable causes of waste.
 
 Recommend Ryan skills only when useful:
 

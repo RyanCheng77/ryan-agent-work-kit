@@ -55,6 +55,7 @@ When entering any project:
 - Missing `AGENTS.md`, project docs, repository governance, standalone project setup, nested repo confusion, multi-agent collaboration, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
 - Feedback, dissatisfaction, preference correction, complex tradeoffs, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
+- Slow, rejected, error-prone, or rework-heavy multi-agent work: recommend lightweight AgentOps observation using `docs/agent-ops-observability.md` and `scripts/record-agent-ops-observation.sh`.
 - When recommending or using a skill, state the skill name, whether it is personal/public/project-level, and its purpose in a few words.
 - At the end of a reusable workflow, decide whether it is worth turning into a Ryan skill. Recommend skill creation only when the workflow is high-frequency, cross-project, reduces risk, or saves tokens.
 
@@ -68,6 +69,8 @@ When entering any project:
 - Helper agents and external CLIs do narrow work. The lead agent owns project state, branch strategy, quality gates, final review, and integration.
 - Before delegating, define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format. Use an inline micro Task Card for ordinary helper tasks; create a file only for long-running or high-risk work.
 - Treat helper results as advisory until the lead agent verifies project state and validation.
+- After slow, rejected, error-prone, or rework-heavy multi-agent work, record elapsed time, wait time, acceptance, rework, error type, main bottleneck, and next adjustment when it will improve future dispatch.
+- Do not record or estimate tokens in AgentOps. Suspected token waste should be represented only by observable causes, such as repeated search, repeated failure, over-broad context, or idle waiting.
 - External CLI agents default to read-only, narrow-scope, single-task work.
 - Do not disclose repository paths, branch state, diffs, logs, source snippets, product plans, or internal docs to external tools unless I explicitly authorize the scope.
 - For external plugins, MCP servers, browser-like tools, desktop-control tools, third-party services, or external CLIs, disclose the minimum necessary context. If logged-in pages, private documents, customer data, financials, contracts, source diffs, logs, or secrets may be involved, name the risk before proceeding.
@@ -112,5 +115,7 @@ End meaningful work with:
 - Validation run.
 - Validation skipped and why.
 - Risks.
+- AgentOps record result for complex, multi-agent, or external-agent work: recorded/not recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
+- Obsidian Bridge result when configured: learning/handoff synced or not synced, with the written note path when synced. Save only reusable lessons, validation methods, risks, and next steps.
 - Learning harvest.
 - Next step.

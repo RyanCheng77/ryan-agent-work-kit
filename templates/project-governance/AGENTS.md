@@ -73,6 +73,8 @@ Changed files:
 Validation:
 Skipped validation:
 Risks:
+AgentOps: for complex, multi-agent, or external-agent work, say recorded/not recorded; when recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment.
+Obsidian: when Obsidian Bridge is configured, say whether learning or handoff notes were synced; include the note path when synced.
 Learning:
 Next:
 ```
@@ -84,6 +86,8 @@ Next:
 - Missing project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
 - Feedback, dissatisfaction, preference correction, complex judgment, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegated work: recommend a Task Card.
+- Slow, rejected, error-prone, or rework-heavy multi-agent work: recommend `docs/agent-ops-observability.md` and `scripts/record-agent-ops-observation.sh` for lightweight observation.
+- User wants project learnings, handoffs, retrospectives, or AgentOps in their own Obsidian vault: recommend `docs/obsidian-bridge.md` and `scripts/setup-obsidian-bridge.sh`.
 
 ## Security Boundary
 

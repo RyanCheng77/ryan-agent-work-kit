@@ -64,6 +64,15 @@ docs/roadmap.md
 docs/qa/README.md
 docs/handoffs/README.md
 docs/plans/README.md
+docs/agent-ops-observability.zh-CN.md
+docs/obsidian-bridge.zh-CN.md
+scripts/record-agent-ops-observation.sh
+scripts/setup-obsidian-bridge.sh
+scripts/sync-project-learning.sh
+scripts/sync-project-handoff.sh
+scripts/sync-project-retro.sh
+templates/obsidian-learning-note.md
+templates/obsidian-retro.md
 ```
 
 然后告诉 AI：
@@ -87,6 +96,26 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 ```bash
 cp templates/workflow-review.zh-CN.md ./my-project/docs/plans/<workflow-name>-review.md
 ```
+
+### 5. 可选：记录多 agent 协作质量
+
+当你开始使用子 agent、Claude CLI、Codex、Cursor 等多个工具协作时，可以用轻量 AgentOps 记录追踪耗时、等待、返工、采纳和错误类型：
+
+```bash
+./scripts/record-agent-ops-observation.sh --help
+```
+
+它不记录 token，也不估算 token。Markdown 给人读，TSV 给后续分析。详见：[docs/agent-ops-observability.zh-CN.md](docs/agent-ops-observability.zh-CN.md)。
+
+### 6. 可选：接入 Obsidian 知识库
+
+如果你有自己的 Obsidian vault，只提供本地路径即可把项目经验、交接、复盘和 AgentOps 记录写入知识库：
+
+```bash
+./scripts/setup-obsidian-bridge.sh "/path/to/your/ObsidianVault"
+```
+
+它只写本地 Markdown，不登录、不上传、不读取整个知识库。详见：[docs/obsidian-bridge.zh-CN.md](docs/obsidian-bridge.zh-CN.md)。
 
 ## 这个工具包做什么
 

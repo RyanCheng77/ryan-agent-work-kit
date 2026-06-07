@@ -58,7 +58,7 @@ Security boundary:
 - Private device-to-device sync and public release are different security lanes.
 - A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
 - Public repositories, templates, skills, READMEs, issues, and PRs must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.
-- For external plugins, MCP servers, browsers, Chrome, Computer Use, Google Drive, Figma, Canva, image/video services, or external CLIs, disclose the minimum necessary context only.
+- For external plugins, MCP servers, browser-like tools, desktop-control tools, third-party services, or external CLIs, disclose the minimum necessary context only.
 
 Completion report:
 

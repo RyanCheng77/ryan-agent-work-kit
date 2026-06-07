@@ -70,7 +70,7 @@ When entering any project:
 - Treat helper results as advisory until the lead agent verifies project state and validation.
 - External CLI agents default to read-only, narrow-scope, single-task work.
 - Do not disclose repository paths, branch state, diffs, logs, source snippets, product plans, or internal docs to external tools unless I explicitly authorize the scope.
-- For external plugins, MCP servers, browsers, Chrome, Computer Use, Google Drive, Figma, Canva, image/video services, or external CLIs, disclose the minimum necessary context. If logged-in pages, private documents, customer data, financials, contracts, source diffs, logs, or secrets may be involved, name the risk before proceeding.
+- For external plugins, MCP servers, browser-like tools, desktop-control tools, third-party services, or external CLIs, disclose the minimum necessary context. If logged-in pages, private documents, customer data, financials, contracts, source diffs, logs, or secrets may be involved, name the risk before proceeding.
 - Helper agents must not run `git add`, `commit`, `checkout`, `stash`, `reset`, `merge`, `rebase`, `push`, `clean`, or `rm`. The lead agent reviews and performs coordination commands when needed.
 - For GUI tools, verify the visible workspace or project name before approving commands or changing settings.
 

@@ -1,6 +1,6 @@
 ---
 name: ryan-multi-ai-repo-governance
-description: Use when a project needs AGENTS.md, project docs, AI collaboration rules, handoff structure, safe task lanes, or reusable project memory for Codex, Claude Code, Cursor, or other coding agents.
+description: Use when a project needs AGENTS.md, project docs, AI collaboration rules, handoff structure, safe task lanes, reusable project memory, or needs to become easier for Codex, Claude Code, Cursor, or other coding agents to take over.
 ---
 
 # Ryan Multi-AI Repo Governance
@@ -48,8 +48,8 @@ Before work starts, the agent should:
 ## Task Lane Rules
 
 - One task should use one lane.
-- Default to the fast lane for simple, low-risk, single-file, or clear-goal tasks.
-- For complex work, make a quick routing decision first: fast lane, deep lane, or parallel lane.
+- Handle simple, low-risk, single-file, or clear-goal tasks directly.
+- For complex work, make a quick routing decision first: do it directly, think first, or split the work.
 - Complex or resumable work should use a Task Card.
 - Avoid direct work on `main` unless the user asks.
 - Keep changes small and reviewable.
@@ -92,12 +92,15 @@ Next:
 
 ## Skill Recommendation Rules
 
-- Git or branch confusion: recommend `ryan-simple-git-workflow`.
+- Git, repository, branch, commit, merge, rollback, workspace, or worktree confusion: recommend `ryan-simple-git-workflow`.
 - Missing project docs: recommend this skill.
 - Complex, multi-step, resumable, or delegated work: recommend a Task Card.
+- Feedback, dissatisfaction, preference correction, complex tradeoffs, critique/review, or durable preference capture: recommend `ryan-collaboration-quality-loop`.
 - Repeated, noisy, or expensive workflow: recommend `templates/workflow-review.md` or `templates/workflow-review.zh-CN.md`.
 - Product workflow, quality gates, hooks, or GenUI work: recommend optional future Ryan skills only when needed.
 
 ## Public Package Rule
 
 Keep examples generic and fictional. Do not add private project details, local machine paths, or non-public background material.
+
+Private device-to-device sync and public release are different security lanes. A private sync package may include real local configuration only when the owner explicitly authorizes that scope. Public packages should use examples, placeholders, and safety notes only; never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.

@@ -21,9 +21,10 @@ Before doing work, the agent should:
 ## Working Rules
 
 - One task should use one lane.
-- Default to the fast lane for simple, low-risk, single-file, or clear-goal tasks.
-- Simple low-risk work can proceed directly; complex, risky, resumable, delegated, or drift-prone work should show a short plan first.
-- For complex work, make a quick routing decision first: fast lane, deep lane, or parallel lane.
+- Use this plain routing rule: if it can be handled directly, do it directly; if a mistake would be costly, think it through first; if multiple independent things can be checked, split the work.
+- Simple, low-risk, single-file, or clear-goal work can proceed directly with minimal process and quick validation.
+- Complex, risky, resumable, delegated, or drift-prone work should show a short plan first.
+- For complex work, make a quick routing decision first: direct work, think first, or split work.
 - Complex or resumable work should use a Task Card.
 - Keep changes small and reviewable.
 - Do not work directly on `main` unless the user asks.
@@ -76,6 +77,14 @@ Next:
 
 ## Skill Recommendations
 
-- Git or branch uncertainty: recommend `ryan-simple-git-workflow`.
-- Missing project docs or AI collaboration rules: recommend `ryan-multi-ai-repo-governance`.
+- A plugin is only a container; skills are what actually trigger. Ordinary low-risk work should follow this file directly.
+- Git, repository, branch, commit, merge, rollback, or workspace uncertainty: use `ryan-simple-git-workflow`.
+- Missing project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
+- Feedback, dissatisfaction, preference correction, complex judgment, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegated work: recommend a Task Card.
+
+## Security Boundary
+
+- Private device-to-device sync and public release are different security lanes.
+- A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
+- Public repositories, templates, skills, READMEs, issues, and PRs must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.

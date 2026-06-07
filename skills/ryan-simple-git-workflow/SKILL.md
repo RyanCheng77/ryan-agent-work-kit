@@ -1,6 +1,6 @@
 ---
 name: ryan-simple-git-workflow
-description: Use when Ryan asks for Git help, branch management, workspace management, committing, merging, checking repository status, or when he says he is unsure about Git commands.
+description: Use when Ryan asks for Git help, branch management, workspace management, committing, merging, checking repository status, safe task branches, or when he says he does not understand Git, repositories, branches, workspace, commits, merges, or rollback.
 ---
 
 # Ryan Simple Git Workflow

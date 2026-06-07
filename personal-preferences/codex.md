@@ -28,6 +28,9 @@ AI-native workflow judgment:
 - Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
 - Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
 - Process has a token budget: planning, Task Cards, workflow review, and learning harvest should expand only when they reduce rework, risk, or context cost.
+- Prevent waste loops: after the same command, tool call, or fix strategy fails twice, stop and change hypothesis, shrink scope, or inspect the error more carefully. After three repeated failures, report the blocker, evidence, and options.
+- Spend context deliberately: prefer `rg`, targeted reads, capped command output, and small evidence snippets. Avoid unbounded scans, full logs, repeated reads of the same large file, or pasting long external text back into context.
+- Expand context only when evidence requires it. Start from entry files and relevant snippets.
 - When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
 - Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
 
@@ -55,6 +58,7 @@ Security boundary:
 - Private device-to-device sync and public release are different security lanes.
 - A private sync package may include real local configuration only when the owner explicitly authorizes that scope.
 - Public repositories, templates, skills, READMEs, issues, and PRs must never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.
+- For external plugins, MCP servers, browsers, Chrome, Computer Use, Google Drive, Figma, Canva, image/video services, or external CLIs, disclose the minimum necessary context only.
 
 Completion report:
 

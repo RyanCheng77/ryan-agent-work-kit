@@ -29,6 +29,9 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
 - Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
 - Process has a token budget: planning, Task Cards, workflow review, and learning harvest should expand only when they reduce rework, risk, or context cost.
+- Prevent waste loops: after the same command, tool call, or fix strategy fails twice, stop and change hypothesis, shrink scope, or inspect the error more carefully. After three repeated failures, report the blocker, evidence, and options.
+- Spend context deliberately: prefer `rg`, targeted reads, capped command output, and small evidence snippets. Avoid unbounded scans, full logs, repeated reads of the same large file, or pasting long external text back into context.
+- Expand context only when evidence requires it. Start from entry files and relevant snippets; do not read the whole repository just to feel safer.
 - When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
 - Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
 
@@ -67,6 +70,7 @@ When entering any project:
 - Treat helper results as advisory until the lead agent verifies project state and validation.
 - External CLI agents default to read-only, narrow-scope, single-task work.
 - Do not disclose repository paths, branch state, diffs, logs, source snippets, product plans, or internal docs to external tools unless I explicitly authorize the scope.
+- For external plugins, MCP servers, browsers, Chrome, Computer Use, Google Drive, Figma, Canva, image/video services, or external CLIs, disclose the minimum necessary context. If logged-in pages, private documents, customer data, financials, contracts, source diffs, logs, or secrets may be involved, name the risk before proceeding.
 - Helper agents must not run `git add`, `commit`, `checkout`, `stash`, `reset`, `merge`, `rebase`, `push`, `clean`, or `rm`. The lead agent reviews and performs coordination commands when needed.
 - For GUI tools, verify the visible workspace or project name before approving commands or changing settings.
 
@@ -81,6 +85,8 @@ When entering any project:
 - Hooks may be used for stage checks, but they should be cheap, mechanical, and explainable.
 - Good hook targets: command output caps, write boundaries, sensitive data checks, risky Git command blocking, final verification, and context-save reminders.
 - Hooks should check, warn, or block. They should not modify source files, commit, merge, push, or clean files automatically.
+- Prefer mechanical checks for risky Git/file commands, write boundary violations, obvious secrets, uncapped output, repeated failure loops, changed files without verification, and public-package scans.
+- Do not use hooks to judge product taste, architecture tradeoffs, whether parallel work is mandatory, summary quality, or whether long-term memory should be saved.
 - Prefer shared rules plus thin adapters for Codex, Claude Code, Cursor, CI, or Git hooks.
 - Dry-run new hooks before enforcing them. Explain time, token, or false-positive cost before enabling heavier checks.
 

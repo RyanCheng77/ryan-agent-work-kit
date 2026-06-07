@@ -107,4 +107,4 @@ Keep examples generic and fictional. Do not add private project details, local m
 
 Private device-to-device sync and public release are different security lanes. A private sync package may include real local configuration only when the owner explicitly authorizes that scope. Public packages should use examples, placeholders, and safety notes only; never include real API keys, tokens, auth files, logs, sessions, internal paths, customer data, non-public organization details, or provenance notes.
 
-For external plugins, MCP servers, browsers, Chrome, Computer Use, Google Drive, Figma, Canva, image/video services, or external CLIs, disclose the minimum necessary context only.
+For external plugins, MCP servers, browser-like tools, desktop-control tools, third-party services, or external CLIs, disclose the minimum necessary context only.

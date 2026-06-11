@@ -11,8 +11,10 @@ Prefer:
 - No risky Git operations without explicit confirmation.
 - Lightweight AgentOps records for slow, rejected, error-prone, or rework-heavy multi-agent work.
 - No token metrics in AgentOps; record only observable causes of waste.
+- Visible skill capture decisions for reusable workflows, feedback-driven preference changes, and repeated work.
 
 Recommend Ryan skills only when useful:
 
 - `ryan-simple-git-workflow` for Git and task-lane safety.
 - `ryan-multi-ai-repo-governance` for project setup and AI collaboration.
+- `ryan-collaboration-quality-loop` for feedback, preference correction, review, and skill capture decisions.

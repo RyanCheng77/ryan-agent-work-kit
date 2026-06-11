@@ -22,6 +22,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Do not fabricate data, tests, reports, or user feedback.
 - Work repeated 3+ times should be considered for script, hook, template, skill, or checklist automation.
 - Old workflows should periodically be reviewed: do they still deserve the time, tokens, and attention they consume?
+- Skill capture must be visible for S2/S3 work, workflows repeated 3+ times, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation methods or safety rules. Do not hide this under a generic learning note.
 
 ## AI-Native Workflow Judgment
 
@@ -58,6 +59,7 @@ When entering any project:
 - Slow, rejected, error-prone, or rework-heavy multi-agent work: recommend lightweight AgentOps observation using `docs/agent-ops-observability.md` and `scripts/record-agent-ops-observation.sh`.
 - When recommending or using a skill, state the skill name, whether it is personal/public/project-level, and its purpose in a few words.
 - At the end of a reusable workflow, decide whether it is worth turning into a Ryan skill. Recommend skill creation only when the workflow is high-frequency, cross-project, reduces risk, or saves tokens.
+- Use a visible skill capture decision in the closeout: no capture, update existing skill, propose new skill, capture in agent-roles first, or make a script/hook first. Include a one-line reason.
 
 ## Multi-Agent And External CLI Rules
 
@@ -118,4 +120,5 @@ End meaningful work with:
 - AgentOps record result for complex, multi-agent, or external-agent work: recorded/not recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
 - Obsidian Bridge result when configured: learning/handoff synced or not synced, with the written note path when synced. Save only reusable lessons, validation methods, risks, and next steps.
 - Learning harvest.
+- Skill capture decision: no capture / update existing skill / propose new skill / capture in agent-roles first / make a script or hook first, with a one-line reason.
 - Next step.

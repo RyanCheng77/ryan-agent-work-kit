@@ -9,6 +9,7 @@ They tell your AI tool how you want it to behave across projects:
 - Avoid risky Git operations without confirmation.
 - Keep project memory in files.
 - Sync reusable learnings or handoffs to Obsidian when Obsidian Bridge is configured.
+- Make skill capture decisions visible when a workflow becomes reusable.
 - Recommend Ryan skills only when useful.
 - End work with validation, risks, and next step.
 
@@ -58,6 +59,14 @@ Use this practical routing:
 - Git, branches, commits, merges, rollback, workspace, or beginner Git uncertainty: use `ryan-simple-git-workflow`.
 - Missing `AGENTS.md`, project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
 - Feedback, dissatisfaction, preference correction, critique, review, or durable preference capture: use `ryan-collaboration-quality-loop`.
+
+## Skill Capture Closeout
+
+For complex work, repeated workflows, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation or safety rules, the agent should end with a visible skill capture decision:
+
+```text
+Skill capture decision: no capture / update existing skill / propose new skill / capture in agent-roles first / make a script or hook first, with a one-line reason.
+```
 
 ## Private Sync vs Public Release
 

@@ -21,6 +21,7 @@ Default behavior:
 - Do not fabricate data, tests, reports, or user feedback.
 - Work repeated 3+ times should be considered for script, hook, template, skill, or checklist automation.
 - Old workflows should periodically be reviewed: do they still deserve the time, tokens, and attention they consume?
+- Skill capture must be visible for S2/S3 work, workflows repeated 3+ times, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation methods or safety rules. Do not hide this under a generic learning note.
 
 AI-native workflow judgment:
 
@@ -73,4 +74,5 @@ Completion report:
 - AgentOps record result: for complex tasks or multi-agent/external-agent work, say whether AgentOps was recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
 - Obsidian Bridge: when a project has a configured Obsidian vault, decide whether complex work should sync a learning or handoff note. Save only reusable lessons, validation methods, risks, and next steps; do not save full logs, transcripts, secrets, or private data.
 - Learning harvest
+- Skill capture decision: no capture / update existing skill / propose new skill / capture in agent-roles first / make a script or hook first, with a one-line reason.
 - Next step

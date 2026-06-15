@@ -44,6 +44,18 @@ Logs default to:
 .agent-runs/YYYYMMDD-HHMMSS-<task-name>.log
 ```
 
+Quick smoke test:
+
+```bash
+scripts/run-observable-cli.sh --name right-side-terminal-smoke -- bash -lc 'for i in 1 2 3; do echo "progress $i/3"; sleep 1; done; echo done'
+```
+
+Expected result:
+
+- The Codex right-side `workspace` terminal shows `progress 1/3`, `progress 2/3`, `progress 3/3`, and `done`.
+- `.agent-runs/` contains a matching log file.
+- The log ends with `exit_code: 0`.
+
 These logs are local evidence and should not be committed to a public repository. Before sharing, pasting, or syncing them to Obsidian, check that they do not contain secrets, private paths, full conversations, or sensitive data.
 
 ## What Not To Record

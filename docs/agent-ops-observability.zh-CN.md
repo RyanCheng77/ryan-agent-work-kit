@@ -44,6 +44,18 @@ scripts/run-observable-cli.sh --name claude-review -- claude -p "只读检查这
 .agent-runs/YYYYMMDD-HHMMSS-<task-name>.log
 ```
 
+快速验证：
+
+```bash
+scripts/run-observable-cli.sh --name right-side-terminal-smoke -- bash -lc 'for i in 1 2 3; do echo "progress $i/3"; sleep 1; done; echo done'
+```
+
+预期结果：
+
+- Codex 右侧 `workspace` 终端显示 `progress 1/3`、`progress 2/3`、`progress 3/3` 和 `done`。
+- `.agent-runs/` 生成同名日志。
+- 日志末尾显示 `exit_code: 0`。
+
 这些日志是本地证据，不应提交到公开仓库。分享、粘贴或写入 Obsidian 前，先确认里面没有密钥、私有路径、完整会话或敏感资料。
 
 ## 不记录什么

@@ -74,6 +74,7 @@ When entering any project:
 - After slow, rejected, error-prone, or rework-heavy multi-agent work, record elapsed time, wait time, acceptance, rework, error type, main bottleneck, and next adjustment when it will improve future dispatch.
 - Do not record or estimate tokens in AgentOps. Suspected token waste should be represented only by observable causes, such as repeated search, repeated failure, over-broad context, or idle waiting.
 - External CLI agents default to read-only, narrow-scope, single-task work.
+- External CLI agents should prefer the Codex right-side `workspace` terminal so progress is visible. Long-running work should also log to `.agent-runs/` with `scripts/run-observable-cli.sh` or an equivalent `tee` pattern.
 - Do not disclose repository paths, branch state, diffs, logs, source snippets, product plans, or internal docs to external tools unless I explicitly authorize the scope.
 - For external plugins, MCP servers, browser-like tools, desktop-control tools, third-party services, or external CLIs, disclose the minimum necessary context. If logged-in pages, private documents, customer data, financials, contracts, source diffs, logs, or secrets may be involved, name the risk before proceeding.
 - Helper agents must not run `git add`, `commit`, `checkout`, `stash`, `reset`, `merge`, `rebase`, `push`, `clean`, or `rm`. The lead agent reviews and performs coordination commands when needed.

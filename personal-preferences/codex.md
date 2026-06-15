@@ -53,6 +53,8 @@ Skill recommendations:
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Multi-agent work: define goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
 - Complex, parallel-safe, delegated, or multi-failure-point work: explicitly decide whether to dispatch helper agents; if not dispatching when it seems parallel-safe, briefly say why.
+- External CLI subagents should prefer the Codex right-side `workspace` terminal by default so the user can see progress directly. For long-running work, prefer `scripts/run-observable-cli.sh` or an equivalent `tee` pattern so progress is also written to `.agent-runs/`.
+- Judge external CLI progress from terminal output, log growth, process state, and expected artifacts. Do not treat 30-60 seconds of silence as failure; slow-start tasks usually deserve an initial 3-5 minute wait window.
 - If multi-agent or external CLI-agent work is slow, rejected, error-prone, or causes rework, record a lightweight AgentOps observation: elapsed time, wait time, acceptance, rework, error type, main bottleneck, and next adjustment.
 - AgentOps should not record or estimate tokens. Suspected token waste should be recorded only as observable causes, such as repeated search, repeated failure, over-broad context, or idle waiting.
 

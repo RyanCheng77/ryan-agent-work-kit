@@ -32,6 +32,7 @@ Before doing work, the agent should:
 - Preserve changes outside the current task.
 - If multiple agents help, each agent gets a narrow scope and a clear stop condition.
 - If work has 2+ independent investigation paths, modules, workstreams, or failure hypotheses, explicitly decide whether helper agents should run in parallel.
+- External CLI subagents should prefer the Codex right-side `workspace` terminal. Long-running work should log progress so both the user and lead agent can judge whether it is still working.
 - After the same command, tool call, or fix strategy fails twice, stop and change hypothesis, shrink scope, or inspect the error more carefully. After three repeated failures, report the blocker, evidence, and options.
 - Prefer `rg`, targeted reads, capped command output, and small evidence snippets. Avoid unbounded scans, full logs, repeated reads of the same large file, or pasting long external text back into context.
 - For S2/S3 work, workflows repeated 3+ times, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation methods or safety rules, include a visible skill capture decision in the closeout.

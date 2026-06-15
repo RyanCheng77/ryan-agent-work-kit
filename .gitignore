@@ -1,4 +1,5 @@
 .DS_Store
+/.agent-runs/
 ._*
 *.log
 *.tmp

@@ -19,6 +19,33 @@ Do not record every tiny task. Record only when the observation can improve futu
 - Rework, timeout, wrong scope, permission failure, or low acceptance.
 - User feedback such as "slow", "too roundabout", "repetitive", or "should have split this".
 
+## Observable CLI Subagents
+
+When using Claude CLI, Codex CLI, Gemini, opencode, MiMo Code, or another external CLI agent, prefer running it in the Codex right-side `workspace` terminal and mirror the output to a local log. This lets the user see progress directly while the lead agent uses logs and artifacts to judge progress.
+
+If the Codex right-side terminal is not available, fall back to another visible terminal or a background command, but still log long-running work:
+
+```bash
+scripts/run-observable-cli.sh --name claude-review -- claude -p "Review this project in read-only mode"
+```
+
+The lead agent should judge progress from four evidence types:
+
+- Whether the terminal is still producing output.
+- Whether the log is still growing.
+- Whether the process is still running.
+- Whether expected artifacts, diffs, tests, screenshots, or handoff files appeared.
+
+Do not treat 30-60 seconds of silence as failure. Slow-start external agents often deserve a first wait window of 3-5 minutes. While waiting, the lead agent should keep moving on non-overlapping local work. If the same waiting strategy fails twice, record AgentOps and adjust the wait window, task card, or agent role.
+
+Logs default to:
+
+```text
+.agent-runs/YYYYMMDD-HHMMSS-<task-name>.log
+```
+
+These logs are local evidence and should not be committed to a public repository. Before sharing, pasting, or syncing them to Obsidian, check that they do not contain secrets, private paths, full conversations, or sensitive data.
+
 ## What Not To Record
 
 - Do not record token metrics.
@@ -80,7 +107,7 @@ lesson
 Notes:
 
 - `validation_evidence`: evidence type or validation method, such as test, diff, screenshot, rg check, install dry-run, or user confirm.
-- `evidence_ref`: evidence location or short reference, such as a file path, command name, screenshot name, PR/commit/task id, or short verifiable summary.
+- `evidence_ref`: evidence location or short reference, such as a file path, command name, `.agent-runs` log path, screenshot name, PR/commit/task id, or short verifiable summary.
 - `primary_bottleneck`: the main bottleneck, such as task_card, context, wait_strategy, role_fit, validation, permission, or tool_limit.
 - `improvement_action`: the next concrete adjustment, such as narrow_task_card, change_role, keep_local_work, add_validation, add_hook, or stop_recording.
 

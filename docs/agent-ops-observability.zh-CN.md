@@ -19,6 +19,33 @@ AgentOps 用来追踪和改善多 agent 协作，不是为了做漂亮报表。
 - 出现返工、超时、误跑、权限失败、低采纳。
 - 用户反馈“慢”“绕”“重复消耗”“不该这么拆”。
 
+## 可观察 CLI 子 agent
+
+调用 Claude CLI、Codex CLI、Gemini、opencode、MiMo Code 或其他外部 CLI agent 时，优先让它在 Codex 右侧 `workspace` 终端里运行，并把输出同步写入本地日志。这样 Ryan 可以直接看到进度，主控 agent 也能用日志和产物判断进展。
+
+如果 Codex 右侧终端不可用，再退回到普通可见终端或后台命令，但长任务仍然要写日志：
+
+```bash
+scripts/run-observable-cli.sh --name claude-review -- claude -p "只读检查这个项目"
+```
+
+主控 agent 判断进展时优先看四类证据：
+
+- 终端是否仍在输出。
+- 日志是否持续增长。
+- 进程是否还在运行。
+- 预期产物、diff、测试、截图或交接文件是否出现。
+
+不要把 30-60 秒无输出直接判定为失败。慢启动外部 agent 首次等待通常给 3-5 分钟；等待期间主控继续推进不冲突的本地工作。若连续两次等待策略不合适，记录 AgentOps 并调整等待窗口、任务卡或 agent 角色。
+
+日志默认写入：
+
+```text
+.agent-runs/YYYYMMDD-HHMMSS-<task-name>.log
+```
+
+这些日志是本地证据，不应提交到公开仓库。分享、粘贴或写入 Obsidian 前，先确认里面没有密钥、私有路径、完整会话或敏感资料。
+
 ## 不记录什么
 
 - 不记录 token。
@@ -80,7 +107,7 @@ lesson
 其中：
 
 - `validation_evidence`：证据类型或验证方式，例如 test、diff、screenshot、rg check、install dry-run、user confirm。
-- `evidence_ref`：证据位置或短引用，例如文件路径、命令名、截图文件名、PR/commit/任务编号或一句可复核摘要。
+- `evidence_ref`：证据位置或短引用，例如文件路径、命令名、`.agent-runs` 日志路径、截图文件名、PR/commit/任务编号或一句可复核摘要。
 - `primary_bottleneck`：主要瓶颈，例如 task_card、context、wait_strategy、role_fit、validation、permission、tool_limit。
 - `improvement_action`：下一次具体动作，例如 narrow_task_card、change_role、keep_local_work、add_validation、add_hook、stop_recording。
 

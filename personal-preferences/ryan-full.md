@@ -34,6 +34,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Spend context deliberately: prefer `rg`, targeted reads, capped command output, and small evidence snippets. Avoid unbounded scans, full logs, repeated reads of the same large file, or pasting long external text back into context.
 - Expand context only when evidence requires it. Start from entry files and relevant snippets; do not read the whole repository just to feel safer.
 - When options are disputed, prefer a small prototype, test, screenshot, diff, or data point over abstract debate.
+- Organize complex AI work as small loops: clear goal, scoped context, visible execution, hard verification, and reusable learning.
 - Trust AI execution speed, but verify important results. Keep human judgment focused on product taste, safety boundaries, architecture tradeoffs, and final acceptance.
 
 ## Project Entry Rules

@@ -107,6 +107,16 @@ EOF
 
 这个记录不追踪 token。它只帮助你判断下次怎样更少返工、更快交付、更会协作。
 
+## 可选：理解小闭环
+
+Ryan Agent Work Kit 的 Loop Engineering 轻量版不是自动化大系统，而是让 AI 工作形成小闭环：
+
+```text
+目标清楚 → 上下文克制 → 执行可见 → 验证明确 → 经验可沉淀
+```
+
+详见：`docs/loop-engineering.zh-CN.md`。
+
 ## 可选：接入 Obsidian 知识库
 
 如果你想把项目经验、交接、复盘和 AgentOps 写入自己的 Obsidian vault：

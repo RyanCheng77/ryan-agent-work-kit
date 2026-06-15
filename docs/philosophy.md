@@ -21,11 +21,26 @@ AI agents work better when the project has memory, rules, and handoff habits.
 5. **Less repeated context, fewer mistakes**
    Good project memory lowers token cost and reduces repeated explanations.
 
+## Small Safe Loops
+
+Ryan Agent Work Kit treats Loop Engineering as a practical habit, not a large automation promise.
+
+The useful loop is:
+
+```text
+clear goal -> scoped context -> visible execution -> hard verification -> reusable learning
+```
+
+The kit supports this through project docs, Task Cards, observable CLI runs, AgentOps records, Obsidian sync, and skill capture decisions.
+
+The loop must stay small. If a workflow adds ceremony without reducing rework, risk, or context cost, simplify it or stop it.
+
 ## What This Kit Is Not
 
 - It is not a large process framework.
 - It is not a replacement for human judgment.
 - It is not a full Git course.
 - It is not a promise that AI will never fail.
+- It is not an unattended agent runtime.
 
 It is a small operating standard that makes AI work easier to steer.

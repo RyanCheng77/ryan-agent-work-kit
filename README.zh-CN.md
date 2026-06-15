@@ -26,6 +26,16 @@ Ryan Agent Work Kit 给项目加上一套简单标准：
 | 多个工具容易互相覆盖 | Agent 有范围、边界和交接规则 |
 | 复杂任务难恢复 | 任务卡保存目标、范围、文件、验证和交接 |
 
+## 核心概念：小闭环
+
+Ryan Agent Work Kit 吸收了 Loop Engineering 的思路，但不做沉重的自动化系统。它先帮你建立几个小而安全的 AI 工作闭环：
+
+```text
+目标清楚 → 上下文克制 → 执行可见 → 验证明确 → 经验可沉淀
+```
+
+详见：[docs/loop-engineering.zh-CN.md](docs/loop-engineering.zh-CN.md)。
+
 ## 快速开始
 
 ### 1. 设置个人偏好
@@ -113,6 +123,7 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 - 项目记忆写进文件，不只留在聊天里。
 - 一个任务使用一个 lane。
 - 主控 agent 负责验收，子 agent 只做窄任务。
+- 让 AI 工作形成小闭环：目标、执行、验证和学习都可追踪。
 - 少重复解释，少浪费 token，少出错。
 
 ## 检查项目是否 AI-ready

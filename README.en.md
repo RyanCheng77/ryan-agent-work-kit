@@ -27,6 +27,16 @@ Ryan Agent Work Kit gives the project a simple operating standard:
 | No proof at the end | Every task reports validation, risks, and next step |
 | Complex tasks are hard to resume | Task Cards keep goal, scope, files, validation, and handoff together |
 
+## Core Idea: Small Loops
+
+Ryan Agent Work Kit borrows from Loop Engineering, but it does not try to be a heavy automation system. It starts with small, safe AI work loops:
+
+```text
+Clear goal → scoped context → visible execution → hard verification → reusable learning
+```
+
+See [docs/loop-engineering.md](docs/loop-engineering.md).
+
 ## Quick Start
 
 There are two layers:
@@ -174,6 +184,7 @@ Ryan Agent Work Kit follows five rules:
 - Project memory belongs in files, not only in chat.
 - One task should use one lane.
 - The lead agent owns review; sub agents do narrow work.
+- AI work should form small loops where goal, execution, verification, and learning are traceable.
 - Work repeated 3+ times should be considered for automation.
 - Old workflows should periodically prove they still earn their place.
 - Less repeated context means lower token cost and fewer mistakes.

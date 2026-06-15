@@ -79,6 +79,16 @@ cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.m
 
 Use it to decide whether the workflow should be kept, simplified, automated, replaced, or stopped.
 
+## Optional: Understand Small Loops
+
+The lightweight Loop Engineering idea in Ryan Agent Work Kit is not a large automation system. It means AI work should form small loops:
+
+```text
+Clear goal -> scoped context -> visible execution -> hard verification -> reusable learning
+```
+
+See `docs/loop-engineering.md`.
+
 ## Optional: Connect Your Obsidian Vault
 
 If you want project learnings, handoffs, retrospectives, and AgentOps records in your own Obsidian vault:

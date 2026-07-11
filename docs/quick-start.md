@@ -15,14 +15,28 @@ It also teaches AI-native workflow habits: JIT planning, Task Cards, prototype-b
 
 ## 2. Add the kit to a project
 
+Current repository usage:
+
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh ./my-project
+```
+
+Local Node CLI:
+
+```bash
+node bin/ryan-agent-work-kit.js init ./my-project
 ```
 
 For Chinese project templates:
 
 ```bash
-./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
+node bin/ryan-agent-work-kit.js init --lang zh-CN ./my-project
+```
+
+After the npm package is published:
+
+```bash
+npx ryan-agent-work-kit init ./my-project
 ```
 
 The script creates project rules and docs without overwriting existing files.
@@ -47,6 +61,29 @@ The agent should:
 6. Report risks and next step.
 
 ## 5. Check readiness
+
+```bash
+node bin/ryan-agent-work-kit.js check ./my-project
+```
+
+For a fuller project health check:
+
+```bash
+node bin/ryan-agent-work-kit.js doctor ./my-project
+```
+
+`doctor` checks:
+
+- Required `AGENTS.md` and `docs/` project memory.
+- Claude Code, Cursor, and GitHub Copilot adapter files.
+- Whether `.agent-runs/` is ignored by Git.
+- Whether the project exposes a basic validation signal.
+- Whether the current branch is the default branch.
+- Obvious risky local filenames in a shallow scan.
+
+It reports only. It does not modify files.
+
+If you cloned this repository:
 
 ```bash
 ./scripts/check-ai-ready.sh ./my-project

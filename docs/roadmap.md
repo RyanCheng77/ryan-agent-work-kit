@@ -20,6 +20,10 @@
 
 ## v0.3
 
+- Zero-dependency CLI MVP: `init`, `check`, and `doctor`.
+- Package metadata for future npm distribution.
+- Doctor checks for required project memory, adapter files, `.agent-runs/` ignore rules, basic validation signals, default-branch risk, and obvious local/sensitive filenames.
+- Compatibility adapter map for Codex, Claude Code, Cursor, and GitHub Copilot.
 - Workflow Review template for noisy, repeated, or expensive workflows.
 - Repeat-3-times rule: repeated work should be considered for script, hook, template, skill, or checklist automation.
 - Human judgment boundary: keep people focused on product taste, safety, architecture, and other high-leverage decisions.
@@ -31,8 +35,9 @@
 - Optional quality gate skills.
 - Optional hook adapters.
 - Optional GenUI workflow integration.
-- Package manager installer.
 - Browser-based demo.
+- Published npm package and release automation.
+- Recorded 60-second terminal demo.
 
 ## Principle
 

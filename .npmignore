@@ -1,0 +1,13 @@
+.agent-runs/
+.git/
+.github/
+.cursor/
+docs/articles/
+*.bak*
+*.log
+*.tmp
+.DS_Store
+node_modules/
+dist/
+build/
+scratch/

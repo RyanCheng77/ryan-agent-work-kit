@@ -2,6 +2,33 @@
 
 Ryan Agent Work Kit uses plain files, so it can work with many AI coding tools.
 
+## Adapter Map
+
+| Tool | Project file | User-level preference | Notes |
+| --- | --- | --- | --- |
+| Codex | `AGENTS.md` | `personal-preferences/codex.md` or `personal-preferences/codex.zh-CN.md` | Use `AGENTS.md` as the shared project entry. |
+| Claude Code | `CLAUDE.md` + `AGENTS.md` | `personal-preferences/claude-code.md` | Skills can be copied only when your setup supports custom skills. |
+| Cursor | `.cursor/rules/project.mdc` + `AGENTS.md` | Cursor user rules, if available | Keep project facts in `AGENTS.md`; keep Cursor-specific routing in `.cursor/rules/`. |
+| GitHub Copilot | `.github/copilot-instructions.md` + `AGENTS.md` | GitHub / Copilot custom instructions | Keep this lightweight and link back to `AGENTS.md`. |
+
+## CLI
+
+The v0.3 local CLI gives every tool the same setup and health-check entry:
+
+```bash
+node bin/ryan-agent-work-kit.js init ./my-project
+node bin/ryan-agent-work-kit.js check ./my-project
+node bin/ryan-agent-work-kit.js doctor ./my-project
+```
+
+After the npm package is published, use:
+
+```bash
+npx ryan-agent-work-kit init ./my-project
+npx ryan-agent-work-kit check ./my-project
+npx ryan-agent-work-kit doctor ./my-project
+```
+
 ## Codex
 
 Use `AGENTS.md` as the project entry point. Copy `personal-preferences/codex.md` into Codex personal preferences or custom instructions so the behavior follows you across projects.
@@ -26,6 +53,19 @@ Any agent that can read files can follow this kit:
 2. Read `AGENTS.md`.
 3. Read `docs/current-goal.md`.
 4. Follow the handoff format.
+
+## Doctor Checks
+
+`doctor` is a mechanical project health check. It reports:
+
+- Missing project memory files.
+- Missing tool adapter files.
+- Whether `.agent-runs/` is ignored.
+- Whether the project exposes a basic validation signal.
+- Whether the current Git branch is the default branch.
+- Obvious sensitive or local-only filenames in a shallow scan.
+
+It does not replace human review, secret scanning, tests, or release checks. It is meant to catch common setup issues before an agent starts work.
 
 ## Obsidian
 

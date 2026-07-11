@@ -15,16 +15,30 @@
 
 ## 2. 给项目加上 AI 友好目录
 
-中文模板：
+当前仓库方式：
 
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
 ```
 
+也可以使用本地 Node CLI：
+
+中文模板：
+
+```bash
+node bin/ryan-agent-work-kit.js init --lang zh-CN ./my-project
+```
+
 英文模板：
 
 ```bash
-./scripts/init-ryan-agent-work-kit.sh ./my-project
+node bin/ryan-agent-work-kit.js init ./my-project
+```
+
+npm 包发布后可使用：
+
+```bash
+npx ryan-agent-work-kit init --lang zh-CN ./my-project
 ```
 
 脚本会创建项目规则和文档，不会覆盖已有文件。
@@ -49,6 +63,29 @@ agent 应该：
 6. 汇报风险和下一步。
 
 ## 5. 检查项目是否 AI-ready
+
+```bash
+node bin/ryan-agent-work-kit.js check ./my-project
+```
+
+如果想做更完整的体检：
+
+```bash
+node bin/ryan-agent-work-kit.js doctor ./my-project
+```
+
+`doctor` 会检查：
+
+- 必需的 `AGENTS.md` 和 `docs/` 项目记忆。
+- Claude Code、Cursor、GitHub Copilot 的适配文件。
+- `.agent-runs/` 是否被 `.gitignore` 忽略。
+- 是否能看到测试、构建或 README 等基础验证信号。
+- 当前是否在默认分支。
+- 顶层目录是否有明显不该公开的本地文件名。
+
+它只提醒，不会修改文件。
+
+本仓库脚本方式：
 
 ```bash
 ./scripts/check-ai-ready.sh ./my-project

@@ -1,0 +1,37 @@
+{
+  "name": "ryan-agent-work-kit",
+  "version": "0.3.0",
+  "description": "Turn any project into an AI-ready project in 60 seconds.",
+  "license": "MIT",
+  "bin": {
+    "ryan-agent-work-kit": "bin/ryan-agent-work-kit.js"
+  },
+  "files": [
+    "bin/",
+    "docs/*.md",
+    "docs/handoffs/",
+    "docs/plans/",
+    "docs/qa/",
+    "examples/demo-project/",
+    "personal-preferences/",
+    "scripts/",
+    "skills/",
+    "templates/",
+    "README.md",
+    "README.en.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node bin/ryan-agent-work-kit.js check examples/demo-project && node bin/ryan-agent-work-kit.js doctor examples/demo-project"
+  },
+  "keywords": [
+    "ai-agent",
+    "codex",
+    "claude-code",
+    "cursor",
+    "github-copilot",
+    "agents",
+    "agile-ai"
+  ]
+}

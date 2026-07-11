@@ -76,6 +76,7 @@ copy_if_missing() {
 
 copy_if_missing "$template_root/AGENTS.md" "$target/AGENTS.md"
 copy_if_missing "$template_root/CLAUDE.md" "$target/CLAUDE.md"
+copy_if_missing "$template_root/gitignore.template" "$target/.gitignore"
 copy_if_missing "$template_root/.github/copilot-instructions.md" "$target/.github/copilot-instructions.md"
 copy_if_missing "$template_root/.cursor/rules/project.mdc" "$target/.cursor/rules/project.mdc"
 copy_if_missing "$template_root/docs/project-overview.md" "$target/docs/project-overview.md"
@@ -97,6 +98,14 @@ copy_if_missing "$kit_root/scripts/setup-obsidian-bridge.sh" "$target/scripts/se
 copy_if_missing "$kit_root/scripts/sync-project-learning.sh" "$target/scripts/sync-project-learning.sh"
 copy_if_missing "$kit_root/scripts/sync-project-handoff.sh" "$target/scripts/sync-project-handoff.sh"
 copy_if_missing "$kit_root/scripts/sync-project-retro.sh" "$target/scripts/sync-project-retro.sh"
+copy_if_missing "$kit_root/scripts/run-observable-cli.sh" "$target/scripts/run-observable-cli.sh"
+if [[ "$lang" == "zh-CN" ]]; then
+  copy_if_missing "$kit_root/templates/task-card.zh-CN.md" "$target/templates/task-card.zh-CN.md"
+  copy_if_missing "$kit_root/templates/workflow-review.zh-CN.md" "$target/templates/workflow-review.zh-CN.md"
+else
+  copy_if_missing "$kit_root/templates/task-card.md" "$target/templates/task-card.md"
+  copy_if_missing "$kit_root/templates/workflow-review.md" "$target/templates/workflow-review.md"
+fi
 copy_if_missing "$kit_root/templates/obsidian-learning-note.md" "$target/templates/obsidian-learning-note.md"
 copy_if_missing "$kit_root/templates/obsidian-retro.md" "$target/templates/obsidian-retro.md"
 

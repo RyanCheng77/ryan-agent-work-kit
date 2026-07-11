@@ -38,6 +38,18 @@ Ryan Agent Work Kit 吸收了 Loop Engineering 的思路，但不做沉重的自
 
 ## 快速开始
 
+当前仓库方式：
+
+```bash
+./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
+```
+
+也可以使用本地 Node CLI：
+
+```bash
+node bin/ryan-agent-work-kit.js init --lang zh-CN ./my-project
+```
+
 ### 1. 设置个人偏好
 
 把模板复制到你的 AI 工具个人偏好里：
@@ -55,10 +67,22 @@ Ryan Agent Work Kit 吸收了 Loop Engineering 的思路，但不做沉重的自
 ./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
 ```
 
+本地 Node CLI：
+
+```bash
+node bin/ryan-agent-work-kit.js init --lang zh-CN ./my-project
+```
+
 英文默认模板：
 
 ```bash
-./scripts/init-ryan-agent-work-kit.sh ./my-project
+node bin/ryan-agent-work-kit.js init ./my-project
+```
+
+npm 包发布后可使用：
+
+```bash
+npx ryan-agent-work-kit init --lang zh-CN ./my-project
 ```
 
 脚本会创建：
@@ -66,6 +90,7 @@ Ryan Agent Work Kit 吸收了 Loop Engineering 的思路，但不做沉重的自
 ```text
 AGENTS.md
 CLAUDE.md
+.gitignore
 .github/copilot-instructions.md
 .cursor/rules/project.mdc
 docs/project-overview.md
@@ -81,6 +106,9 @@ scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
 scripts/sync-project-handoff.sh
 scripts/sync-project-retro.sh
+scripts/run-observable-cli.sh
+templates/task-card.zh-CN.md
+templates/workflow-review.zh-CN.md
 templates/obsidian-learning-note.md
 templates/obsidian-retro.md
 ```
@@ -177,6 +205,20 @@ Agent 留下交接记录
 更多说明见：[docs/philosophy.md](docs/philosophy.md)。
 
 ## 检查项目是否 AI-ready
+
+```bash
+node bin/ryan-agent-work-kit.js check examples/demo-project
+```
+
+更完整的体检：
+
+```bash
+node bin/ryan-agent-work-kit.js doctor examples/demo-project
+```
+
+`doctor` 会检查项目入口文件、Claude Code / Cursor / GitHub Copilot 适配文件、`.agent-runs/` 是否忽略、基础验证信号、当前分支和明显敏感文件名。它是提醒和体检，不会修改项目。
+
+本仓库脚本方式：
 
 ```bash
 ./scripts/check-ai-ready.sh examples/demo-project

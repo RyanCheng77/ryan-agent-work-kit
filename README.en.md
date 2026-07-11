@@ -58,14 +58,28 @@ It also teaches AI-native workflow habits: JIT planning, Task Cards, prototype-b
 
 ### 2. Make A Project AI-Ready
 
+Current repository usage:
+
 ```bash
 ./scripts/init-ryan-agent-work-kit.sh ./my-project
+```
+
+Local Node CLI:
+
+```bash
+node bin/ryan-agent-work-kit.js init ./my-project
 ```
 
 Chinese project templates:
 
 ```bash
-./scripts/init-ryan-agent-work-kit.sh --lang zh-CN ./my-project
+node bin/ryan-agent-work-kit.js init --lang zh-CN ./my-project
+```
+
+After the npm package is published:
+
+```bash
+npx ryan-agent-work-kit init ./my-project
 ```
 
 This creates:
@@ -73,6 +87,7 @@ This creates:
 ```text
 AGENTS.md
 CLAUDE.md
+.gitignore
 .github/copilot-instructions.md
 .cursor/rules/project.mdc
 docs/project-overview.md
@@ -88,6 +103,9 @@ scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
 scripts/sync-project-handoff.sh
 scripts/sync-project-retro.sh
+scripts/run-observable-cli.sh
+templates/task-card.md
+templates/workflow-review.md
 templates/obsidian-learning-note.md
 templates/obsidian-retro.md
 ```
@@ -192,6 +210,20 @@ Ryan Agent Work Kit follows five rules:
 Read more in [docs/philosophy.md](docs/philosophy.md).
 
 ## Try The Demo Project
+
+```bash
+node bin/ryan-agent-work-kit.js check examples/demo-project
+```
+
+Run the fuller project doctor:
+
+```bash
+node bin/ryan-agent-work-kit.js doctor examples/demo-project
+```
+
+`doctor` checks the core project entry files, Claude Code / Cursor / GitHub Copilot adapters, `.agent-runs/` ignore rules, basic validation signals, current branch, and obvious risky local filenames. It reports only; it does not modify the project.
+
+If you cloned this repository:
 
 ```bash
 ./scripts/check-ai-ready.sh examples/demo-project

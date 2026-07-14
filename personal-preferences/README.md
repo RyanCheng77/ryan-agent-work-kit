@@ -15,9 +15,9 @@ They tell your AI tool how you want it to behave across projects:
 
 ## Which Template Should I Use?
 
-- Chinese new users: start with [codex.zh-CN.md](codex.zh-CN.md). It is short and easy to paste.
-- English new users: start with [codex.md](codex.md).
-- Ryan-style power users: use [ryan-full.md](ryan-full.md). It includes lead-agent behavior, external CLI boundaries, hook checks, and skill recommendations.
+- Chinese users: start with [codex.zh-CN.md](codex.zh-CN.md). It mirrors the full Ryan-style Codex custom instructions, with private paths replaced by public-safe placeholders.
+- English users: start with [codex.md](codex.md). It is the full English version of the same preferences.
+- Ryan-style power users: use [ryan-full.md](ryan-full.md). It currently matches the full English Codex template and is kept as the comprehensive version.
 - Claude Code users who want a short template: use [claude-code.md](claude-code.md).
 
 ## Codex
@@ -26,7 +26,7 @@ Use [codex.md](codex.md).
 
 Copy the text into your Codex personal preferences or custom instructions area. After that, Codex should automatically prefer Ryan Agent Work Kit behavior across projects.
 
-For the full Ryan method, use [ryan-full.md](ryan-full.md) instead.
+For the full Ryan method in English, [codex.md](codex.md) and [ryan-full.md](ryan-full.md) are intentionally aligned.
 
 ## Claude Code
 

@@ -29,6 +29,15 @@
 - Human judgment boundary: keep people focused on product taste, safety, architecture, and other high-leverage decisions.
 - Process pruning rule: every workflow should periodically prove it still earns its place.
 
+## v0.4
+
+- Ryan Reflect Lite: lightweight 4D AI collaboration self-check.
+- New templates: `templates/ai-collaboration-reflect.md` and `templates/ai-collaboration-reflect.zh-CN.md`.
+- New docs: `docs/ai-collaboration-reflect.md` and `docs/ai-collaboration-reflect.zh-CN.md`.
+- Init flow installs the Reflect docs and templates.
+- Personal preferences and project governance templates remind agents to use Reflect after complex, rework-heavy, weakly validated, or poorly split work.
+- Reflect stays non-scoring, non-ranking, and does not capture full chat history.
+
 ## Later
 
 - Optional product workflow skills.

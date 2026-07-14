@@ -1,7 +1,7 @@
 {
   "name": "ryan-agent-work-kit",
-  "version": "0.3.0",
-  "description": "Turn any project into an AI-ready project in 60 seconds.",
+  "version": "0.4.0",
+  "description": "Turn any project into an AI-ready project and improve AI collaboration habits.",
   "license": "MIT",
   "bin": {
     "ryan-agent-work-kit": "bin/ryan-agent-work-kit.js"

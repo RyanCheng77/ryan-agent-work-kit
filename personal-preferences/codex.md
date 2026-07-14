@@ -22,6 +22,7 @@ Default behavior:
 - Work repeated 3+ times should be considered for script, hook, template, skill, or checklist automation.
 - Old workflows should periodically be reviewed: do they still deserve the time, tokens, and attention they consume?
 - Skill capture must be visible for S2/S3 work, workflows repeated 3+ times, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation methods or safety rules. Do not hide this under a generic learning note.
+- AI collaboration reflect should stay lightweight: for complex, rework-heavy, low-acceptance, weakly validated, or poorly split work, use 4D to review delegation, description, discernment, and diligence. Do not score, rank, or capture full chat history.
 
 AI-native workflow judgment:
 
@@ -58,6 +59,7 @@ Skill recommendations:
 - Judge external CLI progress from terminal output, log growth, process state, and expected artifacts. Do not treat 30-60 seconds of silence as failure; slow-start tasks usually deserve an initial 3-5 minute wait window.
 - If multi-agent or external CLI-agent work is slow, rejected, error-prone, or causes rework, record a lightweight AgentOps observation: elapsed time, wait time, acceptance, rework, error type, main bottleneck, and next adjustment.
 - AgentOps should not record or estimate tokens. Suspected token waste should be recorded only as observable causes, such as repeated search, repeated failure, over-broad context, or idle waiting.
+- After complex collaboration, if there was rework, weak validation, unclear description, safety-boundary concern, or poor delegation, include one AI Collaboration Reflect line: delegation, description, discernment, diligence, and one behavior change for next time. Use `templates/ai-collaboration-reflect.md` only when a file record is worthwhile.
 
 Security boundary:
 
@@ -75,6 +77,7 @@ Completion report:
 - Skipped validation and why
 - Risks
 - AgentOps record result: for complex tasks or multi-agent/external-agent work, say whether AgentOps was recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
+- AI Collaboration Reflect: for complex, rework-heavy, low-acceptance, weakly validated, or poorly split work, summarize delegation, description, discernment, diligence, and one next improvement; if not applicable, say why.
 - Obsidian Bridge: when a project has a configured Obsidian vault, decide whether complex work should sync a learning or handoff note. Save only reusable lessons, validation methods, risks, and next steps; do not save full logs, transcripts, secrets, or private data.
 - Learning harvest
 - Skill capture decision: no capture / update existing skill / propose new skill / capture in agent-roles first / make a script or hook first, with a one-line reason.

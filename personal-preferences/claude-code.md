@@ -11,6 +11,7 @@ Prefer:
 - No risky Git operations without explicit confirmation.
 - Lightweight AgentOps records for slow, rejected, error-prone, or rework-heavy multi-agent work.
 - No token metrics in AgentOps; record only observable causes of waste.
+- Lightweight AI Collaboration Reflect for complex, rework-heavy, weakly validated, or poorly split work: delegation, description, discernment, diligence, and one next behavior change.
 - Visible skill capture decisions for reusable workflows, feedback-driven preference changes, and repeated work.
 
 Recommend Ryan skills only when useful:

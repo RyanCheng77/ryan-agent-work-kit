@@ -2,7 +2,7 @@
 
 一分钟把项目变成 AI 友好项目。
 
-Ryan Agent Work Kit 帮助 Codex、Claude Code、Cursor 和其他 AI coding agent 更快理解你的项目，在更安全的边界内工作，并留下清楚的交接记录。
+Ryan Agent Work Kit 帮助 Codex、Claude Code、Cursor 和其他 AI coding agent 更快理解你的项目，在更安全的边界内工作，并留下清楚的交接记录。它也帮助你复盘自己的 AI 协作习惯：哪些事该委托、任务是否说清、结果是否验证、安全边界是否守住。
 
 English: [README.en.md](README.en.md)
 
@@ -101,6 +101,7 @@ docs/handoffs/README.md
 docs/plans/README.md
 docs/agent-ops-observability.zh-CN.md
 docs/obsidian-bridge.zh-CN.md
+docs/ai-collaboration-reflect.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -109,6 +110,7 @@ scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
 templates/task-card.zh-CN.md
 templates/workflow-review.zh-CN.md
+templates/ai-collaboration-reflect.zh-CN.md
 templates/obsidian-learning-note.md
 templates/obsidian-retro.md
 ```
@@ -145,7 +147,17 @@ cp templates/workflow-review.zh-CN.md ./my-project/docs/plans/<workflow-name>-re
 
 它不记录 token，也不估算 token。Markdown 给人读，TSV 给后续分析。详见：[docs/agent-ops-observability.zh-CN.md](docs/agent-ops-observability.zh-CN.md)。
 
-### 6. 可选：接入 Obsidian 知识库
+### 6. 可选：做 AI 协作自检
+
+复杂任务结束后，用 30 秒看四件事：委托是否合适、描述是否清楚、判断是否有证据、审慎是否守住边界。
+
+```bash
+cp templates/ai-collaboration-reflect.zh-CN.md ./my-project/docs/handoffs/<task-name>-reflect.md
+```
+
+它不打分、不排名、不读取完整聊天记录，只帮助你下次更少返工。详见：[docs/ai-collaboration-reflect.zh-CN.md](docs/ai-collaboration-reflect.zh-CN.md)。
+
+### 7. 可选：接入 Obsidian 知识库
 
 如果你有自己的 Obsidian vault，只提供本地路径即可把项目经验、交接、复盘和 AgentOps 记录写入知识库：
 
@@ -198,6 +210,7 @@ Agent 留下交接记录
 - 一个任务使用一个 lane。
 - 主控 agent 负责验收，子 agent 只做窄任务。
 - 让 AI 工作形成小闭环：目标、执行、验证和学习都可追踪。
+- 复杂协作后做轻量 4D 自检：委托、描述、判断、审慎。
 - 重复 3 次的工作要考虑自动化。
 - 旧流程要定期证明自己仍然值得存在。
 - 少重复解释，少浪费 token，少出错。

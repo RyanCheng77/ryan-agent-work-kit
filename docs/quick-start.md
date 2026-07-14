@@ -116,6 +116,23 @@ cp templates/workflow-review.md ./my-project/docs/plans/<workflow-name>-review.m
 
 Use it to decide whether the workflow should be kept, simplified, automated, replaced, or stopped.
 
+## Optional: Reflect On AI Collaboration
+
+If a task was complex, caused rework, had weak validation, or felt slow, wasteful, repetitive, or poorly split, copy the 4D reflect template:
+
+```bash
+cp templates/ai-collaboration-reflect.md ./my-project/docs/handoffs/<task-name>-reflect.md
+```
+
+It asks only four questions:
+
+- Delegation: did the right work go to the right AI, agent, or tool?
+- Description: were goal, scope, acceptance, and forbidden actions clear?
+- Discernment: was the AI output verified with tests, diffs, screenshots, logs, or human confirmation?
+- Diligence: were privacy, safety, public-package, and minimum-disclosure boundaries respected?
+
+It is not a scoring system. It only finds one behavior change for next time.
+
 ## Optional: Understand Small Loops
 
 The lightweight Loop Engineering idea in Ryan Agent Work Kit is not a large automation system. It means AI work should form small loops:

@@ -2,7 +2,7 @@
 
 Turn any project into an AI-ready project in 60 seconds.
 
-Ryan Agent Work Kit helps Codex, Claude Code, Cursor, and other AI coding agents understand your project faster, work in safer lanes, and leave clear handoffs.
+Ryan Agent Work Kit helps Codex, Claude Code, Cursor, and other AI coding agents understand your project faster, work in safer lanes, and leave clear handoffs. It also helps you reflect on your AI collaboration habits: what to delegate, how clearly you describe work, how you verify output, and whether safety boundaries are protected.
 
 中文说明：[README.md](README.md)
 
@@ -98,6 +98,7 @@ docs/handoffs/README.md
 docs/plans/README.md
 docs/agent-ops-observability.md
 docs/obsidian-bridge.md
+docs/ai-collaboration-reflect.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -106,6 +107,7 @@ scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
 templates/task-card.md
 templates/workflow-review.md
+templates/ai-collaboration-reflect.md
 templates/obsidian-learning-note.md
 templates/obsidian-retro.md
 ```
@@ -146,7 +148,17 @@ When you start using subagents, Claude CLI, Codex, Cursor, or other tools togeth
 
 It does not record or estimate tokens. Markdown is for humans; TSV is for later analysis. See [docs/agent-ops-observability.md](docs/agent-ops-observability.md).
 
-### 6. Optional: Connect Your Obsidian Vault
+### 6. Optional: Reflect On AI Collaboration
+
+After complex work, spend 30 seconds on four questions: was delegation right, was description clear, was discernment evidence-based, and did diligence protect boundaries?
+
+```bash
+cp templates/ai-collaboration-reflect.md ./my-project/docs/handoffs/<task-name>-reflect.md
+```
+
+It does not score people, rank users, or capture full chat history. It only helps reduce rework next time. See [docs/ai-collaboration-reflect.md](docs/ai-collaboration-reflect.md).
+
+### 7. Optional: Connect Your Obsidian Vault
 
 If you have an Obsidian vault, provide its local path to write project learnings, handoffs, retrospectives, and AgentOps records into your knowledge base:
 
@@ -203,6 +215,7 @@ Ryan Agent Work Kit follows five rules:
 - One task should use one lane.
 - The lead agent owns review; sub agents do narrow work.
 - AI work should form small loops where goal, execution, verification, and learning are traceable.
+- Complex collaboration should include a lightweight 4D reflect: delegation, description, discernment, and diligence.
 - Work repeated 3+ times should be considered for automation.
 - Old workflows should periodically prove they still earn their place.
 - Less repeated context means lower token cost and fewer mistakes.

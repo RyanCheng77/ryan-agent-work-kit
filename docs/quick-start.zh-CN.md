@@ -144,6 +144,23 @@ EOF
 
 这个记录不追踪 token。它只帮助你判断下次怎样更少返工、更快交付、更会协作。
 
+## 可选：AI 协作自检
+
+如果任务复杂、返工、验证不足，或你觉得“这次慢、绕、重复消耗、不该这么拆”，可以复制 4D 自检模板：
+
+```bash
+cp templates/ai-collaboration-reflect.zh-CN.md ./my-project/docs/handoffs/<task-name>-reflect.md
+```
+
+它只问四件事：
+
+- 委托：这件事是否交给了合适的 AI、agent 或工具？
+- 描述：目标、范围、验收和禁止事项是否说清？
+- 判断：AI 结果是否有测试、diff、截图、日志或人工确认？
+- 审慎：是否守住隐私、安全、公开包和最小披露边界？
+
+它不是评分系统，只用于找下一次最值得改的一件事。
+
 ## 可选：理解小闭环
 
 Ryan Agent Work Kit 的 Loop Engineering 轻量版不是自动化大系统，而是让 AI 工作形成小闭环：

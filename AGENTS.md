@@ -23,8 +23,9 @@
 
 ## 当前目标
 
-- 完成 Ryan Agent Work Kit 首版开源包。
-- 用 README、模板、脚本和 demo 说明“一分钟启动 AI 友好项目”。
+- 推进 Ryan Agent Work Kit v0.4。
+- 在“一分钟启动 AI 友好项目”基础上，加入轻量 AI 协作自检。
+- 让用户复盘委托、描述、判断和审慎四个协作习惯。
 - 只保留两个核心 skill：`ryan-simple-git-workflow` 与 `ryan-multi-ai-repo-governance`。
 
 ## 内容边界

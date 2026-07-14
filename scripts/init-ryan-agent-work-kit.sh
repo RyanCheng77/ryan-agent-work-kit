@@ -89,9 +89,11 @@ copy_if_missing "$template_root/docs/plans/README.md" "$target/docs/plans/README
 if [[ "$lang" == "zh-CN" ]]; then
   copy_if_missing "$kit_root/docs/agent-ops-observability.zh-CN.md" "$target/docs/agent-ops-observability.zh-CN.md"
   copy_if_missing "$kit_root/docs/obsidian-bridge.zh-CN.md" "$target/docs/obsidian-bridge.zh-CN.md"
+  copy_if_missing "$kit_root/docs/ai-collaboration-reflect.zh-CN.md" "$target/docs/ai-collaboration-reflect.zh-CN.md"
 else
   copy_if_missing "$kit_root/docs/agent-ops-observability.md" "$target/docs/agent-ops-observability.md"
   copy_if_missing "$kit_root/docs/obsidian-bridge.md" "$target/docs/obsidian-bridge.md"
+  copy_if_missing "$kit_root/docs/ai-collaboration-reflect.md" "$target/docs/ai-collaboration-reflect.md"
 fi
 copy_if_missing "$kit_root/scripts/record-agent-ops-observation.sh" "$target/scripts/record-agent-ops-observation.sh"
 copy_if_missing "$kit_root/scripts/setup-obsidian-bridge.sh" "$target/scripts/setup-obsidian-bridge.sh"
@@ -102,9 +104,11 @@ copy_if_missing "$kit_root/scripts/run-observable-cli.sh" "$target/scripts/run-o
 if [[ "$lang" == "zh-CN" ]]; then
   copy_if_missing "$kit_root/templates/task-card.zh-CN.md" "$target/templates/task-card.zh-CN.md"
   copy_if_missing "$kit_root/templates/workflow-review.zh-CN.md" "$target/templates/workflow-review.zh-CN.md"
+  copy_if_missing "$kit_root/templates/ai-collaboration-reflect.zh-CN.md" "$target/templates/ai-collaboration-reflect.zh-CN.md"
 else
   copy_if_missing "$kit_root/templates/task-card.md" "$target/templates/task-card.md"
   copy_if_missing "$kit_root/templates/workflow-review.md" "$target/templates/workflow-review.md"
+  copy_if_missing "$kit_root/templates/ai-collaboration-reflect.md" "$target/templates/ai-collaboration-reflect.md"
 fi
 copy_if_missing "$kit_root/templates/obsidian-learning-note.md" "$target/templates/obsidian-learning-note.md"
 copy_if_missing "$kit_root/templates/obsidian-retro.md" "$target/templates/obsidian-retro.md"

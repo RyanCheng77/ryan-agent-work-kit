@@ -55,7 +55,7 @@ const SENSITIVE_PATTERNS = [
 ];
 
 function usage() {
-  console.log(`Ryan Agent Work Kit v0.3
+  console.log(`Ryan Agent Work Kit v0.4
 
 Usage:
   ryan-agent-work-kit init [--lang en|zh-CN] [--dry-run] <project>
@@ -187,14 +187,18 @@ function initProject(args) {
     ? [
         ["docs/agent-ops-observability.zh-CN.md", "docs/agent-ops-observability.zh-CN.md"],
         ["docs/obsidian-bridge.zh-CN.md", "docs/obsidian-bridge.zh-CN.md"],
+        ["docs/ai-collaboration-reflect.zh-CN.md", "docs/ai-collaboration-reflect.zh-CN.md"],
         ["templates/task-card.zh-CN.md", "templates/task-card.zh-CN.md"],
         ["templates/workflow-review.zh-CN.md", "templates/workflow-review.zh-CN.md"],
+        ["templates/ai-collaboration-reflect.zh-CN.md", "templates/ai-collaboration-reflect.zh-CN.md"],
       ]
     : [
         ["docs/agent-ops-observability.md", "docs/agent-ops-observability.md"],
         ["docs/obsidian-bridge.md", "docs/obsidian-bridge.md"],
+        ["docs/ai-collaboration-reflect.md", "docs/ai-collaboration-reflect.md"],
         ["templates/task-card.md", "templates/task-card.md"],
         ["templates/workflow-review.md", "templates/workflow-review.md"],
+        ["templates/ai-collaboration-reflect.md", "templates/ai-collaboration-reflect.md"],
       ];
 
   const supportFiles = [

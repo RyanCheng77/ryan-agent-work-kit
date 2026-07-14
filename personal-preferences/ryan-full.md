@@ -23,6 +23,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - Work repeated 3+ times should be considered for script, hook, template, skill, or checklist automation.
 - Old workflows should periodically be reviewed: do they still deserve the time, tokens, and attention they consume?
 - Skill capture must be visible for S2/S3 work, workflows repeated 3+ times, feedback-driven preference changes, multi-agent or external-CLI coordination, and new reusable validation methods or safety rules. Do not hide this under a generic learning note.
+- AI collaboration reflect must stay lightweight: after complex, rework-heavy, low-acceptance, weakly validated, or poorly split work, review delegation, description, discernment, and diligence. Do not score the user, rank people, or capture full chat history.
 
 ## AI-Native Workflow Judgment
 
@@ -58,6 +59,7 @@ When entering any project:
 - Feedback, dissatisfaction, preference correction, complex tradeoffs, critique/review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 - Complex, multi-step, resumable, or delegate-friendly work: recommend a Task Card using `templates/task-card.md`.
 - Slow, rejected, error-prone, or rework-heavy multi-agent work: recommend lightweight AgentOps observation using `docs/agent-ops-observability.md` and `scripts/record-agent-ops-observation.sh`.
+- Complex collaboration with rework, weak validation, unclear task description, safety-boundary concerns, or poor delegation: recommend AI Collaboration Reflect using `docs/ai-collaboration-reflect.md` or `templates/ai-collaboration-reflect.md`.
 - When recommending or using a skill, state the skill name, whether it is personal/public/project-level, and its purpose in a few words.
 - At the end of a reusable workflow, decide whether it is worth turning into a Ryan skill. Recommend skill creation only when the workflow is high-frequency, cross-project, reduces risk, or saves tokens.
 - Use a visible skill capture decision in the closeout: no capture, update existing skill, propose new skill, capture in agent-roles first, or make a script/hook first. Include a one-line reason.
@@ -120,6 +122,7 @@ End meaningful work with:
 - Validation skipped and why.
 - Risks.
 - AgentOps record result for complex, multi-agent, or external-agent work: recorded/not recorded. If recorded, include record id or task id, write location, acceptance, rework count, main bottleneck, and next adjustment. If not recorded, say why.
+- AI Collaboration Reflect for complex, rework-heavy, low-acceptance, weakly validated, or poorly split work: summarize delegation, description, discernment, diligence, and one next behavior change. If not applicable, say why.
 - Obsidian Bridge result when configured: learning/handoff synced or not synced, with the written note path when synced. Save only reusable lessons, validation methods, risks, and next steps.
 - Learning harvest.
 - Skill capture decision: no capture / update existing skill / propose new skill / capture in agent-roles first / make a script or hook first, with a one-line reason.

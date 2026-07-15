@@ -37,6 +37,7 @@
 - Init flow installs the Reflect docs and templates.
 - Personal preferences and project governance templates remind agents to use Reflect after complex, rework-heavy, weakly validated, or poorly split work.
 - Reflect stays non-scoring, non-ranking, and does not capture full chat history.
+- Recommended skill: `ryan-codex-automation-workflow` for Codex native scheduled tasks, reminders, recurring checks, and follow-ups. It stays optional and does not change the two core-skill first experience.
 
 ## Later
 

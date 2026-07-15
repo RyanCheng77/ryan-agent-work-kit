@@ -58,6 +58,7 @@ Use this practical routing:
 - Ordinary low-risk work: follow personal preferences directly.
 - Git, branches, commits, merges, rollback, workspace, or beginner Git uncertainty: use `ryan-simple-git-workflow`.
 - Missing `AGENTS.md`, project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
+- Codex scheduled tasks, reminders, recurring runs, monitors, follow-ups, or automation management: use `ryan-codex-automation-workflow` when installed.
 - Feedback, dissatisfaction, preference correction, critique, review, or durable preference capture: use `ryan-collaboration-quality-loop`.
 
 ## Skill Capture Closeout

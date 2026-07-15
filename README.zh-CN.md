@@ -157,6 +157,16 @@ cp templates/ai-collaboration-reflect.zh-CN.md ./my-project/docs/handoffs/<task-
 
 它只写本地 Markdown，不登录、不上传、不读取整个知识库。详见：[docs/obsidian-bridge.zh-CN.md](docs/obsidian-bridge.zh-CN.md)。
 
+### 7. 可选：Codex 自动化工作流
+
+如果你希望 Codex 稍后继续、定时运行、周期检查或管理提醒，可以按需使用推荐 skill：
+
+```text
+recommended-skills/ryan-codex-automation-workflow
+```
+
+它会优先使用 Codex 原生 automation，先检查已有自动化，避免重复创建，也不会默认改用 shell cron。
+
 ## 核心原则
 
 - AI 先理解项目，再开始执行。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ryan Codex Automation Workflow"
+  short_description: "Create and manage Codex scheduled tasks"
+  default_prompt: "Use $ryan-codex-automation-workflow to set up a Codex scheduled task or reminder safely."

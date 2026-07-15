@@ -65,6 +65,7 @@
 - 遇到 Git、分支、提交、合并、回滚、workspace、worktree、安全开分支，或 Ryan 表示“不懂 Git / 仓库 / 分支”，必须调用个人 skill：`ryan-simple-git-workflow`。
 - 遇到项目初始化、`AGENTS.md`、项目 docs、仓库治理、独立 repo、嵌套 repo、敏感文件清理、多 AI 协作，或 Ryan 说“让项目更适合 AI 接管”，必须调用个人 skill：`ryan-multi-ai-repo-governance`。
 - 遇到编码、仓库、自动化、外部 API、多 agent 或高风险执行的通用默认行为，优先调用个人 skill：`ryan-core-operating-principles`；简单低风险任务可只按其原则执行，不必展开长流程。
+- 遇到 Codex 定时任务、提醒、周期运行、监控、稍后继续、heartbeat、cron 或 automation 管理时，推荐按需使用 `ryan-codex-automation-workflow`；优先用 Codex 原生 automation，不要默认写 shell cron。
 - 遇到反馈吸收、不满意、偏好修正、复杂任务防漂移、严格约束、多方案权衡、批评/评审或偏好沉淀，必须调用个人 skill：`ryan-collaboration-quality-loop`。
 - 遇到长期记忆搭建、会话恢复、阶段性收尾、经验沉淀、每日笔记、`MEMORY.md`、`SESSION-STATE.md`、`working-buffer.md` 或保守蒸馏，优先调用 `memory-system`。
 - 遇到重复、嘈杂、昂贵或疑似过时的流程，优先建议工作流审视；如果项目里有 Ryan Agent Work Kit，可使用 `templates/workflow-review.zh-CN.md` 或在 `docs/plans/` 创建等价记录。

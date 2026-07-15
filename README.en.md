@@ -206,6 +206,12 @@ You do not need to understand skills before using this kit. Start with the proje
 
 Task Cards are the v0.2 standard for scoped, resumable AI work. Future optional skills can cover product workflow, quality gates, hooks, and GenUI work. They should stay optional so the first experience remains simple.
 
+## Recommended Skills
+
+Recommended skills are not part of the default first screen. Use them only when the task matches:
+
+- `recommended-skills/ryan-codex-automation-workflow`: for asking Codex to continue later, run on a schedule, check something periodically, or manage reminders. It prefers Codex native automation over ad hoc shell cron.
+
 ## Philosophy
 
 Ryan Agent Work Kit follows five rules:

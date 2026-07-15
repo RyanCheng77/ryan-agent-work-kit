@@ -203,6 +203,12 @@ Agent 留下交接记录
 
 任务卡是 v0.2 的核心标准，用于让复杂任务更清晰、可恢复、可交接。未来的产品工作流、质量门禁、hook 和 GenUI 能力都应保持可选。
 
+## 推荐 Skill
+
+推荐 skill 不进入默认首屏，只在场景匹配时使用：
+
+- `recommended-skills/ryan-codex-automation-workflow`：当你要让 Codex 稍后继续、定时运行、周期检查或管理提醒时，优先使用 Codex 原生 automation，而不是临时写 shell cron。
+
 ## 核心原则
 
 - AI 先理解项目，再开始执行。

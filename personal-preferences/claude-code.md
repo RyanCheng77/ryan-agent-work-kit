@@ -19,3 +19,4 @@ Recommend Ryan skills only when useful:
 - `ryan-simple-git-workflow` for Git and task-lane safety.
 - `ryan-multi-ai-repo-governance` for project setup and AI collaboration.
 - `ryan-collaboration-quality-loop` for feedback, preference correction, review, and skill capture decisions.
+- `ryan-codex-automation-workflow` for Codex scheduled tasks, reminders, recurring runs, and follow-ups when working inside Codex.

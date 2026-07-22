@@ -41,6 +41,8 @@ npx ryan-agent-work-kit init ./my-project
 
 The script creates project rules and docs without overwriting existing files.
 
+`docs/visual-explanation.md` tells agents to prefer Mermaid diagrams when explaining processes, branch decisions, task orchestration, state transitions, or system relationships. For complex UI or demo needs, agents can suggest visual sketches, screenshots, HTML mockups, or Hyperframes.
+
 ## 3. Open the target project in your AI tool
 
 Tell the agent:
@@ -59,6 +61,8 @@ The agent should:
 4. Work inside one task lane.
 5. Validate.
 6. Report risks and next step.
+
+If the task includes a workflow or collaboration path, the agent should prefer a Mermaid diagram for the key path.
 
 ## 5. Check readiness
 

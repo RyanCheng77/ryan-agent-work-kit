@@ -92,10 +92,12 @@ if [[ "$lang" == "zh-CN" ]]; then
   copy_if_missing "$kit_root/docs/agent-ops-observability.zh-CN.md" "$target/docs/agent-ops-observability.zh-CN.md"
   copy_if_missing "$kit_root/docs/obsidian-bridge.zh-CN.md" "$target/docs/obsidian-bridge.zh-CN.md"
   copy_if_missing "$kit_root/docs/ai-collaboration-reflect.zh-CN.md" "$target/docs/ai-collaboration-reflect.zh-CN.md"
+  copy_if_missing "$kit_root/docs/visual-explanation.zh-CN.md" "$target/docs/visual-explanation.zh-CN.md"
 else
   copy_if_missing "$kit_root/docs/agent-ops-observability.md" "$target/docs/agent-ops-observability.md"
   copy_if_missing "$kit_root/docs/obsidian-bridge.md" "$target/docs/obsidian-bridge.md"
   copy_if_missing "$kit_root/docs/ai-collaboration-reflect.md" "$target/docs/ai-collaboration-reflect.md"
+  copy_if_missing "$kit_root/docs/visual-explanation.md" "$target/docs/visual-explanation.md"
 fi
 copy_if_missing "$kit_root/scripts/record-agent-ops-observation.sh" "$target/scripts/record-agent-ops-observation.sh"
 copy_if_missing "$kit_root/scripts/setup-obsidian-bridge.sh" "$target/scripts/setup-obsidian-bridge.sh"

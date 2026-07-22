@@ -95,10 +95,12 @@ npx ryan-agent-work-kit init --lang zh-CN ./my-project
 
 ```text
 AGENTS.md
+AGENT.md
 CLAUDE.md
 .gitignore
 .github/copilot-instructions.md
 .cursor/rules/project.mdc
+.trae/rules/ryan-agent-work-kit.md
 docs/project-overview.md
 docs/current-goal.md
 docs/roadmap.md
@@ -108,6 +110,7 @@ docs/plans/README.md
 docs/agent-ops-observability.zh-CN.md
 docs/obsidian-bridge.zh-CN.md
 docs/ai-collaboration-reflect.zh-CN.md
+docs/visual-explanation.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -183,6 +186,7 @@ recommended-skills/ryan-codex-automation-workflow
 - 主控 agent 负责验收，子 agent 只做窄任务。
 - 让 AI 工作形成小闭环：目标、执行、验证和学习都可追踪。
 - 小事跑内环，复杂事进中环，重复经验才沉淀到外环。
+- 流程、分支判断、任务编排、状态流转或系统关系，优先用 Mermaid 图辅助理解。
 - 复杂协作后做轻量 4D 自检：委托、描述、判断、审慎。
 - 少重复解释，少浪费 token，少出错。
 

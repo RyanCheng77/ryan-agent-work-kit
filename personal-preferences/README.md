@@ -10,6 +10,7 @@ They tell your AI tool how you want it to behave across projects:
 - Keep project memory in files.
 - Sync reusable learnings or handoffs to Obsidian when Obsidian Bridge is configured.
 - Make skill capture decisions visible when a workflow becomes reusable.
+- Use Mermaid diagrams for process, branch, task orchestration, state, or system-relationship explanations when they improve understanding.
 - Recommend Ryan skills only when useful.
 - End work with validation, risks, and next step.
 
@@ -19,6 +20,7 @@ They tell your AI tool how you want it to behave across projects:
 - English users: start with [codex.md](codex.md). It is the full English version of the same preferences.
 - Ryan-style power users: use [ryan-full.md](ryan-full.md). It currently matches the full English Codex template and is kept as the comprehensive version.
 - Claude Code users who want a short template: use [claude-code.md](claude-code.md).
+- Trae users: use [trae.md](trae.md) or [trae.zh-CN.md](trae.zh-CN.md).
 
 ## Codex
 
@@ -33,6 +35,12 @@ For the full Ryan method in English, [codex.md](codex.md) and [ryan-full.md](rya
 Use [claude-code.md](claude-code.md).
 
 Copy the text into your Claude Code user-level instructions, or keep it near your global setup notes if your environment does not provide a direct preferences UI.
+
+## Trae
+
+Use [trae.md](trae.md) or [trae.zh-CN.md](trae.zh-CN.md).
+
+Copy the text into Trae user rules or a custom agent prompt. For project rules, Ryan Agent Work Kit also creates `AGENT.md` and `.trae/rules/ryan-agent-work-kit.md`.
 
 ## Cursor And Other Tools
 

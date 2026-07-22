@@ -94,10 +94,12 @@ This creates:
 
 ```text
 AGENTS.md
+AGENT.md
 CLAUDE.md
 .gitignore
 .github/copilot-instructions.md
 .cursor/rules/project.mdc
+.trae/rules/ryan-agent-work-kit.md
 docs/project-overview.md
 docs/current-goal.md
 docs/roadmap.md
@@ -107,6 +109,7 @@ docs/plans/README.md
 docs/agent-ops-observability.md
 docs/obsidian-bridge.md
 docs/ai-collaboration-reflect.md
+docs/visual-explanation.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -230,6 +233,7 @@ Ryan Agent Work Kit follows five rules:
 - The lead agent owns review; sub agents do narrow work.
 - AI work should form small loops where goal, execution, verification, and learning are traceable.
 - Keep small work in the inner loop, coordinate complex work in the middle loop, and capture repeated lessons in the outer loop.
+- Prefer Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations.
 - Complex collaboration should include a lightweight 4D reflect: delegation, description, discernment, and diligence.
 - Work repeated 3+ times should be considered for automation.
 - Old workflows should periodically prove they still earn their place.

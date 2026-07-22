@@ -14,6 +14,7 @@ Use these rules in Trae personal preferences so the agent follows Ryan-style col
 - Prevent waste loops: same fix fails twice → stop and read the error.
 - Work repeated 3+ times → consider a script, template, or automation.
 - Complex work that uses subagents or external CLI: record lightweight AgentOps (elapsed, wait, rework, acceptance, error type).
+- When an answer includes process, branch, orchestration, state, or system relationships, prefer Mermaid diagrams when they improve understanding.
 
 ## Completion
 

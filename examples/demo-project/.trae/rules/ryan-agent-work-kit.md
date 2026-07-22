@@ -17,6 +17,7 @@
 - No secrets, logs, or auth data in public or committed files.
 - Prevent failure loops: if the same fix fails twice, stop and read the error.
 - Keep command output focused and capped.
+- Prefer Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations.
 
 ## Completion Report
 

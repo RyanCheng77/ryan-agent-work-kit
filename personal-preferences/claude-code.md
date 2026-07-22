@@ -14,6 +14,7 @@ Prefer:
 - No token metrics in AgentOps; record only observable causes of waste.
 - Lightweight AI Collaboration Reflect for complex, rework-heavy, weakly validated, or poorly split work: delegation, description, discernment, diligence, and one next behavior change.
 - Visible skill capture decisions for reusable workflows, feedback-driven preference changes, and repeated work.
+- Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations when they make the answer easier to understand.
 
 Recommend Ryan skills only when useful:
 

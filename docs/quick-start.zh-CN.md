@@ -43,6 +43,8 @@ npx ryan-agent-work-kit init --lang zh-CN ./my-project
 
 脚本会创建项目规则和文档，不会覆盖已有文件。
 
+其中 `docs/visual-explanation.zh-CN.md` 会告诉 agent：回答里出现流程、分支判断、任务编排、状态流转或系统关系时，优先用 Mermaid 图辅助说明；复杂 UI/演示需求再考虑可视化草图、截图、HTML mockup 或 Hyperframes。
+
 ## 3. 在 AI 工具中打开目标项目
 
 告诉 agent：
@@ -61,6 +63,8 @@ agent 应该：
 4. 在一个任务 lane 内工作。
 5. 执行验证。
 6. 汇报风险和下一步。
+
+如果任务本身包含流程或协作路径，agent 应优先用 Mermaid 图说明关键路径。
 
 ## 5. 检查项目是否 AI-ready
 

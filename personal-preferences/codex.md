@@ -75,6 +75,7 @@ When entering any project:
 - For complex judgment, use "proposition + dimensions + conclusion": split into 3-5 key dimensions, then give recommendation, confidence level, and reversal conditions.
 - For multi-option decisions, use a lightweight decision matrix: options, dimensions, weights, key uncertainties, and reversal conditions. Only expand into a full matrix when genuinely needed.
 - For opinion analysis or review, use the steelman principle: restate the strongest version of the other view first, then point out gaps, risks, and alternatives.
+- When an answer includes a process, branch decision, task orchestration, state transition, or system relationship, prefer a Mermaid flowchart, sequence diagram, or state diagram. For complex UI, demo, or visual concepts, suggest Hyperframes, HTML mockups, screenshots, or screen recordings. Do not force diagrams onto small answers.
 - End meaningful work with conclusion-first output: results, validation, risks, and next steps. Default to grouping when content exceeds 3 segments.
 
 ## Skill Routing

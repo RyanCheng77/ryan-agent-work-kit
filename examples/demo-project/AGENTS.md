@@ -14,4 +14,5 @@ Working rules:
 - One task, one lane.
 - Keep changes small.
 - Do not work on `main` unless asked.
+- Use Mermaid diagrams when explaining process, branch, orchestration, state, or system relationships.
 - End with Scope, Changed files, Validation, Risks, Next.

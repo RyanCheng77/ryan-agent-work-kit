@@ -75,6 +75,7 @@ copy_if_missing() {
 }
 
 copy_if_missing "$template_root/AGENTS.md" "$target/AGENTS.md"
+copy_if_missing "$template_root/AGENT.md" "$target/AGENT.md"
 copy_if_missing "$template_root/CLAUDE.md" "$target/CLAUDE.md"
 copy_if_missing "$template_root/gitignore.template" "$target/.gitignore"
 copy_if_missing "$template_root/.github/copilot-instructions.md" "$target/.github/copilot-instructions.md"

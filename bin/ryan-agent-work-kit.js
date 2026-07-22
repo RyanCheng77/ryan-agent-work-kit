@@ -7,6 +7,7 @@ const childProcess = require("child_process");
 const kitRoot = path.resolve(__dirname, "..");
 
 const REQUIRED_FILES = [
+  "AGENT.md",
   "AGENTS.md",
   "docs/project-overview.md",
   "docs/current-goal.md",
@@ -170,6 +171,7 @@ function initProject(args) {
   }
 
   const templateFiles = [
+    "AGENT.md",
     "AGENTS.md",
     "CLAUDE.md",
     ".github/copilot-instructions.md",

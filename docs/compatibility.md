@@ -48,7 +48,9 @@ Use `.github/copilot-instructions.md` for lightweight project guidance. Keep det
 
 ## Trae
 
-Trae reads `.trae/rules/ryan-agent-work-kit.md` as a project-level rule file. It also looks for `AGENT.md` at the project root, so you may want to add a symlink or copy. Keep the Trae rule file shorter than the full `AGENTS.md`; Trae guidelines note that long rules may hurt adherence.
+Trae reads `AGENT.md` (singular) at the project root as a native entry point. It also reads `.trae/rules/ryan-agent-work-kit.md` as a project-level rule file. Keep rule files shorter than the full `AGENTS.md`; Trae guidelines note that long rules may hurt adherence.
+
+The init script creates both `AGENT.md` and `AGENTS.md`. Trae will find the project rules through either file.
 
 Copy `personal-preferences/trae.md` into your Trae personal rules or custom agent prompt to make the behavior follow you across projects.
 

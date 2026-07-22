@@ -25,6 +25,10 @@ const ADAPTER_FILES = [
   ".cursor/rules/project.mdc",
 ];
 
+const TRAE_FILES = [
+  ".trae/rules/ryan-agent-work-kit.md",
+];
+
 const SUPPORT_FILES = [
   "docs/agent-ops-observability.md",
   "docs/agent-ops-observability.zh-CN.md",
@@ -170,6 +174,7 @@ function initProject(args) {
     "CLAUDE.md",
     ".github/copilot-instructions.md",
     ".cursor/rules/project.mdc",
+    ".trae/rules/ryan-agent-work-kit.md",
     "docs/project-overview.md",
     "docs/current-goal.md",
     "docs/roadmap.md",
@@ -267,6 +272,9 @@ function doctorProject(args) {
   }
   for (const relPath of ADAPTER_FILES) {
     push(results, isFile(target, relPath) ? "pass" : "warn", relPath, "tool adapter for Claude Code, GitHub Copilot, or Cursor");
+  }
+  for (const relPath of TRAE_FILES) {
+    push(results, isFile(target, relPath) ? "pass" : "warn", relPath, "tool adapter for Trae");
   }
   push(results, hasAgentRunsIgnored(target) ? "pass" : "warn", ".agent-runs/ ignored", "keeps local CLI logs out of public commits");
   push(results, hasValidationSignal(target) ? "pass" : "warn", "validation command", "package, Makefile, or common project test command detected");

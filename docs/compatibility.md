@@ -10,6 +10,7 @@ Ryan Agent Work Kit uses plain files, so it can work with many AI coding tools.
 | Claude Code | `CLAUDE.md` + `AGENTS.md` | `personal-preferences/claude-code.md` | Skills can be copied only when your setup supports custom skills. |
 | Cursor | `.cursor/rules/project.mdc` + `AGENTS.md` | Cursor user rules, if available | Keep project facts in `AGENTS.md`; keep Cursor-specific routing in `.cursor/rules/`. |
 | GitHub Copilot | `.github/copilot-instructions.md` + `AGENTS.md` | GitHub / Copilot custom instructions | Keep this lightweight and link back to `AGENTS.md`. |
+| Trae | `.trae/rules/ryan-agent-work-kit.md` + `AGENTS.md` or `AGENT.md` | `personal-preferences/trae.md` or `personal-preferences/trae.zh-CN.md` | Trae reads `.trae/rules/` as project rules. Keep the rule file short and focused on routing. |
 
 ## CLI
 
@@ -44,6 +45,12 @@ Use `.cursor/rules/project.mdc` as the always-on project rule file. Keep `AGENTS
 ## GitHub Copilot
 
 Use `.github/copilot-instructions.md` for lightweight project guidance. Keep detailed rules in `AGENTS.md`.
+
+## Trae
+
+Trae reads `.trae/rules/ryan-agent-work-kit.md` as a project-level rule file. It also looks for `AGENT.md` at the project root, so you may want to add a symlink or copy. Keep the Trae rule file shorter than the full `AGENTS.md`; Trae guidelines note that long rules may hurt adherence.
+
+Copy `personal-preferences/trae.md` into your Trae personal rules or custom agent prompt to make the behavior follow you across projects.
 
 ## Other Agents
 

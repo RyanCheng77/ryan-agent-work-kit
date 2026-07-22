@@ -267,6 +267,7 @@ The templates are plain Markdown and shell scripts. They work with:
 - Claude Code
 - Cursor
 - GitHub Copilot
+- Trae (via `.trae/rules/ryan-agent-work-kit.md` + `AGENT.md`)
 - Other agents that can read project files
 
 See [docs/compatibility.md](docs/compatibility.md).

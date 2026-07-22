@@ -262,6 +262,7 @@ node bin/ryan-agent-work-kit.js doctor examples/demo-project
 - Claude Code
 - Cursor
 - GitHub Copilot
+- Trae
 - 其他能读取项目文件的 agent
 
 更多中文说明见：[docs/quick-start.zh-CN.md](docs/quick-start.zh-CN.md)。

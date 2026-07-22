@@ -35,6 +35,16 @@ The kit supports this through project docs, Task Cards, observable CLI runs, Age
 
 The loop must stay small. If a workflow adds ceremony without reducing rework, risk, or context cost, simplify it or stop it.
 
+## Inner, Middle, And Outer Loops
+
+The kit uses three loop layers:
+
+- **Inner loop**: the current task. Read the right rules, load only necessary context, make small changes, validate, and avoid repeated failure loops.
+- **Middle loop**: complex work. Use S0/S1/S2/S3 routing, Task Cards, helper agents, observable CLI runs, and AgentOps when coordination quality matters.
+- **Outer loop**: durable improvement. Capture only repeated, cross-project, risk-reducing, rework-reducing, or token-saving lessons into docs, Obsidian, scripts, hooks, skills, or role agents.
+
+This keeps the kit beginner-friendly. Small work should not feel like a process framework. Complex work should not be forced through a single-threaded chat. Repeated lessons should not be forgotten.
+
 ## What This Kit Is Not
 
 - It is not a large process framework.

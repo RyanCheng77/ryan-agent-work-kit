@@ -24,6 +24,7 @@ Before doing work, the agent should:
 - Use this plain routing rule: if it can be handled directly, do it directly; if a mistake would be costly, think it through first; if multiple independent things can be checked, split the work.
 - Simple, low-risk, single-file, or clear-goal work can proceed directly with minimal process and quick validation.
 - Complex, risky, resumable, delegated, or drift-prone work should show a short plan first.
+- Use inner/middle/outer loop judgment: keep small tasks in the inner loop for fast read/edit/test/fix; move complex tasks into the middle loop for split work, coordination, and observation; capture only repeated or risk/rework-reducing lessons in the outer loop.
 - For complex work, make a quick routing decision first: direct work, think first, or split work.
 - Complex or resumable work should use a Task Card.
 - Keep changes small and reviewable.

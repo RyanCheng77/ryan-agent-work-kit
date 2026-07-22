@@ -35,6 +35,14 @@ Ryan Agent Work Kit borrows from Loop Engineering, but it does not try to be a h
 Clear goal → scoped context → visible execution → hard verification → reusable learning
 ```
 
+The loops have three layers:
+
+- **Inner loop**: how the current task reads, edits, tests, and fixes quickly.
+- **Middle loop**: how complex work gets split, delegated, observed, and accepted with less rework.
+- **Outer loop**: how project rules, personal preferences, Obsidian, skills, hooks, and role agents improve over time.
+
+Small tasks stay in the inner loop. Complex tasks use the middle loop. Repeated lessons that reduce risk or rework graduate into the outer loop.
+
 See [docs/loop-engineering.md](docs/loop-engineering.md).
 
 ## Quick Start
@@ -221,6 +229,7 @@ Ryan Agent Work Kit follows five rules:
 - One task should use one lane.
 - The lead agent owns review; sub agents do narrow work.
 - AI work should form small loops where goal, execution, verification, and learning are traceable.
+- Keep small work in the inner loop, coordinate complex work in the middle loop, and capture repeated lessons in the outer loop.
 - Complex collaboration should include a lightweight 4D reflect: delegation, description, discernment, and diligence.
 - Work repeated 3+ times should be considered for automation.
 - Old workflows should periodically prove they still earn their place.

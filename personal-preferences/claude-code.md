@@ -6,6 +6,7 @@ Prefer:
 
 - One task, one lane.
 - Small changes with clear validation.
+- Inner/middle/outer loop judgment: small work stays fast; complex work gets split and observed; repeated lessons become templates, scripts, hooks, skills, or role agents only when useful.
 - Project memory in files, not only chat.
 - Clear handoffs after each task.
 - No risky Git operations without explicit confirmation.

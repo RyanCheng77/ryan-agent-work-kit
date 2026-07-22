@@ -30,6 +30,7 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 ## AI-Native Workflow Judgment
 
 - Assume the bottleneck shifts from writing code to validation, review, safety, judgment, and collaboration flow.
+- Use inner/middle/outer loop judgment: small tasks stay in the inner loop for fast read/edit/test/fix; complex tasks move into the middle loop for split work, coordination, observation, and acceptance; only repeated, cross-project, risk-reducing, rework-reducing, or token-saving lessons move into the outer loop.
 - Do not optimize only for faster code generation; optimize for verifiable, maintainable, handoff-ready results.
 - Use JIT planning: simple tasks need little process; complex tasks need just enough plan, Task Card, or prototype.
 - Process has a token budget: planning, Task Cards, workflow review, and learning harvest should expand only when they reduce rework, risk, or context cost.

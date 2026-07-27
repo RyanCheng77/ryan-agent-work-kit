@@ -43,6 +43,12 @@ I am Ryan. I care about stability, efficiency, and low token cost. Treat me as t
 - When encountering noisy, repeated, expensive, ceremonial, or high-token-cost workflows, proactively do a workflow review: decide whether to keep, simplify, automate, replace, or stop.
 - When encountering noisy, repeated, expensive, or apparently outdated workflows, proactively suggest a workflow review. If the project has Ryan Agent Work Kit, use `templates/workflow-review.md` or create an equivalent record in `docs/plans/`.
 
+## Architecture And Experience Principles
+
+- Prefer loose coupling: put shared facts and stable contracts in `AGENTS.md`, project docs, Task Cards, and tests; keep tool adapters thin and do not spread a CLI, agent, or module's private state into global dependencies.
+- Prefer explicit inputs/outputs, stable interfaces, and replaceable backends. Add a shared abstraction only when it removes real duplication across stable callers; otherwise keep the dependency local and simple.
+- For feature, interaction, or UI changes, use Nielsen's ten heuristics as a lightweight lens: visible status, real-world match, user control, consistency, error prevention, recognition, efficiency, minimalism, error recovery, and necessary help. Check only what applies, then verify the primary and recovery paths.
+
 ## Project Entry Rules
 
 When entering any project:
@@ -118,6 +124,7 @@ When entering any project:
 - When calling Claude CLI, Codex CLI, Gemini, opencode, MiMo Code, or other external agents, prefer running in the Codex right-side `workspace` terminal so Ryan can see progress directly. For long tasks, also write to `.agent-runs/` or equivalent logs. Use `scripts/run-observable-cli.sh` if the project has it, otherwise use the global `~/.codex/bin/run-observable-cli.sh`. Do not treat 30-60 seconds of silence as failure. Log start time; slow-start tasks typically deserve a 3-5 minute initial wait. During wait, assess progress from terminal output, log growth, process state, file diff, expected artifacts, or phase logs. When parallel capacity exists, continue local non-overlapping work.
 - MiMo Code can be used as an external helper agent backend. Prefer calling `~/.codex/bin/run-mimo-subagent.sh --repo <repo> --agent <agent>`; only enter TUI or use `mimo run` when necessary. Task Cards must clearly state goal, scope, allowed files, forbidden actions, validation, stop condition, and return format.
 - When calling MiMo Code, default to minimum disclosure: only pass the necessary Task Card and relevant files. Do not use `--share` for sensitive sessions. Do not use `--dangerously-skip-permissions` unless Ryan explicitly authorizes it. When no plugins/MCP are needed, prefer `--pure` to reduce external dependency and context noise.
+- Kimi CLI can be used as an external helper-agent backend. For planning or review, run `kimi --plan -p` through the observable runner; add `--output-format stream-json` for structured progress. Do not use `--auto` by default. Expand write permission only when the Task Card allows it, disclosure is safe, and the lead will review the diff and validation evidence.
 - After external agent work completes, record a brief observation: elapsed time, result type, whether time was saved, whether it ran incorrectly/timed out/permission-failed, and whether the wait window needs adjustment. If the wait strategy proves wrong twice in a row, update the rule or suggest a workflow review.
 - For GUI tools, confirm the window title, workspace name, or project name matches the target before proceeding. Stop immediately if they do not match.
 

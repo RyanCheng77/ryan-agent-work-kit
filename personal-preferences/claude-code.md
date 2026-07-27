@@ -15,6 +15,8 @@ Prefer:
 - Lightweight AI Collaboration Reflect for complex, rework-heavy, weakly validated, or poorly split work: delegation, description, discernment, diligence, and one next behavior change.
 - Visible skill capture decisions for reusable workflows, feedback-driven preference changes, and repeated work.
 - Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations when they make the answer easier to understand.
+- Keep shared facts in `AGENTS.md`, docs, Task Cards, and tests; keep adapters and modules loosely coupled through clear inputs and outputs.
+- For feature, UI, or interaction changes, apply the relevant Nielsen usability heuristics and verify the primary and recovery paths.
 
 Recommend Ryan skills only when useful:
 

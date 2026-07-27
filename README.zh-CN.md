@@ -111,6 +111,7 @@ docs/agent-ops-observability.zh-CN.md
 docs/obsidian-bridge.zh-CN.md
 docs/ai-collaboration-reflect.zh-CN.md
 docs/visual-explanation.zh-CN.md
+docs/design-principles.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -188,6 +189,8 @@ recommended-skills/ryan-codex-automation-workflow
 - 小事跑内环，复杂事进中环，重复经验才沉淀到外环。
 - 流程、分支判断、任务编排、状态流转或系统关系，优先用 Mermaid 图辅助理解。
 - 复杂协作后做轻量 4D 自检：委托、描述、判断、审慎。
+- 共同事实放在稳定契约里，工具适配层尽量薄，方便替换或新增 agent/CLI。
+- UI 和交互遵循相关的尼尔森可用性原则，优先预防错误、保持用户控制和状态可见。
 - 少重复解释，少浪费 token，少出错。
 
 ## 检查项目是否 AI-ready

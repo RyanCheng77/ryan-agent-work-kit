@@ -43,7 +43,7 @@ npx ryan-agent-work-kit init --lang zh-CN ./my-project
 
 脚本会创建项目规则和文档，不会覆盖已有文件。
 
-其中 `docs/visual-explanation.zh-CN.md` 会告诉 agent：回答里出现流程、分支判断、任务编排、状态流转或系统关系时，优先用 Mermaid 图辅助说明；复杂 UI/演示需求再考虑可视化草图、截图、HTML mockup 或 Hyperframes。
+其中 `docs/visual-explanation.zh-CN.md` 会告诉 agent：回答里出现流程、分支判断、任务编排、状态流转或系统关系时，优先用 Mermaid 图辅助说明；`docs/design-principles.zh-CN.md` 补充了解耦和 UI/交互的轻量尼尔森原则检查；复杂 UI/演示需求再考虑可视化草图、截图、HTML mockup 或 Hyperframes。
 
 ## 3. 在 AI 工具中打开目标项目
 
@@ -109,6 +109,17 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 - 子 agent 或外部 CLI 会处理部分工作。
 - 任务有严格范围或验证要求。
 - 你想减少重复解释和 token 消耗。
+
+## 可选：把 Kimi CLI 作为子 agent
+
+Kimi CLI 和其他外部工具共用 `AGENTS.md` 与任务卡契约。先从可观察的规划或评审任务开始：
+
+```bash
+./scripts/run-observable-cli.sh --name kimi-plan -- \
+  kimi --plan --output-format stream-json -p "只评审任务卡指定的文件，不修改文件。"
+```
+
+提示词保持窄范围，不传密钥或私有数据；完成后结合日志、diff 和验证证据再采纳结果。
 
 ## 可选：审视重复工作流
 

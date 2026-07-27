@@ -17,6 +17,8 @@
 - No secrets, logs, or auth data in public or committed files.
 - Prevent failure loops: if the same fix fails twice, stop and read the error.
 - Keep command output focused and capped.
+- Keep shared facts in project docs and Task Cards; keep adapters and modules loosely coupled.
+- For feature, UI, or interaction changes, check the relevant Nielsen usability heuristics and verify the primary and recovery paths.
 - Prefer Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations.
 
 ## Completion Report

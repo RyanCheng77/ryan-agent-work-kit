@@ -28,6 +28,8 @@ Before doing work, the agent should:
 - For complex work, make a quick routing decision first: direct work, think first, or split work.
 - Complex or resumable work should use a Task Card.
 - Keep changes small and reviewable.
+- Prefer loose coupling: keep shared facts and contracts in project docs, Task Cards, and tests; keep tool-specific adapters thin and avoid coupling to another module's private state.
+- For feature, interaction, or UI work, read `docs/design-principles.md` when present. Apply only the relevant Nielsen usability heuristics and validate the primary and recovery paths.
 - Do not work directly on `main` unless the user asks.
 - Do not run destructive Git commands without explicit confirmation.
 - Preserve changes outside the current task.

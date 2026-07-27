@@ -12,11 +12,13 @@ to .agent-runs/<timestamp>-<task-name>.log.
 
 Examples:
   scripts/run-observable-cli.sh --name claude-review -- claude -p "Review this repo in read-only mode"
+  scripts/run-observable-cli.sh --name kimi-plan -- kimi --plan -p "Review only the scoped files. Do not modify files."
   scripts/run-observable-cli.sh --name test-run -- npm test
 
 Safety:
   Do not put secrets, tokens, passwords, or private customer data in command args.
   Logs are local project artifacts. Review them before sharing or committing.
+  For Kimi structured progress, add: --output-format stream-json
 EOF
 }
 

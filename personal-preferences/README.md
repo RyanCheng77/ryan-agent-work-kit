@@ -11,6 +11,8 @@ They tell your AI tool how you want it to behave across projects:
 - Sync reusable learnings or handoffs to Obsidian when Obsidian Bridge is configured.
 - Make skill capture decisions visible when a workflow becomes reusable.
 - Use Mermaid diagrams for process, branch, task orchestration, state, or system-relationship explanations when they improve understanding.
+- Keep tool adapters thin and modules loosely coupled through documented contracts.
+- Apply relevant Nielsen usability heuristics to feature, UI, and interaction changes.
 - Recommend Ryan skills only when useful.
 - End work with validation, risks, and next step.
 

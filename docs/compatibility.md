@@ -11,6 +11,7 @@ Ryan Agent Work Kit uses plain files, so it can work with many AI coding tools.
 | Cursor | `.cursor/rules/project.mdc` + `AGENTS.md` | Cursor user rules, if available | Keep project facts in `AGENTS.md`; keep Cursor-specific routing in `.cursor/rules/`. |
 | GitHub Copilot | `.github/copilot-instructions.md` + `AGENTS.md` | GitHub / Copilot custom instructions | Keep this lightweight and link back to `AGENTS.md`. |
 | Trae | `.trae/rules/ryan-agent-work-kit.md` + `AGENTS.md` or `AGENT.md` | `personal-preferences/trae.md` or `personal-preferences/trae.zh-CN.md` | Trae reads `.trae/rules/` as project rules. Keep the rule file short and focused on routing. |
+| Kimi CLI | `AGENTS.md` + Task Card | Kimi agent profile when your local setup supports one | Use the shared project contract and the observable CLI runner; no Kimi-specific project file is required. |
 
 ## CLI
 
@@ -54,6 +55,19 @@ The init script creates both `AGENT.md` and `AGENTS.md`. Trae will find the proj
 
 Copy `personal-preferences/trae.md` into your Trae personal rules or custom agent prompt to make the behavior follow you across projects.
 
+## Kimi CLI
+
+Kimi CLI can work as an external helper-agent backend without a separate project adapter. Give it the same narrow Task Card used for other external tools: goal, scoped files, forbidden actions, validation, stop condition, and return format. `AGENTS.md` remains the shared project source of truth.
+
+Run it in an observable terminal so the user and lead agent can assess progress and inspect the local log:
+
+```bash
+./scripts/run-observable-cli.sh --name kimi-plan -- \
+  kimi --plan --output-format stream-json -p "Review only the scoped files. Do not modify files."
+```
+
+`--plan` is the safe default for planning or review. Only grant autonomous write permission when the task explicitly allows it, the disclosure scope is safe, and the lead agent will review the diff and validation evidence. Run `kimi doctor` locally for configuration checks; never commit Kimi authentication or session data.
+
 ## Other Agents
 
 Any agent that can read files can follow this kit:
@@ -69,6 +83,7 @@ Any agent that can read files can follow this kit:
 
 - Missing project memory files.
 - Missing tool adapter files.
+- Whether a design-principles guide is present for decoupled, human-centered feature work.
 - Whether `.agent-runs/` is ignored.
 - Whether the project exposes a basic validation signal.
 - Whether the current Git branch is the default branch.

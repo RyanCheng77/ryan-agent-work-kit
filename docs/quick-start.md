@@ -41,7 +41,7 @@ npx ryan-agent-work-kit init ./my-project
 
 The script creates project rules and docs without overwriting existing files.
 
-`docs/visual-explanation.md` tells agents to prefer Mermaid diagrams when explaining processes, branch decisions, task orchestration, state transitions, or system relationships. For complex UI or demo needs, agents can suggest visual sketches, screenshots, HTML mockups, or Hyperframes.
+`docs/visual-explanation.md` tells agents to prefer Mermaid diagrams when explaining processes, branch decisions, task orchestration, state transitions, or system relationships. `docs/design-principles.md` adds loose-coupling guidance and a lightweight Nielsen usability review for feature, interaction, and UI work. For complex UI or demo needs, agents can suggest visual sketches, screenshots, HTML mockups, or Hyperframes.
 
 ## 3. Open the target project in your AI tool
 
@@ -109,6 +109,17 @@ Task Cards are useful when:
 - A helper agent or CLI will handle part of the work.
 - The task has strict scope or validation.
 - You want to reduce repeated context.
+
+## Optional: Use Kimi CLI As A Helper Agent
+
+Kimi CLI uses the same `AGENTS.md` and Task Card contract as other external tools. Start with a visible plan or review run:
+
+```bash
+./scripts/run-observable-cli.sh --name kimi-plan -- \
+  kimi --plan --output-format stream-json -p "Review only the scoped files. Do not modify files."
+```
+
+Keep the prompt narrow, do not include secrets or private data, and review the log, diff, and validation evidence before accepting the result.
 
 ## Optional: Review Repeated Workflows
 

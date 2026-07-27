@@ -4,7 +4,7 @@ Ryan Agent Work Kit is built around one simple belief:
 
 AI agents work better when the project has memory, rules, and handoff habits.
 
-## Five Rules
+## Seven Rules
 
 1. **Understand before acting**
    The agent should read project rules and current goals before making changes.
@@ -20,6 +20,25 @@ AI agents work better when the project has memory, rules, and handoff habits.
 
 5. **Less repeated context, fewer mistakes**
    Good project memory lowers token cost and reduces repeated explanations.
+
+6. **Decouple by default, integrate through clear contracts**
+   Keep project facts in shared files, keep tool adapters thin, and make task scope and validation explicit. A CLI or agent backend should be replaceable without rewriting the workflow.
+
+7. **Design for human control**
+   UI and interaction work should respect Nielsen's usability heuristics: make status visible, prevent avoidable errors, preserve user control, and keep recovery understandable.
+
+## Decouple By Default
+
+The kit separates stable contracts from replaceable tools:
+
+- `AGENTS.md`, project docs, Task Cards, and validation evidence are the shared contract.
+- Codex, Claude Code, Cursor, Copilot, Trae, Kimi CLI, and other tools are adapters or execution backends.
+- Tool-specific files should stay short and point back to the shared contract instead of becoming competing sources of truth.
+- Add a shared abstraction only when the boundary is stable and it removes real duplication. Otherwise keep the dependency local and explicit.
+
+This makes it easier to change tools, delegate a narrow task, or recover work without carrying one tool's assumptions into the whole project.
+
+For implementation details and a lightweight Nielsen review, see [docs/design-principles.md](design-principles.md).
 
 ## Small Safe Loops
 

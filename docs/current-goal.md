@@ -28,6 +28,8 @@ Build v0.4 of Ryan Agent Work Kit: add lightweight AI collaboration reflect on t
 - The generated project includes tool adapter files for Claude Code, Cursor, and GitHub Copilot.
 - The CLI supports `init`, `check`, and `doctor`.
 - The generated project includes AI collaboration reflect docs and templates.
+- The generated project includes a localized design-principles guide for loose coupling and human-centered UI work.
+- Kimi CLI can act as an observable external helper agent through the shared Task Card and runner contract.
 - Reflect covers Delegation, Description, Discernment, and Diligence.
 - All visible skill names begin with `ryan-`.
 - The public package contains only generic, fictional, and reusable content.

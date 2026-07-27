@@ -15,6 +15,8 @@ Use these rules in Trae personal preferences so the agent follows Ryan-style col
 - Work repeated 3+ times → consider a script, template, or automation.
 - Complex work that uses subagents or external CLI: record lightweight AgentOps (elapsed, wait, rework, acceptance, error type).
 - When an answer includes process, branch, orchestration, state, or system relationships, prefer Mermaid diagrams when they improve understanding.
+- Keep shared facts and contracts in project docs; keep tool adapters and modules loosely coupled.
+- For feature, UI, or interaction changes, check the relevant Nielsen usability heuristics and verify the primary and recovery paths.
 
 ## Completion
 

@@ -30,6 +30,11 @@ const TRAE_FILES = [
   ".trae/rules/ryan-agent-work-kit.md",
 ];
 
+const DESIGN_GUIDE_FILES = [
+  "docs/design-principles.md",
+  "docs/design-principles.zh-CN.md",
+];
+
 const SUPPORT_FILES = [
   "docs/agent-ops-observability.md",
   "docs/agent-ops-observability.zh-CN.md",
@@ -198,6 +203,7 @@ function initProject(args) {
         ["docs/obsidian-bridge.zh-CN.md", "docs/obsidian-bridge.zh-CN.md"],
         ["docs/ai-collaboration-reflect.zh-CN.md", "docs/ai-collaboration-reflect.zh-CN.md"],
         ["docs/visual-explanation.zh-CN.md", "docs/visual-explanation.zh-CN.md"],
+        ["docs/design-principles.zh-CN.md", "docs/design-principles.zh-CN.md"],
         ["templates/task-card.zh-CN.md", "templates/task-card.zh-CN.md"],
         ["templates/workflow-review.zh-CN.md", "templates/workflow-review.zh-CN.md"],
         ["templates/ai-collaboration-reflect.zh-CN.md", "templates/ai-collaboration-reflect.zh-CN.md"],
@@ -207,6 +213,7 @@ function initProject(args) {
         ["docs/obsidian-bridge.md", "docs/obsidian-bridge.md"],
         ["docs/ai-collaboration-reflect.md", "docs/ai-collaboration-reflect.md"],
         ["docs/visual-explanation.md", "docs/visual-explanation.md"],
+        ["docs/design-principles.md", "docs/design-principles.md"],
         ["templates/task-card.md", "templates/task-card.md"],
         ["templates/workflow-review.md", "templates/workflow-review.md"],
         ["templates/ai-collaboration-reflect.md", "templates/ai-collaboration-reflect.md"],
@@ -282,6 +289,12 @@ function doctorProject(args) {
   for (const relPath of TRAE_FILES) {
     push(results, isFile(target, relPath) ? "pass" : "warn", relPath, "tool adapter for Trae");
   }
+  push(
+    results,
+    DESIGN_GUIDE_FILES.some((relPath) => isFile(target, relPath)) ? "pass" : "warn",
+    "design principles guide",
+    "decoupling and Nielsen usability guidance for feature or UI work",
+  );
   push(results, hasAgentRunsIgnored(target) ? "pass" : "warn", ".agent-runs/ ignored", "keeps local CLI logs out of public commits");
   push(results, hasValidationSignal(target) ? "pass" : "warn", "validation command", "package, Makefile, or common project test command detected");
 

@@ -110,6 +110,7 @@ docs/agent-ops-observability.md
 docs/obsidian-bridge.md
 docs/ai-collaboration-reflect.md
 docs/visual-explanation.md
+docs/design-principles.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -225,7 +226,7 @@ Recommended skills are not part of the default first screen. Use them only when 
 
 ## Philosophy
 
-Ryan Agent Work Kit follows five rules:
+Ryan Agent Work Kit follows seven rules:
 
 - AI should understand the project before acting.
 - Project memory belongs in files, not only in chat.
@@ -237,6 +238,8 @@ Ryan Agent Work Kit follows five rules:
 - Complex collaboration should include a lightweight 4D reflect: delegation, description, discernment, and diligence.
 - Work repeated 3+ times should be considered for automation.
 - Old workflows should periodically prove they still earn their place.
+- Keep shared facts in stable contracts and keep tool adapters thin, so agent and CLI backends remain replaceable.
+- Apply relevant Nielsen usability heuristics to UI and interaction changes, especially error prevention, user control, and visible status.
 - Less repeated context means lower token cost and fewer mistakes.
 
 Read more in [docs/philosophy.md](docs/philosophy.md).
@@ -272,6 +275,7 @@ The templates are plain Markdown and shell scripts. They work with:
 - Cursor
 - GitHub Copilot
 - Trae (via `.trae/rules/ryan-agent-work-kit.md` + `AGENT.md`)
+- Kimi CLI (as an observable external helper agent)
 - Other agents that can read project files
 
 See [docs/compatibility.md](docs/compatibility.md).

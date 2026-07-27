@@ -113,6 +113,7 @@ docs/agent-ops-observability.zh-CN.md
 docs/obsidian-bridge.zh-CN.md
 docs/ai-collaboration-reflect.zh-CN.md
 docs/visual-explanation.zh-CN.md
+docs/design-principles.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -232,6 +233,8 @@ Agent 留下交接记录
 - 复杂协作后做轻量 4D 自检：委托、描述、判断、审慎。
 - 重复 3 次的工作要考虑自动化。
 - 旧流程要定期证明自己仍然值得存在。
+- 共同事实放在稳定契约里，工具适配层尽量薄，方便替换或新增 agent/CLI。
+- UI 和交互遵循相关的尼尔森可用性原则，优先预防错误、保持用户控制和状态可见。
 - 少重复解释，少浪费 token，少出错。
 
 更多说明见：[docs/philosophy.md](docs/philosophy.md)。
@@ -267,6 +270,7 @@ node bin/ryan-agent-work-kit.js doctor examples/demo-project
 - Cursor
 - GitHub Copilot
 - Trae
+- Kimi CLI
 - 其他能读取项目文件的 agent
 
 更多中文说明见：[docs/quick-start.zh-CN.md](docs/quick-start.zh-CN.md)。

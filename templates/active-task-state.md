@@ -40,4 +40,3 @@ Enable this only for S2/S3 work, cross-session work, long waits, external agents
 - Unverified items: <UNVERIFIED_RISK>
 - Known risks: <KNOWN_RISK>
 - Public boundary: never write secrets, auth files, login state, full logs, internal paths, or sensitive business data.
-

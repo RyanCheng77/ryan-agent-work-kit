@@ -43,4 +43,3 @@ Enable this only for S2/S3 work, cross-session work, long waits, external agents
 - Stop condition: <WHEN_TO_STOP>
 - Current decision: <CONTINUE|READY_FOR_ACCEPTANCE|STOPPED>
 - Next: <ONE_CONCRETE_ACTION>
-

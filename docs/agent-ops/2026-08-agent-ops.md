@@ -234,4 +234,3 @@ Capture:
 - validation_evidence: npm run check; CLI wrapper smoke; bilingual init; package dry run includes trace helper; sensitive scan; DSH write check
 - evidence_ref: scripts/run-observable-cli.sh; scripts/trace-cli-run.js; scripts/test-memory-adapter.js
 - lesson: Make capture opt-in at the client boundary, keep command arguments private, and let the original CLI result remain authoritative.
-

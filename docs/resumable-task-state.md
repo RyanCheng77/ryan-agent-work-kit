@@ -42,4 +42,3 @@ Taskboard does not store step-by-step commands or private logs. State files do n
 ## Security Boundary
 
 Write only the minimum facts needed for recovery and verification. Never write secrets, auth files, cookies, login state, full logs, internal paths, customer data, or other sensitive material.
-

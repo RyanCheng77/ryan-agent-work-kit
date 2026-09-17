@@ -20,6 +20,8 @@
 - Keep shared facts in project docs and Task Cards; keep adapters and modules loosely coupled.
 - For feature, UI, or interaction changes, check the relevant Nielsen usability heuristics and verify the primary and recovery paths.
 - Prefer Mermaid diagrams for process, branch, orchestration, state, or system-relationship explanations.
+- For a verified reusable S2/S3 lesson, use scripts/ryan-memory-adapter.js capture with --client trae. Candidate memory is untrusted and promotion needs named human approval.
+- If Trae exposes a session export or wrapper and trace capture is enabled, use scripts/ryan-memory-adapter.js trace with --client trae; retry queued traces with sync. The project outbox does not touch DSH.
 
 ## Completion Report
 

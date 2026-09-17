@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "enabled": true,
+  "pauseSwitch": false,
+  "scanIntervalMinutes": 20,
+  "maxConcurrentRuns": 1,
+  "maxRunsPerDay": 4,
+  "perTaskMaxAttempts": 2,
+  "cooldownMinutes": 30,
+  "heartbeatTimeoutMinutes": 20,
+  "maxRunMinutes": 15,
+  "maxContextChars": 24000,
+  "tokenBudgetMode": "hard",
+  "maxTokensPerRun": 12000,
+  "maxTokensPerDay": 36000,
+  "approvalTtlMinutes": 1440
+}

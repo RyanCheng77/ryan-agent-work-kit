@@ -100,6 +100,10 @@ route
 task_type
 agents_used
 agent_roles
+collaboration_mode
+human_intervention_type
+decision_changed_scope
+handoff_or_takeover
 wall_time_min
 agent_wait_time_min
 local_work_while_waiting
@@ -122,6 +126,10 @@ lesson
 - `evidence_ref`：证据位置或短引用，例如文件路径、命令名、`.agent-runs` 日志路径、截图文件名、PR/commit/任务编号或一句可复核摘要。
 - `primary_bottleneck`：主要瓶颈，例如 task_card、context、wait_strategy、role_fit、validation、permission、tool_limit。
 - `improvement_action`：下一次具体动作，例如 narrow_task_card、change_role、keep_local_work、add_validation、add_hook、stop_recording。
+- `collaboration_mode`：`HITS`、`HOTS`；本轮不需要区分时留空。
+- `human_intervention_type`：简短事件类型，例如 `clarify`、`decision`、`scope_change`、`takeover` 或 `agent_switch`；不记录聊天全文。
+- `decision_changed_scope`：`yes`、`no` 或留空。
+- `handoff_or_takeover`：`handoff`、`takeover`、`none` 或留空。
 
 ## 真实性规则
 
@@ -142,6 +150,10 @@ cat <<'EOF' | ./scripts/record-agent-ops-observation.sh
 - task_type: qa
 - agents_used: 1
 - agent_roles: readonly-reviewer
+- collaboration_mode: HITS
+- human_intervention_type: decision
+- decision_changed_scope: yes
+- handoff_or_takeover: none
 - wall_time_min: 12
 - agent_wait_time_min: 3
 - local_work_while_waiting: yes
@@ -174,15 +186,15 @@ AGENT_OPS_DIR=./docs/agent-ops ./scripts/record-agent-ops-observation.sh
 
 ## Schema 迁移
 
-当前 TSV schema 是 `0.2`。
+当前 TSV schema 是 `0.3`。
 
-如果旧月份 TSV 是 0.1 表头，写入时会提示 schema mismatch。确认要继续使用同一个月份文件时，给同一条命令加：
+如果旧月份 TSV 是 0.1 或 0.2 表头，写入时会提示 schema mismatch。确认要继续使用同一个月份文件时，给同一条命令加：
 
 ```bash
 --migrate-tsv
 ```
 
-脚本会创建 `.pre-v0.2.<timestamp>.bak` 备份，再为旧行补空列。缺失字段保持为空，不猜历史。
+脚本会创建 `.pre-v0.3.<timestamp>.bak` 备份，再为旧行补空列。缺失字段保持为空，不猜历史。
 
 ## 月度复盘
 

@@ -12,6 +12,7 @@ Build v0.4 of Ryan Agent Work Kit: add lightweight AI collaboration reflect on t
 4. Keep Reflect non-scoring, non-ranking, and privacy-preserving.
 5. Keep only the two core `ryan-*` skills in the first release.
 6. Provide a small fictional demo project.
+7. Make human-agent collaboration explicit: default to HITS, with HOTS gates for high-risk actions.
 
 ## Non-Goals
 
@@ -30,6 +31,8 @@ Build v0.4 of Ryan Agent Work Kit: add lightweight AI collaboration reflect on t
 - The generated project includes AI collaboration reflect docs and templates.
 - The generated project includes a localized design-principles guide for loose coupling and human-centered UI work.
 - Kimi CLI can act as an observable external helper agent through the shared Task Card and runner contract.
+- The generated project includes a HITS/HOTS collaboration guide and Task Card fields for human intervention, decision ownership, and escalation.
+- Dynamic memory is an optional replaceable backend such as MemOS, bounded by a memory governance guide, adapter contract, and shared client adapter with safe local fallback.
 - Reflect covers Delegation, Description, Discernment, and Diligence.
 - All visible skill names begin with `ryan-`.
 - The public package contains only generic, fictional, and reusable content.

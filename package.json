@@ -24,7 +24,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "check": "node bin/ryan-agent-work-kit.js check examples/demo-project && node bin/ryan-agent-work-kit.js doctor examples/demo-project"
+    "check": "node bin/ryan-agent-work-kit.js check examples/demo-project && node bin/ryan-agent-work-kit.js doctor examples/demo-project && node scripts/test-memory-adapter.js && node scripts/test-personal-loop.js && node scripts/test-loop-control.js && node scripts/test-operon-adapter.js"
   },
   "keywords": [
     "ai-agent",

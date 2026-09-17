@@ -112,13 +112,19 @@ docs/obsidian-bridge.zh-CN.md
 docs/ai-collaboration-reflect.zh-CN.md
 docs/visual-explanation.zh-CN.md
 docs/design-principles.zh-CN.md
+docs/memory-governance.zh-CN.md
+docs/memory-adapter-contract.zh-CN.md
+docs/memory-client-adapters.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
 scripts/sync-project-handoff.sh
 scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
+scripts/ryan-memory-adapter.js
 templates/task-card.zh-CN.md
+templates/active-task-state.zh-CN.md
+templates/verification-brief.zh-CN.md
 templates/workflow-review.zh-CN.md
 templates/ai-collaboration-reflect.zh-CN.md
 templates/obsidian-learning-note.md
@@ -138,6 +144,8 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 ```
 
 任务卡不是新流程负担。它的作用是用最少上下文固定目标、范围、相关文件、验证方式和交接格式。
+
+复杂协作默认让人作为 HITS 团队成员随时介入；遇到高风险动作再进入 HOTS 明确决策闸门。跨会话或需要验收的工作，可以让 Taskboard 管任务生命周期和验收，让 Codex 对话保持为 HITS 执行现场；只有需要真实网页状态时，再使用 ego browser 做隔离验证。它们都是可选工具，不是安装依赖。详见：[docs/taskboard-ego-workflow.zh-CN.md](docs/taskboard-ego-workflow.zh-CN.md)。
 
 ### 4. 可选：记录多 agent 协作质量
 
@@ -159,7 +167,13 @@ cp templates/ai-collaboration-reflect.zh-CN.md ./my-project/docs/handoffs/<task-
 
 它不打分、不排名、不读取完整聊天记录，只帮助你下次更少返工。详见：[docs/ai-collaboration-reflect.zh-CN.md](docs/ai-collaboration-reflect.zh-CN.md)。
 
-### 6. 可选：接入 Obsidian 知识库
+### 6. 可选：接入动态记忆后端
+
+如果本机已经运行 MemOS，可以把它作为动态历史经验层使用。它不替代项目规则、Taskboard、验收证据或 Git；召回内容只是不可信的历史参考。
+
+先阅读：[动态记忆治理](docs/memory-governance.zh-CN.md)、[适配器契约](docs/memory-adapter-contract.zh-CN.md) 和 [统一客户端适配](docs/memory-client-adapters.zh-CN.md)。init 会提供统一的本地适配器：各客户端可沉淀短候选摘要；在有 hook、导出或 wrapper 时，也可通过 `trace` 捕获会话并进入项目 outbox，MemOS 未授权时安全保留待同步文件；晋升到 docs、Obsidian 或 skill 仍需要具名人工批准。Work Kit 不触碰 DSH 的会话、插件配置或认证。
+
+### 7. 可选：接入 Obsidian 知识库
 
 如果你有自己的 Obsidian vault，只提供本地路径即可把项目经验、交接、复盘和 AgentOps 记录写入知识库：
 

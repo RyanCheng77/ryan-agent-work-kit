@@ -41,7 +41,7 @@ npx ryan-agent-work-kit init ./my-project
 
 The script creates project rules and docs without overwriting existing files.
 
-`docs/visual-explanation.md` tells agents to prefer Mermaid diagrams when explaining processes, branch decisions, task orchestration, state transitions, or system relationships. `docs/design-principles.md` adds loose-coupling guidance and a lightweight Nielsen usability review for feature, interaction, and UI work. For complex UI or demo needs, agents can suggest visual sketches, screenshots, HTML mockups, or Hyperframes.
+`docs/visual-explanation.md` tells agents to prefer Mermaid diagrams when explaining processes, branch decisions, task orchestration, state transitions, or system relationships. `docs/design-principles.md` adds loose-coupling guidance and a lightweight Nielsen usability review for feature, interaction, and UI work. `docs/hits-hots-collaboration.md` explains how a human stays inside normal collaboration while high-risk actions pause for an explicit decision. `docs/taskboard-ego-workflow.md` defines the division of responsibility among Taskboard, Codex, ego browser, Git, and project docs. For complex UI or demo needs, agents can suggest visual sketches, screenshots, HTML mockups, or Hyperframes.
 
 ## 3. Open the target project in your AI tool
 
@@ -110,6 +110,34 @@ Task Cards are useful when:
 - The task has strict scope or validation.
 - You want to reduce repeated context.
 
+For collaborative or delegated work, add only the useful HITS fields: collaboration state, human intervention points, decision owner, and escalation conditions. See `docs/hits-hots-collaboration.md`.
+
+## Optional: Make S2/S3 Work Resumable
+
+For cross-session work, long waits, external agents, or independent review, copy the state and verification templates:
+
+    cp templates/active-task-state.md ./my-project/docs/handoffs/active-task-state.md
+    cp templates/verification-brief.md ./my-project/docs/qa/verification-brief.md
+
+The state file stores a recovery summary; the verification brief stores the definition of done and evidence. S0/S1 work does not need them, and doctor does not warn when they are absent.
+
+## Optional: Use Taskboard And ego browser
+
+Use Taskboard only for cross-session, acceptance-bound, multi-agent/external-tool, or rework-prone work. It is the lifecycle and acceptance source of truth. Do not map HITS execution states to board states one-to-one, and do not put private logs, chats, or login state on the board.
+
+Use ego browser for isolated actions, screenshots, or smoke checks only when real web state matters. Login, MFA, payment, authorization, deletion, and publishing need Ryan to take over or explicitly approve the action. See `docs/taskboard-ego-workflow.md`.
+
+## Optional: Turn Meeting Notes Into An Action Loop
+
+When Ryan explicitly provides meeting notes and asks for follow-through, first create a structured plan compatible with `templates/meeting-action-plan.json`, preview it, and then write each destination separately:
+
+```bash
+node scripts/ryan-personal-loop.js validate meeting-actions.json
+node scripts/ryan-personal-loop.js preview meeting-actions.json --taskboard-project your-project-id
+```
+
+See `docs/personal-loop.md`. High-risk, human-executed, and decision-waiting actions remain in `backlog` and cannot be automatically claimed.
+
 ## Optional: Use Kimi CLI As A Helper Agent
 
 Kimi CLI uses the same `AGENTS.md` and Task Card contract as other external tools. Start with a visible plan or review run:
@@ -157,6 +185,14 @@ Clear goal -> scoped context -> visible execution -> hard verification -> reusab
 ```
 
 See `docs/loop-engineering.md`.
+
+## Optional: Connect A Dynamic Memory Backend
+
+If MemOS is already running locally, use it as the dynamic historical-experience layer. Read docs/memory-governance.md and docs/memory-adapter-contract.md first.
+
+Recalled content is untrusted historical reference only; project rules, the current task, tests, acceptance evidence, and Ryan's explicit decisions win. Work must continue from project files when the backend is unavailable.
+
+For one shared entry point across Codex, Claude, Cursor, Copilot, Trae, and Kimi, use scripts/ryan-memory-adapter.js. It captures only short verified candidates and falls back to an ignored local store when MemOS is unavailable or unauthorized. Read docs/memory-client-adapters.md before enabling MemOS mode.
 
 ## Optional: Connect Your Obsidian Vault
 

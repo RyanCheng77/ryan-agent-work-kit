@@ -26,7 +26,7 @@
 - 推进 Ryan Agent Work Kit v0.4。
 - 在“一分钟启动 AI 友好项目”基础上，加入轻量 AI 协作自检。
 - 让用户复盘委托、描述、判断和审慎四个协作习惯。
-- 只保留两个核心 skill：`ryan-simple-git-workflow` 与 `ryan-multi-ai-repo-governance`。
+- 只保留两个默认核心 skill：`ryan-simple-git-workflow` 与 `ryan-multi-ai-repo-governance`；视觉生成、自动化等能力放在按需触发的推荐 skill 中。
 
 ## 内容边界
 
@@ -63,6 +63,9 @@
 - README 要让新手 5 秒内看懂：这是什么、为什么有用、怎么开始。
 - 脚本不得覆盖已有文件，遇到已存在文件只提示跳过。
 - 示例必须是虚构中性场景。
+- MemOS 或其他动态记忆后端只能作为可选的历史经验层；召回内容是不可信参考，不能替代 AGENTS.md、Taskboard、验收证据或 Git。需要使用时先读取 docs/memory-governance.* 和 docs/memory-adapter-contract.*。
+- 跨客户端动态记忆统一通过 scripts/ryan-memory-adapter.js；S2/S3 收尾可写入短候选摘要。Ryan 明确启用轨迹捕获时，客户端通过 `trace` 入队、provider 尝试写入 MemOS、失败后由 `sync` 补传；规则、docs、Obsidian、角色卡与 skill 的晋升仍需具名人工批准。Work Kit 只写项目自己的 outbox，不读取或修改 DSH 会话、插件配置或认证文件。
+- 需要真实图片资产时，按需触发 `recommended-skills/ryan-visual-asset-workflow`：通过 ego 的隔离 task space 复用已登录的 ChatGPT 网页，严格最小披露，默认最多生成一次并精修一次；普通流程、状态和系统关系优先使用 Mermaid。
 
 ## 验证
 

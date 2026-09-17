@@ -8,3 +8,5 @@ Read `AGENTS.md` first. Use it as the shared project source of truth.
 Before changing files, check `docs/current-goal.md`, task scope, likely changed files, and validation plan.
 
 Prefer one task, one lane.
+
+For a verified reusable S2/S3 lesson, use scripts/ryan-memory-adapter.js capture with --client cursor. If Cursor exposes a session export or wrapper and trace capture is enabled, use trace with --client cursor and sync queued traces later. Candidate memory is not authority and promotion needs named human approval. The project outbox does not touch DSH.

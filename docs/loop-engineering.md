@@ -91,7 +91,19 @@ Lead agent checks terminal, logs, artifacts, and diff
 
 This loop makes external CLI progress easier to judge. It belongs to the middle loop for complex work.
 
-### 3. Verify And Learn Loop: Outer Learning Loop
+### 3. HITS Collaboration With HOTS Risk Gates
+
+Normal work uses **HITS (Human in the Swarm)**: the human is an active collaborator who can clarify context, make a decision, change scope, take over, or switch an agent during execution.
+
+Use a **HOTS (Human on the Swarm)** gate before a destructive, irreversible, permission-expanding, publishing, deployment, external-disclosure, migration, compliance-sensitive, or material-spend action. Pause the affected lane until the named decision owner explicitly approves it.
+
+Task Cards should name only the intervention points that earn attention. Shared states make the handoff visible: `in_progress`, `waiting_for_human`, `recommend_agent_switch`, `ready_for_acceptance`, and `stopped`.
+
+See `docs/hits-hots-collaboration.md`. These are local working labels, not claims about industry-standard terminology.
+
+For cross-session or acceptance-bound work, Taskboard is the middle/outer-loop task source of truth while the Codex conversation remains the inner HITS execution space. When real web state matters, ego browser adds an isolated execution and verification layer. Git holds implementation and diffs; `AGENTS.md` and docs hold rules and durable context. See `docs/taskboard-ego-workflow.md`.
+
+### 4. Verify And Learn Loop: Outer Learning Loop
 
 ```text
 Changes complete

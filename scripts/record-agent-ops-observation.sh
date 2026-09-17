@@ -10,7 +10,7 @@ confidence="medium"
 measurement="mixed"
 source="agent"
 allow_missing_evidence=0
-schema_version="0.2"
+schema_version="0.3"
 migrate_tsv=0
 
 usage() {
@@ -29,7 +29,7 @@ Also appends a machine-readable TSV row to:
 By default, observations must include one evidence marker:
   validation_evidence, evidence_ref, Evidence, or 证据
 
-If the monthly TSV was created by the older 0.1 schema, rerun once with:
+If the monthly TSV was created by an older 0.1 or 0.2 schema, rerun once with:
   --migrate-tsv
 USAGE
 }
@@ -200,12 +200,30 @@ extract_field() {
     | sed -E 's/[[:space:]]+$//'
 }
 
-tsv_header="$(printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
-  "schema_version" "record_id" "timestamp" "capture_method" "confidence" "measurement" "source" \
-  "project" "task_id" "trigger_reason" "route" "task_type" "agents_used" "agent_roles" "wall_time_min" "agent_wait_time_min" \
-  "local_work_while_waiting" "acceptance" "rework_count" "error_type" \
-  "task_card_quality" "context_scope" "waste_pattern" "primary_bottleneck" "improvement_action" "validation_evidence" \
-  "evidence_ref" "lesson")"
+tsv_columns=(
+  "schema_version" "record_id" "timestamp" "capture_method" "confidence" "measurement" "source"
+  "project" "task_id" "trigger_reason" "route" "task_type" "agents_used" "agent_roles"
+  "collaboration_mode" "human_intervention_type" "decision_changed_scope" "handoff_or_takeover"
+  "wall_time_min" "agent_wait_time_min" "local_work_while_waiting" "acceptance" "rework_count" "error_type"
+  "task_card_quality" "context_scope" "waste_pattern" "primary_bottleneck" "improvement_action" "validation_evidence"
+  "evidence_ref" "lesson"
+)
+tsv_header="$(IFS=$'\t'; printf '%s' "${tsv_columns[*]}")"
+
+tsv_v0_2_columns=(
+  "schema_version" "record_id" "timestamp" "capture_method" "confidence" "measurement" "source"
+  "project" "task_id" "trigger_reason" "route" "task_type" "agents_used" "agent_roles" "wall_time_min" "agent_wait_time_min"
+  "local_work_while_waiting" "acceptance" "rework_count" "error_type" "task_card_quality" "context_scope" "waste_pattern"
+  "primary_bottleneck" "improvement_action" "validation_evidence" "evidence_ref" "lesson"
+)
+tsv_v0_2_header="$(IFS=$'\t'; printf '%s' "${tsv_v0_2_columns[*]}")"
+
+tsv_v0_1_columns=(
+  "record_id" "timestamp" "capture_method" "confidence" "measurement" "source" "route" "task_type" "agents_used"
+  "wall_time_min" "agent_wait_time_min" "local_work_while_waiting" "acceptance" "rework_count" "error_type"
+  "task_card_quality" "context_scope" "waste_pattern" "validation_evidence" "evidence_ref" "lesson"
+)
+tsv_v0_1_header="$(IFS=$'\t'; printf '%s' "${tsv_v0_1_columns[*]}")"
 
 if [[ ! -f "$tsv_path" ]]; then
   printf '%s\n' "$tsv_header" > "$tsv_path"
@@ -213,55 +231,46 @@ fi
 
 actual_header="$(head -n 1 "$tsv_path")"
 if [[ "$actual_header" != "$tsv_header" ]]; then
-  old_tsv_header="$(printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
-    "record_id" "timestamp" "capture_method" "confidence" "measurement" "source" \
-    "route" "task_type" "agents_used" "wall_time_min" "agent_wait_time_min" \
-    "local_work_while_waiting" "acceptance" "rework_count" "error_type" \
-    "task_card_quality" "context_scope" "waste_pattern" "validation_evidence" \
-    "evidence_ref" "lesson")"
-
-  if [[ "$migrate_tsv" -eq 1 && "$actual_header" == "$old_tsv_header" ]]; then
-    backup_path="$tsv_path.pre-v0.2.$(date '+%Y%m%d%H%M%S').bak"
+  if [[ "$migrate_tsv" -eq 1 && "$actual_header" == "$tsv_v0_2_header" ]]; then
+    backup_path="$tsv_path.pre-v0.3.$(date '+%Y%m%d%H%M%S').bak"
     cp "$tsv_path" "$backup_path"
     awk -F '\t' -v OFS='\t' -v header="$tsv_header" '
       NR == 1 { print header; next }
       {
-        print "0.1", $1, $2, $3, $4, $5, $6, "", "", "", $7, $8, $9, "", $10, $11, $12, $13, $14, $15, $16, $17, $18, "", "", $19, $20, $21
+        print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, "", "", "", "", $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28
+      }
+    ' "$backup_path" > "$tsv_path"
+    echo "migrated TSV schema to $schema_version; backup: $backup_path" >&2
+  elif [[ "$migrate_tsv" -eq 1 && "$actual_header" == "$tsv_v0_1_header" ]]; then
+    backup_path="$tsv_path.pre-v0.3.$(date '+%Y%m%d%H%M%S').bak"
+    cp "$tsv_path" "$backup_path"
+    awk -F '\t' -v OFS='\t' -v header="$tsv_header" '
+      NR == 1 { print header; next }
+      {
+        print "0.1", $1, $2, $3, $4, $5, $6, "", "", "", $7, $8, $9, "", "", "", "", "", $10, $11, $12, $13, $14, $15, $16, $17, $18, "", "", $19, $20, $21
       }
     ' "$backup_path" > "$tsv_path"
     echo "migrated TSV schema to $schema_version; backup: $backup_path" >&2
   else
     echo "TSV schema mismatch: $tsv_path" >&2
     echo "Expected schema_version $schema_version." >&2
-    echo "If this is the old 0.1 schema, rerun once with --migrate-tsv to create a backup and add the new columns." >&2
+    echo "If this is an old 0.1 or 0.2 schema, rerun once with --migrate-tsv to create a backup and add the new columns." >&2
     echo "If it is another schema, stop and migrate manually before appending." >&2
     exit 1
   fi
 fi
 
-printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
-  "$schema_version" "$record_id" "$timestamp" "$capture_method" "$confidence" "$measurement" "$source" \
-  "$(extract_field project)" \
-  "$(extract_field task_id)" \
-  "$(extract_field trigger_reason)" \
-  "$(extract_field route)" \
-  "$(extract_field task_type)" \
-  "$(extract_field agents_used)" \
-  "$(extract_field agent_roles)" \
-  "$(extract_field wall_time_min)" \
-  "$(extract_field agent_wait_time_min)" \
-  "$(extract_field local_work_while_waiting)" \
-  "$(extract_field acceptance)" \
-  "$(extract_field rework_count)" \
-  "$(extract_field error_type)" \
-  "$(extract_field task_card_quality)" \
-  "$(extract_field context_scope)" \
-  "$(extract_field waste_pattern)" \
-  "$(extract_field primary_bottleneck)" \
-  "$(extract_field improvement_action)" \
-  "$(extract_field validation_evidence)" \
-  "$(extract_field evidence_ref)" \
-  "$(extract_field lesson)" >> "$tsv_path"
+tsv_row=(
+  "$schema_version" "$record_id" "$timestamp" "$capture_method" "$confidence" "$measurement" "$source"
+  "$(extract_field project)" "$(extract_field task_id)" "$(extract_field trigger_reason)" "$(extract_field route)"
+  "$(extract_field task_type)" "$(extract_field agents_used)" "$(extract_field agent_roles)"
+  "$(extract_field collaboration_mode)" "$(extract_field human_intervention_type)" "$(extract_field decision_changed_scope)" "$(extract_field handoff_or_takeover)"
+  "$(extract_field wall_time_min)" "$(extract_field agent_wait_time_min)" "$(extract_field local_work_while_waiting)"
+  "$(extract_field acceptance)" "$(extract_field rework_count)" "$(extract_field error_type)" "$(extract_field task_card_quality)"
+  "$(extract_field context_scope)" "$(extract_field waste_pattern)" "$(extract_field primary_bottleneck)" "$(extract_field improvement_action)"
+  "$(extract_field validation_evidence)" "$(extract_field evidence_ref)" "$(extract_field lesson)"
+)
+(IFS=$'\t'; printf '%s\n' "${tsv_row[*]}") >> "$tsv_path"
 
 echo "$note_path"
 echo "$tsv_path"

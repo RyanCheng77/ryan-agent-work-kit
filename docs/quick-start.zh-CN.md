@@ -43,7 +43,7 @@ npx ryan-agent-work-kit init --lang zh-CN ./my-project
 
 脚本会创建项目规则和文档，不会覆盖已有文件。
 
-其中 `docs/visual-explanation.zh-CN.md` 会告诉 agent：回答里出现流程、分支判断、任务编排、状态流转或系统关系时，优先用 Mermaid 图辅助说明；`docs/design-principles.zh-CN.md` 补充了解耦和 UI/交互的轻量尼尔森原则检查；复杂 UI/演示需求再考虑可视化草图、截图、HTML mockup 或 Hyperframes。
+其中 `docs/visual-explanation.zh-CN.md` 会告诉 agent：回答里出现流程、分支判断、任务编排、状态流转或系统关系时，优先用 Mermaid 图辅助说明；`docs/design-principles.zh-CN.md` 补充了解耦和 UI/交互的轻量尼尔森原则检查；`docs/hits-hots-collaboration.zh-CN.md` 说明普通协作中人如何持续参与，以及高风险动作如何暂停等待明确决策；`docs/taskboard-ego-workflow.zh-CN.md` 则说明 Taskboard、Codex、ego browser、Git 和项目 docs 的分工。复杂 UI/演示需求再考虑可视化草图、截图、HTML mockup 或 Hyperframes。
 
 ## 3. 在 AI 工具中打开目标项目
 
@@ -109,6 +109,34 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 - 子 agent 或外部 CLI 会处理部分工作。
 - 任务有严格范围或验证要求。
 - 你想减少重复解释和 token 消耗。
+
+有协作或委派时，只补充真正有用的 HITS 字段：协作状态、Ryan 介入点、决策负责人和升级条件。详见 `docs/hits-hots-collaboration.zh-CN.md`。
+
+## 可选：让 S2/S3 任务可恢复
+
+跨会话、长等待、外部 agent 或需要独立复核时，再复制状态和验证模板：
+
+    cp templates/active-task-state.zh-CN.md ./my-project/docs/handoffs/active-task-state.zh-CN.md
+    cp templates/verification-brief.zh-CN.md ./my-project/docs/qa/verification-brief.zh-CN.md
+
+状态文件记录恢复摘要，验证简报记录完成定义和证据。S0/S1 不需要它们；doctor 也不会因缺少它们而报警。
+
+## 可选：接入 Taskboard 与 ego browser
+
+Taskboard 只记录跨会话、需要验收、多 agent/外部工具参与或容易返工的工作。它是任务生命周期与验收事实源；不要把 HITS 执行状态一一映射到看板状态，也不要写入私密日志、会话或登录态。
+
+需要真实网页状态时再使用 ego browser 做隔离操作、截图或冒烟验证。登录、验证码、付款、授权、删除、发布等动作需要 Ryan 明确接管或批准。完整规则见 `docs/taskboard-ego-workflow.zh-CN.md`。
+
+## 可选：从会议纪要进入行动闭环
+
+当 Ryan 明确提供会议纪要并要求跟进时，先把 Ryan 本人的行动项写进 `templates/meeting-action-plan.json` 对应的结构化计划，再先预览、后写入：
+
+```bash
+node scripts/ryan-personal-loop.js validate meeting-actions.json
+node scripts/ryan-personal-loop.js preview meeting-actions.json --taskboard-project your-project-id
+```
+
+详见 `docs/personal-loop.zh-CN.md`。高风险、人工执行或等待决策的事项会留在 `backlog`，不会被自动认领。
 
 ## 可选：把 Kimi CLI 作为子 agent
 
@@ -185,6 +213,14 @@ Ryan Agent Work Kit 的 Loop Engineering 轻量版不是自动化大系统，而
 ```
 
 详见：`docs/loop-engineering.zh-CN.md`。
+
+## 可选：接入动态记忆后端
+
+如果本机已经运行 MemOS，可以把它作为动态历史经验层使用。先阅读 docs/memory-governance.zh-CN.md 和 docs/memory-adapter-contract.zh-CN.md。
+
+召回内容只是不可信的历史参考；项目规则、当前任务、测试、验收证据和 Ryan 明确决定优先。后端不可用时，任务仍应依赖项目文件继续工作。
+
+Codex、Claude、Cursor、Copilot、Trae 和 Kimi 共用 scripts/ryan-memory-adapter.js。它只写短的已验证候选摘要，MemOS 不可用或未授权时退回被忽略的本地存储。开启 MemOS 模式前先读 docs/memory-client-adapters.zh-CN.md。
 
 ## 可选：接入 Obsidian 知识库
 

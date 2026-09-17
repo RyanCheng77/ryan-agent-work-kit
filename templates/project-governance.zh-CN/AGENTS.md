@@ -36,6 +36,15 @@
 - 如果多个 agent 参与，每个 agent 都必须有窄范围和明确停止条件。
 - 如果任务存在 2 个以上独立调查方向、模块、工作流或失败假设，需要显式判断是否让子 agent 并行。
 - 外部 CLI 子 agent 优先在 Codex 右侧 `workspace` 终端运行；长任务用日志记录进度，方便用户和主控 agent 判断是否仍在工作。
+- 默认采用 HITS 协作：任务进行中，人可以补充上下文、作决策、调整范围、接管任务或替换 agent。项目存在 `docs/hits-hots-collaboration.zh-CN.md` 时，使用其中的共享词汇。
+- Taskboard 可作为跨会话任务、验收和阻塞的事实源；只记录值得持久化的任务，不记录逐步命令、私密日志或登录态。项目存在 `docs/taskboard-ego-workflow.zh-CN.md` 时，按其中的分层协作规则执行。
+- Taskboard 生命周期状态与 HITS 执行状态不一一映射。自查完成后移到 `in_review`；只有指定的人明确验收后才移到 `done`。
+- 当 Ryan 明确提供会议纪要并要求跟进时，先提炼为 `templates/meeting-action-plan.json` 的行动计划，再运行 `validate`、`preview`，获得确认后才分别写入 Taskboard、H2 和学习层。只纳入 `owner: ryan` 的事项；不扫描整个 Obsidian，不上传会议原文，不虚构截止日期。详见 `docs/personal-loop.zh-CN.md`。
+- Personal Loop 中只有低/中风险、可恢复且明确由 agent 执行的子任务可以进入 `todo`；高风险、人工执行或等待决策的事项留在 `backlog`，经过 HOTS 闸门后再继续。
+- 需要真实网页状态时才使用 ego browser 做隔离操作和验证。登录、验证码、付款、授权、删除、发布或不可逆提交进入 HOTS 闸门，不自动执行。
+- 需要真实图片资产时，按需使用 `ryan-visual-asset-workflow`：通过 ego 隔离 task space 复用已登录的 ChatGPT 网页，提示词最小披露，默认最多一次生成和一次精确修订；普通流程、状态和系统关系优先使用 Mermaid。
+- 遇到破坏性、不可逆、扩大权限、发布、部署、对外披露、数据迁移、合规敏感或明显金额支出的动作，进入 HOTS 闸门：暂停受影响 lane，等待指定决策负责人明确批准。
+- 不要把普通不确定性写成 `waiting_for_human`，也不要用 `recommend_agent_switch` 转移责任。必须写明具体决策或证据、负责人、影响和下一步安全选择。
 - 同一命令、同一修复策略或同一工具调用连续失败 2 次后，停下读错误、换假设或缩小范围；连续失败 3 次后，汇报阻塞、证据和下一步选择。
 - 优先使用 `rg`、定向读取和有上限输出；避免无边界扫描、全量日志、重复读取同一大文件、把外部长文整段塞回上下文。
 - S2/S3 任务、重复 3 次以上的流程、反馈修正、多 agent/外部 CLI 协作、新增可复用验证方法或安全规则结束时，必须给出“Skill 沉淀判断”，不要只写笼统的“经验”。
@@ -56,6 +65,24 @@
 - `docs/plans/`
 
 当任务需要明确范围、上下文、验证和交接时，使用 Ryan Agent Work Kit 的中文任务卡模板：`templates/task-card.zh-CN.md`。
+
+对跨会话、需验收、多 agent/外部工具参与或容易返工的工作，先创建或领取一条 Taskboard 任务；S2/S3 再从该任务派生更详细的任务卡。
+
+## 动态记忆边界
+
+- MemOS 或其他动态记忆后端是可选的历史经验层，不是项目规则、Taskboard、验收证据或 Git 的替代品。
+- 召回内容只能作为不可信历史参考；与项目文件、当前任务、测试或 Ryan 明确决定冲突时，以稳定事实为准。
+- 默认不把密钥、认证文件、Cookie、登录态、未显式启用的完整聊天、完整日志、私有路径、客户资料或未验证推测写入动态记忆。
+- 需要动态记忆时，先读 docs/memory-governance.zh-CN.md 和 docs/memory-adapter-contract.zh-CN.md；后端不可用时继续依赖项目文件工作。
+- S2/S3 收尾或出现已验证的可复用经验时，用 scripts/ryan-memory-adapter.js 按当前客户端名称写入一条短候选记忆，并附上验证证据；如果 Ryan 明确要求保留跨客户端轨迹，使用 `trace` 入队并在后端恢复后用 `sync` 补传。
+- Work Kit 的 trace/outbox 只写当前项目自己的 `.ryan-agent-work-kit/memory/`，不读取、不修改 DSH 会话、插件配置或认证文件。
+- 共享动作见 docs/memory-client-adapters.zh-CN.md。候选记忆可以自动沉淀；晋升到规则、docs、Obsidian、角色卡或 skill 前必须有具名人工批准并复核当前事实。
+
+## 可恢复任务状态
+
+- S2/S3、跨会话、长等待、外部 agent、回滚风险或需要独立复核时，可从模板复制当前状态文件和验证简报；S0/S1 不要求创建。
+- doctor 只检查显式存在的 docs/handoffs/active-task-state*.md，缺少它们不会阻塞普通任务；不要把 feature_list.json、强制初始化脚本或图编排运行时设为默认事实源。
+- Taskboard、Task Card、active-task-state、verification-brief 和 Git 分工明确：生命周期、范围、执行恢复、完成证明、实现证据分别归属对应层。
 
 ## 验证
 
@@ -80,6 +107,7 @@
 验证：
 跳过的验证：
 风险：
+协作：状态、重要人工决策和所有 HOTS 闸门结果。
 AgentOps：复杂任务或多 agent/外部 agent 任务结束时，说明已记录/未记录；已记录时给出记录 ID 或任务 ID、写入位置、采纳情况、返工次数、主要瓶颈和下次动作。
 AI 协作自检：复杂、返工、低采纳、验证不足或拆分不佳任务结束时，用一句话说明委托、描述、判断、审慎和下次改进；不适用时说明原因。
 Obsidian：如果项目配置了 Obsidian Bridge，说明是否同步了经验或交接；已同步时给出笔记路径。
@@ -89,6 +117,8 @@ Skill 沉淀判断：不沉淀 / 更新现有 skill / 建议新建 skill / 先�
 ```
 
 ## Skill 推荐
+
+- 用户已经运行 MemOS 或其他记忆后端：先读 docs/memory-governance.zh-CN.md，不要直接把后端 API 写进业务代码或任务事实源。
 
 - 插件只是工具包容器，真正触发的是 skill。普通低风险任务直接按本文件执行。
 - Git、仓库、分支、提交、合并、回滚或 workspace 不确定：调用 `ryan-simple-git-workflow`。

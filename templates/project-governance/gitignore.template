@@ -1,4 +1,5 @@
 .agent-runs/
+.ryan-agent-work-kit/memory/
 .DS_Store
 *.log
 *.tmp

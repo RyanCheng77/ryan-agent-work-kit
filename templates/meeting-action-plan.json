@@ -1,0 +1,42 @@
+{
+  "protocolVersion": 1,
+  "meeting": {
+    "title": "Example planning meeting",
+    "date": "2026-09-01"
+  },
+  "source": {
+    "noteTitle": "Example meeting note",
+    "url": "https://example.com/meeting"
+  },
+  "taskboard": {
+    "projectId": "your-project-id"
+  },
+  "actions": [
+    {
+      "id": "review-brief",
+      "title": "Review the shared brief",
+      "description": "Keep only the context needed to act.",
+      "nextAction": "Read the brief and record open questions.",
+      "outcome": "A reviewed brief and a concise decision record.",
+      "owner": "ryan",
+      "dueDate": "2026-09-04",
+      "priority": "high",
+      "risk": "low",
+      "executor": "codex",
+      "status": "ready",
+      "dependsOn": []
+    },
+    {
+      "id": "send-summary",
+      "title": "Send the approved summary",
+      "nextAction": "Wait for Ryan to approve the recipient and final wording.",
+      "outcome": "The approved summary is sent to the intended recipient.",
+      "owner": "ryan",
+      "priority": "medium",
+      "risk": "high",
+      "executor": "ryan",
+      "status": "waiting_human",
+      "dependsOn": ["review-brief"]
+    }
+  ]
+}

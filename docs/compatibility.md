@@ -12,6 +12,9 @@ Ryan Agent Work Kit uses plain files, so it can work with many AI coding tools.
 | GitHub Copilot | `.github/copilot-instructions.md` + `AGENTS.md` | GitHub / Copilot custom instructions | Keep this lightweight and link back to `AGENTS.md`. |
 | Trae | `.trae/rules/ryan-agent-work-kit.md` + `AGENTS.md` or `AGENT.md` | `personal-preferences/trae.md` or `personal-preferences/trae.zh-CN.md` | Trae reads `.trae/rules/` as project rules. Keep the rule file short and focused on routing. |
 | Kimi CLI | `AGENTS.md` + Task Card | Kimi agent profile when your local setup supports one | Use the shared project contract and the observable CLI runner; no Kimi-specific project file is required. |
+| Taskboard | Project mapping + issue | None required | Optional durable task and acceptance source for cross-session or review-bound work. |
+| ego browser | Isolated task space | Local browser profile | Optional real-web execution and verification layer; not a project-rule adapter. |
+| MemOS Local | Dynamic memory backend | Local MemOS / DeepSeek Harness plugin | Optional recall, traces, policies, and candidate skills; use the shared adapter, not direct project coupling. |
 
 ## CLI
 
@@ -68,6 +71,14 @@ Run it in an observable terminal so the user and lead agent can assess progress 
 
 `--plan` is the safe default for planning or review. Only grant autonomous write permission when the task explicitly allows it, the disclosure scope is safe, and the lead agent will review the diff and validation evidence. Run `kimi doctor` locally for configuration checks; never commit Kimi authentication or session data.
 
+## Shared Dynamic Memory Adapter
+
+Codex, Claude Code, Cursor, GitHub Copilot, Trae, and Kimi use the same project-local memory adapter. Each generated project receives an ignored configuration in the Ryan Agent Work Kit memory folder and the adapter script in scripts.
+
+The default file backend makes candidate capture work without credentials. Configure auto to try local MemOS first and fall back when it is unavailable or unauthorized, or configure memos to fail closed. The adapter never disables authentication, deletes auth files, or stores a token in project configuration.
+
+Read docs/memory-client-adapters.md for the shared routine. Candidate capture can be automatic at S2/S3 closeout; promotion remains a named human decision and only creates a review proposal.
+
 ## Other Agents
 
 Any agent that can read files can follow this kit:
@@ -76,6 +87,16 @@ Any agent that can read files can follow this kit:
 2. Read `AGENTS.md`.
 3. Read `docs/current-goal.md`.
 4. Follow the handoff format.
+
+## Taskboard And ego browser
+
+Taskboard is optional. Use it for cross-session, acceptance-bound, multi-agent/external-tool, or rework-prone work. Keep lifecycle states on the board and HITS execution states in the Codex conversation or Task Card; do not map them one-to-one. Move work to `in_review` after self-check and to `done` only after explicit human acceptance.
+
+Use ego browser only when real web state needs isolated interaction or verification. Login, MFA, payment, authorization, deletion, publishing, and irreversible submission need a HOTS gate. Neither tool is a required runtime dependency. See `docs/taskboard-ego-workflow.md`.
+
+## Resumable Task State
+
+All adapters can share the same optional state contract. Use active-task-state for cross-session recovery and verification-brief for acceptance evidence. Copy the matching language templates only for S2/S3 work, long waits, external agents, rollback risk, or independent review. The CLI checks an active state file only when the project explicitly creates one.
 
 ## Doctor Checks
 

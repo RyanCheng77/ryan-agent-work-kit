@@ -91,7 +91,19 @@ Codex 右侧 workspace 终端可见
 
 这个 loop 解决“外部 CLI 跑到哪了、是不是卡住了”的问题，属于复杂任务的中环。
 
-### 3. Verify And Learn Loop：验证沉淀外环
+### 3. HITS 协作与 HOTS 风险闸门
+
+普通工作默认使用 **HITS（Human in the Swarm）**：人是持续参与的协作者，可以在执行中补充上下文、作决策、调整范围、接管任务或替换 agent。
+
+遇到破坏性、不可逆、扩大权限、发布、部署、对外披露、数据迁移、合规敏感或明显金额支出的动作，进入 **HOTS（Human on the Swarm）** 闸门。暂停受影响 lane，等待指定决策负责人明确批准。
+
+任务卡只写真正值得关注的介入点。使用一组共享状态让协作可见：`in_progress`、`waiting_for_human`、`recommend_agent_switch`、`ready_for_acceptance` 和 `stopped`。
+
+详见 `docs/hits-hots-collaboration.zh-CN.md`。这些是本工具包的工作标签，不宣称是行业标准术语。
+
+对于跨会话或需要验收的任务，Taskboard 是中环/外环的任务事实源；Codex 对话仍是内环 HITS 现场。需要真实网页状态时，再由 ego browser 提供隔离的执行与验证层。Git 保存实现与 diff，`AGENTS.md` 和 docs 保存规则与长期上下文。详见 `docs/taskboard-ego-workflow.zh-CN.md`。
+
+### 4. Verify And Learn Loop：验证沉淀外环
 
 ```text
 完成改动

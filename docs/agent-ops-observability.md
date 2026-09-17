@@ -100,6 +100,10 @@ route
 task_type
 agents_used
 agent_roles
+collaboration_mode
+human_intervention_type
+decision_changed_scope
+handoff_or_takeover
 wall_time_min
 agent_wait_time_min
 local_work_while_waiting
@@ -122,6 +126,10 @@ Notes:
 - `evidence_ref`: evidence location or short reference, such as a file path, command name, `.agent-runs` log path, screenshot name, PR/commit/task id, or short verifiable summary.
 - `primary_bottleneck`: the main bottleneck, such as task_card, context, wait_strategy, role_fit, validation, permission, or tool_limit.
 - `improvement_action`: the next concrete adjustment, such as narrow_task_card, change_role, keep_local_work, add_validation, add_hook, or stop_recording.
+- `collaboration_mode`: `HITS`, `HOTS`, or blank when the distinction was not useful.
+- `human_intervention_type`: a compact event such as `clarify`, `decision`, `scope_change`, `takeover`, or `agent_switch`; do not record a chat transcript.
+- `decision_changed_scope`: `yes`, `no`, or blank.
+- `handoff_or_takeover`: `handoff`, `takeover`, `none`, or blank.
 
 ## Trust Rules
 
@@ -142,6 +150,10 @@ cat <<'EOF' | ./scripts/record-agent-ops-observation.sh
 - task_type: qa
 - agents_used: 1
 - agent_roles: readonly-reviewer
+- collaboration_mode: HITS
+- human_intervention_type: decision
+- decision_changed_scope: yes
+- handoff_or_takeover: none
 - wall_time_min: 12
 - agent_wait_time_min: 3
 - local_work_while_waiting: yes
@@ -174,15 +186,15 @@ At the end of complex, multi-agent, or external-agent work, tell the user whethe
 
 ## Schema Migration
 
-The current TSV schema is `0.2`.
+The current TSV schema is `0.3`.
 
-If a monthly TSV was created with the older 0.1 header, the script will report a schema mismatch. To keep appending to the same month file, rerun the same command with:
+If a monthly TSV was created with the older 0.1 or 0.2 header, the script will report a schema mismatch. To keep appending to the same month file, rerun the same command with:
 
 ```bash
 --migrate-tsv
 ```
 
-The script creates a `.pre-v0.2.<timestamp>.bak` backup and adds empty columns for old rows. It does not guess historical values.
+The script creates a `.pre-v0.3.<timestamp>.bak` backup and adds empty columns for old rows. It does not guess historical values.
 
 ## Monthly Review
 

@@ -20,6 +20,8 @@
 - 共同事实写进项目文档和任务卡；工具适配层与模块之间尽量解耦。
 - 功能、UI 或交互改动时，检查相关的尼尔森原则，并验证主路径和恢复路径。
 - 流程、分支判断、任务编排、状态流转或系统关系优先用 Mermaid 图说明。
+- S2/S3 出现已验证可复用经验时，用 scripts/ryan-memory-adapter.js capture 并指定 --client trae。候选记忆不可信，晋升需要具名人工批准。
+- 如果 Trae 提供会话导出或 wrapper 且已启用轨迹捕获，用 scripts/ryan-memory-adapter.js trace --client trae 入队；用 sync 补传，项目 outbox 不触碰 DSH。
 
 ## 完成汇报
 

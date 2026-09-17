@@ -11,6 +11,7 @@ They tell your AI tool how you want it to behave across projects:
 - Sync reusable learnings or handoffs to Obsidian when Obsidian Bridge is configured.
 - Make skill capture decisions visible when a workflow becomes reusable.
 - Use Mermaid diagrams for process, branch, task orchestration, state, or system-relationship explanations when they improve understanding.
+- When a real image is needed, use the optional `ryan-visual-asset-workflow`; use Mermaid first for process and system explanations.
 - Keep tool adapters thin and modules loosely coupled through documented contracts.
 - Apply relevant Nielsen usability heuristics to feature, UI, and interaction changes.
 - Recommend Ryan skills only when useful.
@@ -70,6 +71,7 @@ Use this practical routing:
 - Missing `AGENTS.md`, project docs, AI collaboration rules, or making a project easier for AI to take over: use `ryan-multi-ai-repo-governance`.
 - Codex scheduled tasks, reminders, recurring runs, monitors, follow-ups, or automation management: use `ryan-codex-automation-workflow` when installed.
 - Feedback, dissatisfaction, preference correction, critique, review, or durable preference capture: use `ryan-collaboration-quality-loop`.
+- Project image generation, asset retrieval, or local visual acceptance: use `ryan-visual-asset-workflow`.
 
 ## Skill Capture Closeout
 

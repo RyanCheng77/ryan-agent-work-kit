@@ -111,13 +111,19 @@ docs/obsidian-bridge.md
 docs/ai-collaboration-reflect.md
 docs/visual-explanation.md
 docs/design-principles.md
+docs/memory-governance.md
+docs/memory-adapter-contract.md
+docs/memory-client-adapters.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
 scripts/sync-project-handoff.sh
 scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
+scripts/ryan-memory-adapter.js
 templates/task-card.md
+templates/active-task-state.md
+templates/verification-brief.md
 templates/workflow-review.md
 templates/ai-collaboration-reflect.md
 templates/obsidian-learning-note.md
@@ -141,6 +147,8 @@ cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
 ```
 
 Task Cards are optional. They help when a task needs exact scope, allowed files, validation, or a clean handoff to another AI tool.
+
+For complex collaboration, HITS keeps the human active while HOTS gates high-risk actions. For cross-session or acceptance-bound work, Taskboard can own task lifecycle and acceptance while the Codex conversation stays the HITS execution space. Use ego browser only when isolated validation needs real web state. These are optional tools, not installation dependencies. See [docs/taskboard-ego-workflow.md](docs/taskboard-ego-workflow.md).
 
 ### 4. Review Repeated Workflows
 
@@ -170,7 +178,13 @@ cp templates/ai-collaboration-reflect.md ./my-project/docs/handoffs/<task-name>-
 
 It does not score people, rank users, or capture full chat history. It only helps reduce rework next time. See [docs/ai-collaboration-reflect.md](docs/ai-collaboration-reflect.md).
 
-### 7. Optional: Connect Your Obsidian Vault
+### 7. Optional: Connect A Dynamic Memory Backend
+
+If MemOS is already running locally, use it as the dynamic historical-experience layer. It does not replace project rules, Taskboard, acceptance evidence, or Git; recalled content is untrusted historical reference only.
+
+Read [Dynamic Memory Governance](docs/memory-governance.md), [the adapter contract](docs/memory-adapter-contract.md), and [the shared client adapter guide](docs/memory-client-adapters.md). Init installs one local adapter: clients may capture short candidate summaries and, when a hook, export, or wrapper is available, send a conversation through `trace` into the project outbox. Unauthorized MemOS keeps pending traces for later sync, and promotion into docs, Obsidian, or a skill still needs named human approval. Work Kit does not touch DSH sessions, plugin configuration, or authentication.
+
+### 8. Optional: Connect Your Obsidian Vault
 
 If you have an Obsidian vault, provide its local path to write project learnings, handoffs, retrospectives, and AgentOps records into your knowledge base:
 
@@ -179,6 +193,17 @@ If you have an Obsidian vault, provide its local path to write project learnings
 ```
 
 It writes local Markdown only. No login, no upload, no full-vault scan. See [docs/obsidian-bridge.md](docs/obsidian-bridge.md).
+
+### 9. Optional: Turn Meeting Notes Into A Follow-Through Loop
+
+When you explicitly provide meeting notes, an agent can extract Ryan's actions into a plan and, after preview, write bounded records to Taskboard, the H2 list, and the learning layer:
+
+```bash
+node bin/ryan-agent-work-kit.js personal-loop validate meeting-actions.json
+node bin/ryan-agent-work-kit.js personal-loop preview meeting-actions.json --taskboard-project your-project-id
+```
+
+High-risk, human-executed, and decision-waiting work never enters the automatic execution queue. See [Personal Loop](docs/personal-loop.md).
 
 ## What It Does
 
@@ -223,6 +248,7 @@ Task Cards are the v0.2 standard for scoped, resumable AI work. Future optional 
 Recommended skills are not part of the default first screen. Use them only when the task matches:
 
 - `recommended-skills/ryan-codex-automation-workflow`: for asking Codex to continue later, run on a schedule, check something periodically, or manage reminders. It prefers Codex native automation over ad hoc shell cron.
+- `recommended-skills/ryan-visual-asset-workflow`: when a project genuinely needs image assets, generate through the signed-in ChatGPT web experience in an isolated ego space with minimum disclosure, bounded attempts, and local render validation.
 
 ## Philosophy
 

@@ -27,6 +27,9 @@ AI agents work better when the project has memory, rules, and handoff habits.
 7. **Design for human control**
    UI and interaction work should respect Nielsen's usability heuristics: make status visible, prevent avoidable errors, preserve user control, and keep recovery understandable.
 
+8. **Humans collaborate by default and gate risk explicitly**
+   Use HITS for ongoing human-agent collaboration. Pause for a HOTS gate before high-impact actions that need a named human decision.
+
 ## Decouple By Default
 
 The kit separates stable contracts from replaceable tools:
@@ -51,6 +54,8 @@ clear goal -> scoped context -> visible execution -> hard verification -> reusab
 ```
 
 The kit supports this through project docs, Task Cards, observable CLI runs, AgentOps records, Obsidian sync, and skill capture decisions.
+
+For the shared states, decision ownership, and risk gates, see [docs/hits-hots-collaboration.md](hits-hots-collaboration.md).
 
 The loop must stay small. If a workflow adds ceremony without reducing rework, risk, or context cost, simplify it or stop it.
 

@@ -13,3 +13,6 @@ build/
 .tmp/
 scratch/
 .ryan-agent-work-kit/*.env
+.ryan-agent-work-kit/memory/
+.ryan-agent-work-kit/operon/
+docs/articles/*.bak-*

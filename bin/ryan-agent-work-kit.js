@@ -35,6 +35,39 @@ const DESIGN_GUIDE_FILES = [
   "docs/design-principles.zh-CN.md",
 ];
 
+const COLLABORATION_GUIDE_FILES = [
+  "docs/hits-hots-collaboration.md",
+  "docs/hits-hots-collaboration.zh-CN.md",
+];
+
+const RESUMABLE_STATE_FILES = [
+  "docs/handoffs/active-task-state.md",
+  "docs/handoffs/active-task-state.zh-CN.md",
+];
+
+const RESUMABLE_STATE_SECTIONS = [
+  /^##\s+(Task|任务)\s*$/m,
+  /^##\s+(Current State|当前状态)\s*$/m,
+  /^##\s+(Verified Facts|已验证事实)\s*$/m,
+  /^##\s+(Blockers And Next|阻塞与下一步)\s*$/m,
+  /^##\s+(Handoff And Risks|交接与风险)\s*$/m,
+];
+
+const MEMORY_GUIDE_FILES = [
+  "docs/memory-governance.md",
+  "docs/memory-governance.zh-CN.md",
+];
+
+const MEMORY_CONTRACT_FILES = [
+  "docs/memory-adapter-contract.md",
+  "docs/memory-adapter-contract.zh-CN.md",
+];
+
+const MEMORY_BRIDGE_FILES = [
+  "docs/memory-client-adapters.md",
+  "docs/memory-client-adapters.zh-CN.md",
+];
+
 const SUPPORT_FILES = [
   "docs/agent-ops-observability.md",
   "docs/agent-ops-observability.zh-CN.md",
@@ -47,6 +80,7 @@ const SUPPORT_FILES = [
   "scripts/sync-project-learning.sh",
   "scripts/sync-project-handoff.sh",
   "scripts/sync-project-retro.sh",
+  "scripts/ryan-memory-adapter.js",
   "templates/obsidian-learning-note.md",
   "templates/obsidian-retro.md",
 ];
@@ -74,6 +108,13 @@ Usage:
   ryan-agent-work-kit check <project>
   ryan-agent-work-kit doctor <project>
   ryan-agent-work-kit help
+  ryan-agent-work-kit memory recall --query "previous decisions" --scope task-experience
+  ryan-agent-work-kit memory capture < verified-memory.json
+  ryan-agent-work-kit memory promote < candidate.json
+  ryan-agent-work-kit memory promote --apply --approved-by Ryan < candidate.json
+  ryan-agent-work-kit personal-loop validate meeting-actions.json
+  ryan-agent-work-kit personal-loop preview meeting-actions.json --taskboard-project project-id
+  ryan-agent-work-kit loop-control policy validate loop-policy.json
 
 Examples:
   ryan-agent-work-kit init --lang zh-CN ./my-project
@@ -203,8 +244,19 @@ function initProject(args) {
         ["docs/obsidian-bridge.zh-CN.md", "docs/obsidian-bridge.zh-CN.md"],
         ["docs/ai-collaboration-reflect.zh-CN.md", "docs/ai-collaboration-reflect.zh-CN.md"],
         ["docs/visual-explanation.zh-CN.md", "docs/visual-explanation.zh-CN.md"],
+        ["docs/visual-asset-workflow.zh-CN.md", "docs/visual-asset-workflow.zh-CN.md"],
         ["docs/design-principles.zh-CN.md", "docs/design-principles.zh-CN.md"],
+        ["docs/hits-hots-collaboration.zh-CN.md", "docs/hits-hots-collaboration.zh-CN.md"],
+        ["docs/taskboard-ego-workflow.zh-CN.md", "docs/taskboard-ego-workflow.zh-CN.md"],
+        ["docs/resumable-task-state.zh-CN.md", "docs/resumable-task-state.zh-CN.md"],
+        ["docs/memory-governance.zh-CN.md", "docs/memory-governance.zh-CN.md"],
+        ["docs/memory-adapter-contract.zh-CN.md", "docs/memory-adapter-contract.zh-CN.md"],
+        ["docs/memory-client-adapters.zh-CN.md", "docs/memory-client-adapters.zh-CN.md"],
+        ["docs/personal-loop.zh-CN.md", "docs/personal-loop.zh-CN.md"],
+        ["docs/operon-control-plane.zh-CN.md", "docs/operon-control-plane.zh-CN.md"],
         ["templates/task-card.zh-CN.md", "templates/task-card.zh-CN.md"],
+        ["templates/active-task-state.zh-CN.md", "templates/active-task-state.zh-CN.md"],
+        ["templates/verification-brief.zh-CN.md", "templates/verification-brief.zh-CN.md"],
         ["templates/workflow-review.zh-CN.md", "templates/workflow-review.zh-CN.md"],
         ["templates/ai-collaboration-reflect.zh-CN.md", "templates/ai-collaboration-reflect.zh-CN.md"],
       ]
@@ -213,8 +265,19 @@ function initProject(args) {
         ["docs/obsidian-bridge.md", "docs/obsidian-bridge.md"],
         ["docs/ai-collaboration-reflect.md", "docs/ai-collaboration-reflect.md"],
         ["docs/visual-explanation.md", "docs/visual-explanation.md"],
+        ["docs/visual-asset-workflow.md", "docs/visual-asset-workflow.md"],
         ["docs/design-principles.md", "docs/design-principles.md"],
+        ["docs/hits-hots-collaboration.md", "docs/hits-hots-collaboration.md"],
+        ["docs/taskboard-ego-workflow.md", "docs/taskboard-ego-workflow.md"],
+        ["docs/resumable-task-state.md", "docs/resumable-task-state.md"],
+        ["docs/memory-governance.md", "docs/memory-governance.md"],
+        ["docs/memory-adapter-contract.md", "docs/memory-adapter-contract.md"],
+        ["docs/memory-client-adapters.md", "docs/memory-client-adapters.md"],
+        ["docs/personal-loop.md", "docs/personal-loop.md"],
+        ["docs/operon-control-plane.md", "docs/operon-control-plane.md"],
         ["templates/task-card.md", "templates/task-card.md"],
+        ["templates/active-task-state.md", "templates/active-task-state.md"],
+        ["templates/verification-brief.md", "templates/verification-brief.md"],
         ["templates/workflow-review.md", "templates/workflow-review.md"],
         ["templates/ai-collaboration-reflect.md", "templates/ai-collaboration-reflect.md"],
       ];
@@ -227,13 +290,25 @@ function initProject(args) {
     ["scripts/sync-project-handoff.sh", "scripts/sync-project-handoff.sh"],
     ["scripts/sync-project-retro.sh", "scripts/sync-project-retro.sh"],
     ["scripts/run-observable-cli.sh", "scripts/run-observable-cli.sh"],
+    ["scripts/ryan-memory-adapter.js", "scripts/ryan-memory-adapter.js"],
+    ["scripts/ryan-personal-loop.js", "scripts/ryan-personal-loop.js"],
+    ["scripts/ryan-loop-control.js", "scripts/ryan-loop-control.js"],
+    ["scripts/memory-providers/memos-http-provider.js", "scripts/memory-providers/memos-http-provider.js"],
     ["templates/obsidian-learning-note.md", "templates/obsidian-learning-note.md"],
     ["templates/obsidian-retro.md", "templates/obsidian-retro.md"],
+    ["templates/meeting-action-plan.json", "templates/meeting-action-plan.json"],
+    ["templates/loop-control-policy.json", "templates/loop-control-policy.json"],
+    ["recommended-skills/ryan-visual-asset-workflow/SKILL.md", "recommended-skills/ryan-visual-asset-workflow/SKILL.md"],
   ];
 
   for (const [srcRel, dstRel] of supportFiles) {
     copyIfMissing(path.join(kitRoot, srcRel), path.join(target, dstRel), opts.dryRun);
   }
+  copyIfMissing(
+    path.join(kitRoot, "templates", "memory-adapter.json"),
+    path.join(target, ".ryan-agent-work-kit", "memory", "adapter.json"),
+    opts.dryRun,
+  );
 
   console.log("");
   console.log(`${opts.dryRun ? "Dry run complete" : "Ryan Agent Work Kit installed"} for: ${target}`);
@@ -295,7 +370,77 @@ function doctorProject(args) {
     "design principles guide",
     "decoupling and Nielsen usability guidance for feature or UI work",
   );
+  push(
+    results,
+    COLLABORATION_GUIDE_FILES.some((relPath) => isFile(target, relPath)) ? "pass" : "warn",
+    "HITS/HOTS collaboration guide",
+    "human intervention points and explicit risk gates for delegated work",
+  );
+  push(
+    results,
+    MEMORY_GUIDE_FILES.some((relPath) => isFile(target, relPath)) ? "pass" : "warn",
+    "dynamic memory governance",
+    "keeps MemOS or another memory backend separate from project facts and acceptance evidence",
+  );
+  push(
+    results,
+    MEMORY_CONTRACT_FILES.some((relPath) => isFile(target, relPath)) ? "pass" : "warn",
+    "memory adapter contract",
+    "keeps dynamic memory backends replaceable and bounded by timeout and disclosure rules",
+  );
+  push(
+    results,
+    MEMORY_BRIDGE_FILES.some((relPath) => isFile(target, relPath)) ? "pass" : "warn",
+    "memory client adapters",
+    "gives every supported client the same bounded capture and recall entry point",
+  );
+  const memoryConfigEnabled = isFile(target, ".ryan-agent-work-kit/memory/adapter.json");
+  const memoryCommandInstalled = isFile(target, "scripts/ryan-memory-adapter.js");
+  push(
+    results,
+    !memoryConfigEnabled || memoryCommandInstalled ? "pass" : "fail",
+    "memory adapter command",
+    memoryConfigEnabled
+      ? "supports bounded health, recall, capture, feedback, and promotion proposals"
+      : "optional and not enabled",
+  );
+  const stateFiles = RESUMABLE_STATE_FILES.filter((relPath) => isFile(target, relPath));
+  if (stateFiles.length === 0) {
+    push(results, "pass", "resumable task state", "optional and not enabled");
+  } else {
+    const completeStateFile = stateFiles.find((relPath) => {
+      try {
+        const content = fs.readFileSync(path.join(target, relPath), "utf8");
+        return RESUMABLE_STATE_SECTIONS.every((section) => section.test(content));
+      } catch (_err) {
+        return false;
+      }
+    });
+    const missingSections = completeStateFile
+      ? []
+      : RESUMABLE_STATE_SECTIONS.filter((section) => {
+          return !stateFiles.some((relPath) => {
+            try {
+              return section.test(fs.readFileSync(path.join(target, relPath), "utf8"));
+            } catch (_err) {
+              return false;
+            }
+          });
+        });
+    const stateValid = Boolean(completeStateFile);
+    push(
+      results,
+      stateValid ? "pass" : "fail",
+      "resumable task state",
+      stateValid
+        ? "enabled in " + completeStateFile
+        : missingSections.length > 0
+          ? "missing sections: " + missingSections.map((section) => section.source).join(", ")
+          : "no single state file contains all required sections",
+    );
+  }
   push(results, hasAgentRunsIgnored(target) ? "pass" : "warn", ".agent-runs/ ignored", "keeps local CLI logs out of public commits");
+  push(results, hasMemoryStoreIgnored(target) ? "pass" : "warn", "memory store ignored", "keeps local candidate memory out of commits");
   push(results, hasValidationSignal(target) ? "pass" : "warn", "validation command", "package, Makefile, or common project test command detected");
 
   const branch = currentBranch(target);
@@ -348,6 +493,17 @@ function hasAgentRunsIgnored(target) {
   return content.split(/\r?\n/).some((line) => line.trim() === ".agent-runs/" || line.trim() === "/.agent-runs/");
 }
 
+function hasMemoryStoreIgnored(target) {
+  const candidates = [path.join(target, ".gitignore"), path.join(target, "gitignore.template")];
+  const gitignore = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!gitignore) return false;
+  const content = fs.readFileSync(gitignore, "utf8");
+  return content.split(/\r?\n/).some((line) => {
+    const trimmed = line.trim();
+    return trimmed === ".ryan-agent-work-kit/memory/" || trimmed === "/.ryan-agent-work-kit/memory/";
+  });
+}
+
 function hasValidationSignal(target) {
   const packageJson = path.join(target, "package.json");
   if (fs.existsSync(packageJson)) {
@@ -378,6 +534,29 @@ function findRiskFiles(target) {
   const risks = [];
   walk(target, target, risks, 3);
   return risks;
+}
+
+function memoryCommand(args) {
+  const runner = path.join(kitRoot, "scripts", "ryan-memory-adapter.js");
+  const result = childProcess.spawnSync(process.execPath, [runner, ...args], {
+    stdio: "inherit",
+  });
+  if (result.error) fail("Could not run memory adapter: " + result.error.message);
+  if (typeof result.status === "number" && result.status !== 0) process.exit(result.status);
+}
+
+function personalLoopCommand(args) {
+  const runner = path.join(kitRoot, "scripts", "ryan-personal-loop.js");
+  const result = childProcess.spawnSync(process.execPath, [runner, ...args], { stdio: "inherit" });
+  if (result.error) fail("Could not run personal loop: " + result.error.message);
+  if (typeof result.status === "number" && result.status !== 0) process.exit(result.status);
+}
+
+function loopControlCommand(args) {
+  const runner = path.join(kitRoot, "scripts", "ryan-loop-control.js");
+  const result = childProcess.spawnSync(process.execPath, [runner, ...args], { stdio: "inherit" });
+  if (result.error) fail("Could not run loop control: " + result.error.message);
+  if (typeof result.status === "number" && result.status !== 0) process.exit(result.status);
 }
 
 function walk(root, current, risks, depthLeft) {
@@ -417,6 +596,12 @@ function main() {
     checkProject(args);
   } else if (command === "doctor") {
     doctorProject(args);
+  } else if (command === "memory") {
+    memoryCommand(args);
+  } else if (command === "personal-loop") {
+    personalLoopCommand(args);
+  } else if (command === "loop-control") {
+    loopControlCommand(args);
   } else {
     usage();
     fail(`Unknown command: ${command}`, 2);

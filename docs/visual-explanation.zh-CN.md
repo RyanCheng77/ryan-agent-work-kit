@@ -70,3 +70,7 @@ flowchart TD
 - 如果图超过 12 个节点，先拆成 2 张图或先给摘要。
 - 复杂视觉/演示需求再推荐 Hyperframes、HTML mockup、截图或录屏。
 - 小任务保持轻，不因为这个规则增加不必要流程。
+
+## 真实图片资产
+
+如果目标不是解释流程，而是项目真的需要插图、封面、背景或其他 bitmap 资产，按需使用 [`ryan-visual-asset-workflow`](../recommended-skills/ryan-visual-asset-workflow/SKILL.md)。它通过 ego 的隔离 task space 访问已登录的 ChatGPT 网页，生成后必须取回到项目中做真实渲染验证；不得把 ChatGPT 网页、登录态或无限重试变成项目运行时依赖。

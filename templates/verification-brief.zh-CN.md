@@ -1,0 +1,45 @@
+# 验证简报（可选）
+
+仅在 S2/S3、跨会话、长等待、外部 agent、回滚风险或需要独立复核时启用。它定义“什么算完成”和“如何证明完成”，不替代测试、人工验收或 Taskboard。
+
+## 目标与范围
+
+- 目标：<WHAT_SHOULD_BE_DONE>
+- 允许修改：<ALLOWED_FILES_OR_MODULES>
+- 禁止修改：<OUT_OF_SCOPE_OR_FORBIDDEN_ACTIONS>
+- 完成定义：<DONE_MEANS>
+
+## 验收标准
+
+- [ ] <OBSERVABLE_ACCEPTANCE_CRITERION>
+- [ ] <TEST_OR_BEHAVIOR_CRITERION>
+- [ ] <RECOVERY_OR_ERROR_PATH_CRITERION>
+
+## 验证方法
+
+- 命令：<COMMAND_AND_EXPECTED_RESULT>
+- 人工检查：<MANUAL_CHECK_OR_NONE>
+- 截图、日志或其他证据：<EVIDENCE_REFERENCE>
+- 未覆盖项：<KNOWN_GAP_OR_NONE>
+
+## Maker 结果
+
+- 执行者：<AGENT_OR_HUMAN>
+- 修改摘要：<SHORT_SUMMARY>
+- 验证结果：<PASS_FAIL_AND_EVIDENCE>
+- 未解决问题：<OPEN_ISSUE_OR_NONE>
+
+## Checker 结果
+
+- 复核者：<INDEPENDENT_AGENT_OR_HUMAN_OR_NOT_ENABLED>
+- 复核范围：<WHAT_WAS_REVIEWED>
+- 复核结果：<PASS_FAIL_AND_EVIDENCE>
+- 发现的问题：<FINDINGS_OR_NONE>
+
+## 决策与停止
+
+- 决策负责人：<DECISION_OWNER>
+- HOTS 闸门：<REQUIRED_APPROVAL_OR_NONE>
+- 停止条件：<WHEN_TO_STOP>
+- 当前决定：<CONTINUE|READY_FOR_ACCEPTANCE|STOPPED>
+- 下一步：<ONE_CONCRETE_ACTION>

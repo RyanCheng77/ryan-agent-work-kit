@@ -1,0 +1,16 @@
+{
+  "backend": "file",
+  "timeoutMs": 3000,
+  "captureFallback": "file",
+  "traceCapture": "safe",
+  "provider": {
+    "command": "node",
+    "args": ["scripts/memory-providers/memos-http-provider.js"],
+    "timeoutMs": 3000,
+    "config": {
+      "url": "http://127.0.0.1:18801",
+      "authTokenEnv": "",
+      "cookieEnv": ""
+    }
+  }
+}

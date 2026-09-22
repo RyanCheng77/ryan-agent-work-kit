@@ -114,6 +114,7 @@ docs/design-principles.md
 docs/memory-governance.md
 docs/memory-adapter-contract.md
 docs/memory-client-adapters.md
+docs/structured-decision-gates.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
 scripts/sync-project-learning.sh
@@ -122,6 +123,7 @@ scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
 scripts/ryan-memory-adapter.js
 templates/task-card.md
+templates/decision-gate.md
 templates/active-task-state.md
 templates/verification-brief.md
 templates/workflow-review.md
@@ -149,6 +151,14 @@ cp templates/task-card.md ./my-project/docs/plans/<task-name>.md
 Task Cards are optional. They help when a task needs exact scope, allowed files, validation, or a clean handoff to another AI tool.
 
 For complex collaboration, HITS keeps the human active while HOTS gates high-risk actions. For cross-session or acceptance-bound work, Taskboard can own task lifecycle and acceptance while the Codex conversation stays the HITS execution space. Use ego browser only when isolated validation needs real web state. These are optional tools, not installation dependencies. See [docs/taskboard-ego-workflow.md](docs/taskboard-ego-workflow.md).
+
+When work is rework-prone, delegated, or involves external tools, you can add an optional lightweight decision gate:
+
+```bash
+cp templates/decision-gate.md ./my-project/docs/plans/<task-name>-decision-gate.md
+```
+
+It borrows the structured-judgment idea behind Jev without installing Jev or calling an external API. It fixes the route, confidence, parallel safety, external-tool risk, and verification strength. See [docs/structured-decision-gates.md](docs/structured-decision-gates.md).
 
 ### 4. Review Repeated Workflows
 

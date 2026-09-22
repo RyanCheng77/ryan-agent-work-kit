@@ -117,6 +117,7 @@ docs/design-principles.zh-CN.md
 docs/memory-governance.zh-CN.md
 docs/memory-adapter-contract.zh-CN.md
 docs/memory-client-adapters.zh-CN.md
+docs/structured-decision-gates.zh-CN.md
 docs/hits-hots-collaboration.zh-CN.md
 scripts/record-agent-ops-observation.sh
 scripts/setup-obsidian-bridge.sh
@@ -126,6 +127,7 @@ scripts/sync-project-retro.sh
 scripts/run-observable-cli.sh
 scripts/ryan-memory-adapter.js
 templates/task-card.zh-CN.md
+templates/decision-gate.zh-CN.md
 templates/active-task-state.zh-CN.md
 templates/verification-brief.zh-CN.md
 templates/workflow-review.zh-CN.md
@@ -149,6 +151,14 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 任务卡不是新流程负担。它的作用是用最少上下文固定目标、范围、相关文件、验证方式和交接格式。
 
 复杂协作默认让人作为 HITS 团队成员随时介入；遇到高风险动作再进入 HOTS 明确决策闸门。详见：[docs/hits-hots-collaboration.zh-CN.md](docs/hits-hots-collaboration.zh-CN.md)。
+
+如果任务容易返工、需要委托或涉及外部工具，可以再加一张可选的轻量决策门：
+
+```bash
+cp templates/decision-gate.zh-CN.md ./my-project/docs/plans/<task-name>-decision-gate.md
+```
+
+它借鉴 Jev 一类结构化判断的思路，但不安装 Jev、不调用外部 API，只固定路由、信心、并行安全、外部工具风险和验证强度。详见：[docs/structured-decision-gates.zh-CN.md](docs/structured-decision-gates.zh-CN.md)。
 
 跨会话或需要验收的工作，可以让 Taskboard 管任务生命周期和验收，让 Codex 对话保持为 HITS 执行现场；只有需要真实网页状态时，再使用 ego browser 做隔离验证。它们都是可选工具，不是安装依赖。详见：[docs/taskboard-ego-workflow.zh-CN.md](docs/taskboard-ego-workflow.zh-CN.md)。
 

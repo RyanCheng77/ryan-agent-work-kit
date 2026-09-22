@@ -30,6 +30,17 @@ Use this file to make one AI task scoped, resumable, and easy to hand off.
 - Decision owner: <WHO_CAN_DECIDE_AT_A_GATE>
 - Escalation conditions: <OBSERVABLE_SIGNALS_THAT_PAUSE_OR_REROUTE_WORK>
 
+## Lightweight Decision Gate (Optional)
+
+For S1+ work that is rework-prone, delegated, or involves external tools, copy `templates/decision-gate.md` or add:
+
+- Route: <S0 direct / S1 think first / S2 split in parallel / S3 plan and Task Card>
+- Confidence: <high / medium / low>
+- Parallel-safe: <yes / no>
+- External-tool risk: <low / medium / high>
+- Verification strength: <light / normal / strict>
+- Ask Ryan first: <yes / no>
+
 ## Task Source Of Truth (Optional)
 
 - Taskboard task: <TASK_ID_OR_NOT_NEEDED>

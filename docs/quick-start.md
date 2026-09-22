@@ -112,6 +112,16 @@ Task Cards are useful when:
 
 For collaborative or delegated work, add only the useful HITS fields: collaboration state, human intervention points, decision owner, and escalation conditions. See `docs/hits-hots-collaboration.md`.
 
+### Optional: Use a lightweight decision gate
+
+If work is rework-prone, delegated, involves external tools, or has an unclear completion standard, copy:
+
+```bash
+cp templates/decision-gate.md ./my-project/docs/plans/<task-name>-decision-gate.md
+```
+
+It is inspired by structured-judgment ideas such as Jev, but does not require Jev or an external service. Do not add the form to small S0 work. See `docs/structured-decision-gates.md`.
+
 ## Optional: Make S2/S3 Work Resumable
 
 For cross-session work, long waits, external agents, or independent review, copy the state and verification templates:

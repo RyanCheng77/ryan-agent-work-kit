@@ -102,6 +102,7 @@ if [[ "$lang" == "zh-CN" ]]; then
   copy_if_missing "$kit_root/docs/memory-adapter-contract.zh-CN.md" "$target/docs/memory-adapter-contract.zh-CN.md"
   copy_if_missing "$kit_root/docs/memory-client-adapters.zh-CN.md" "$target/docs/memory-client-adapters.zh-CN.md"
   copy_if_missing "$kit_root/docs/personal-loop.zh-CN.md" "$target/docs/personal-loop.zh-CN.md"
+  copy_if_missing "$kit_root/docs/structured-decision-gates.zh-CN.md" "$target/docs/structured-decision-gates.zh-CN.md"
 else
   copy_if_missing "$kit_root/docs/agent-ops-observability.md" "$target/docs/agent-ops-observability.md"
   copy_if_missing "$kit_root/docs/obsidian-bridge.md" "$target/docs/obsidian-bridge.md"
@@ -116,6 +117,7 @@ else
   copy_if_missing "$kit_root/docs/memory-adapter-contract.md" "$target/docs/memory-adapter-contract.md"
   copy_if_missing "$kit_root/docs/memory-client-adapters.md" "$target/docs/memory-client-adapters.md"
   copy_if_missing "$kit_root/docs/personal-loop.md" "$target/docs/personal-loop.md"
+  copy_if_missing "$kit_root/docs/structured-decision-gates.md" "$target/docs/structured-decision-gates.md"
 fi
 copy_if_missing "$kit_root/scripts/record-agent-ops-observation.sh" "$target/scripts/record-agent-ops-observation.sh"
 copy_if_missing "$kit_root/scripts/setup-obsidian-bridge.sh" "$target/scripts/setup-obsidian-bridge.sh"
@@ -134,12 +136,14 @@ copy_if_missing "$kit_root/templates/memory-adapter.json" "$target/.ryan-agent-w
 copy_if_missing "$kit_root/templates/meeting-action-plan.json" "$target/templates/meeting-action-plan.json"
 if [[ "$lang" == "zh-CN" ]]; then
   copy_if_missing "$kit_root/templates/task-card.zh-CN.md" "$target/templates/task-card.zh-CN.md"
+  copy_if_missing "$kit_root/templates/decision-gate.zh-CN.md" "$target/templates/decision-gate.zh-CN.md"
   copy_if_missing "$kit_root/templates/active-task-state.zh-CN.md" "$target/templates/active-task-state.zh-CN.md"
   copy_if_missing "$kit_root/templates/verification-brief.zh-CN.md" "$target/templates/verification-brief.zh-CN.md"
   copy_if_missing "$kit_root/templates/workflow-review.zh-CN.md" "$target/templates/workflow-review.zh-CN.md"
   copy_if_missing "$kit_root/templates/ai-collaboration-reflect.zh-CN.md" "$target/templates/ai-collaboration-reflect.zh-CN.md"
 else
   copy_if_missing "$kit_root/templates/task-card.md" "$target/templates/task-card.md"
+  copy_if_missing "$kit_root/templates/decision-gate.md" "$target/templates/decision-gate.md"
   copy_if_missing "$kit_root/templates/active-task-state.md" "$target/templates/active-task-state.md"
   copy_if_missing "$kit_root/templates/verification-brief.md" "$target/templates/verification-brief.md"
   copy_if_missing "$kit_root/templates/workflow-review.md" "$target/templates/workflow-review.md"

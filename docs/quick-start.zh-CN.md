@@ -112,6 +112,16 @@ cp templates/task-card.zh-CN.md ./my-project/docs/plans/<task-name>.md
 
 有协作或委派时，只补充真正有用的 HITS 字段：协作状态、Ryan 介入点、决策负责人和升级条件。详见 `docs/hits-hots-collaboration.zh-CN.md`。
 
+### 可选：使用轻量决策门
+
+如果任务容易返工、要委托给 agent、涉及外部工具，或完成标准不够清楚，再复制：
+
+```bash
+cp templates/decision-gate.zh-CN.md ./my-project/docs/plans/<task-name>-decision-gate.md
+```
+
+它受 Jev 一类结构化判断思路启发，但不要求安装 Jev 或接入外部服务。小任务直接做，不要为了填表增加负担。详见 `docs/structured-decision-gates.zh-CN.md`。
+
 ## 可选：让 S2/S3 任务可恢复
 
 跨会话、长等待、外部 agent 或需要独立复核时，再复制状态和验证模板：

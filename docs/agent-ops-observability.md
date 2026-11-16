@@ -205,3 +205,5 @@ After 5-10 records, review:
 - Which wait windows are wrong?
 - Which task card fields are often missing?
 - Which rules should move into AGENTS, a skill, a hook, or a script?
+
+New records require project, task ID, trigger, route, task type, acceptance, rework count, bottleneck, improvement action, lesson, and non-empty evidence. Use `unknown` for facts that are not known; never invent values. A missing-evidence exception requires `--allow-missing-evidence --confidence low`. Both plain and Markdown-list fields are supported. Before analysis, reconcile Markdown with TSV, deduplicate events, and report valid and missing counts; do not infer historical values.

@@ -26,8 +26,9 @@ Reads a Markdown observation from stdin and appends it to:
 Also appends a machine-readable TSV row to:
   matching YYYY-MM-agent-ops.tsv beside the Markdown file
 
-By default, observations must include one evidence marker:
-  validation_evidence, evidence_ref, Evidence, or 证据
+Required: project, task_id, trigger_reason, route, task_type, acceptance,
+  rework_count, primary_bottleneck, improvement_action, lesson, and evidence.
+  Use unknown for facts that cannot be established; do not invent values.
 
 If the monthly TSV was created by an older 0.1 or 0.2 schema, rerun once with:
   --migrate-tsv
@@ -132,17 +133,36 @@ if [[ -z "${body//[[:space:]]/}" ]]; then
   exit 1
 fi
 
-if [[ "$allow_missing_evidence" -eq 0 ]]; then
-  if ! printf '%s\n' "$body" | grep -Eiq 'validation_evidence|evidence_ref|Evidence|证据'; then
-    echo "missing evidence marker; include validation_evidence, evidence_ref, Evidence, or 证据" >&2
-    echo "or rerun with --allow-missing-evidence and --confidence low" >&2
-    exit 1
-  fi
-fi
-
 if printf '%s\n' "$body" | grep -Eiq 'sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9_]{30,}|glpat-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{20,}|AIza[0-9A-Za-z_-]{35}|(api[_-]?key|access[_-]?token|refresh[_-]?token|client[_-]?secret|password)[[:space:]]*[:=][[:space:]]*[^[:space:]]{8,}'; then
   echo "possible secret detected in observation body; rewrite the observation without secrets or credentials" >&2
   exit 1
+fi
+
+extract_field() {
+  local key="$1"
+  printf '%s\n' "$body" \
+    | sed -n -E "s/^[[:space:]]*(-[[:space:]]*)?$key:[[:space:]]*(.*)[[:space:]]*$/\\2/ip" \
+    | head -n 1 \
+    | tr '\t\r\n' '   ' \
+    | sed -E 's/[[:space:]]+$//'
+}
+
+required_fields=(project task_id trigger_reason route task_type acceptance rework_count primary_bottleneck improvement_action lesson)
+missing=()
+for field in "${required_fields[@]}"; do
+  [[ -n "$(extract_field "$field")" ]] || missing+=("$field")
+done
+if [[ ${#missing[@]} -gt 0 ]]; then
+  printf 'missing required fields: %s\n' "${missing[*]}" >&2; exit 1
+fi
+case "$(extract_field acceptance)" in accepted|partial|rejected|in_review|unknown) ;; *) echo "invalid acceptance" >&2; exit 1;; esac
+rework="$(extract_field rework_count)"
+if [[ ! "$rework" =~ ^[0-9]+$ && "$rework" != unknown ]]; then echo "invalid rework_count" >&2; exit 1; fi
+if [[ "$rework" =~ ^[0-9]+$ ]] && [[ "$rework" -gt 0 ]] && [[ -z "$(extract_field error_type)" ]]; then echo "error_type required when rework_count > 0" >&2; exit 1; fi
+evidence="$(extract_field validation_evidence)"
+evidence_ref="$(extract_field evidence_ref)"
+if [[ "$allow_missing_evidence" -eq 0 ]] && [[ ( -z "$evidence" || "$evidence" == unknown ) && ( -z "$evidence_ref" || "$evidence_ref" == unknown ) ]]; then
+  echo "non-empty validation_evidence or evidence_ref required; use --allow-missing-evidence --confidence low if unavailable" >&2; exit 1
 fi
 
 month="$(date '+%Y-%m')"
@@ -159,46 +179,6 @@ fi
 
 mkdir -p "$target_dir"
 
-if [[ ! -f "$note_path" ]]; then
-  {
-    echo "---"
-    echo "title: \"$month Agent Ops\""
-    echo "type: agent-ops-observability"
-    echo "created: \"$(date '+%Y-%m-%d')\""
-    echo "tags:"
-    echo "  - agent-ops"
-    echo "  - ai-ready-project"
-    echo "---"
-    echo
-    echo "# $month Agent Ops"
-    echo
-  } > "$note_path"
-fi
-
-{
-  echo
-  echo "## $timestamp"
-  echo
-  echo "Record ID: $record_id"
-  echo
-  echo "Capture:"
-  echo "- capture_method: $capture_method"
-  echo "- confidence: $confidence"
-  echo "- measurement: $measurement"
-  echo "- source: $source"
-  echo
-  printf '%s\n' "$body"
-  echo
-} >> "$note_path"
-
-extract_field() {
-  local key="$1"
-  printf '%s\n' "$body" \
-    | sed -n -E "s/^[[:space:]]*-[[:space:]]*$key:[[:space:]]*(.*)[[:space:]]*$/\\1/ip" \
-    | head -n 1 \
-    | tr '\t\r\n' '   ' \
-    | sed -E 's/[[:space:]]+$//'
-}
 
 tsv_columns=(
   "schema_version" "record_id" "timestamp" "capture_method" "confidence" "measurement" "source"
@@ -259,6 +239,39 @@ if [[ "$actual_header" != "$tsv_header" ]]; then
     exit 1
   fi
 fi
+
+if [[ ! -f "$note_path" ]]; then
+  {
+    echo "---"
+    echo "title: \"$month Agent Ops\""
+    echo "type: agent-ops-observability"
+    echo "created: \"$(date '+%Y-%m-%d')\""
+    echo "tags:"
+    echo "  - agent-ops"
+    echo "  - ai-ready-project"
+    echo "---"
+    echo
+    echo "# $month Agent Ops"
+    echo
+  } > "$note_path"
+fi
+
+{
+  echo
+  echo "## $timestamp"
+  echo
+  echo "Record ID: $record_id"
+  echo
+  echo "Capture:"
+  echo "- capture_method: $capture_method"
+  echo "- confidence: $confidence"
+  echo "- measurement: $measurement"
+  echo "- source: $source"
+  echo
+  printf '%s\n' "$body"
+  echo
+} >> "$note_path"
+
 
 tsv_row=(
   "$schema_version" "$record_id" "$timestamp" "$capture_method" "$confidence" "$measurement" "$source"

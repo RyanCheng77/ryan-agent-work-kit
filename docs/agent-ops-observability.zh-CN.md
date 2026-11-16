@@ -205,3 +205,5 @@ AGENT_OPS_DIR=./docs/agent-ops ./scripts/record-agent-ops-observation.sh
 - 哪些等待窗口不合理？
 - 哪些任务卡字段经常缺？
 - 哪些规则应该进入 AGENTS、skill、hook 或脚本？
+
+新记录须包含项目、任务 ID、触发原因、路由、任务类型、采纳、返工、瓶颈、改进动作、经验和非空证据。未知事实填写 `unknown`，不得猜测；无证据例外须使用 `--allow-missing-evidence --confidence low`。支持普通字段和 Markdown 列表字段。分析前核对 Markdown 与 TSV、按事件去重，并报告有效与缺失数量；不猜补历史值。

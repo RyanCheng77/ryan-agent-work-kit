@@ -179,6 +179,8 @@ cat <<'EOF' | ./scripts/record-agent-ops-observation.sh
 - acceptance: partial
 - rework_count: 1
 - error_type: low_quality
+- primary_bottleneck: task_card
+- improvement_action: narrow_task_card
 - validation_evidence: test + diff review
 - evidence_ref: local check summary
 - lesson: Use a narrower reviewer task card next time.

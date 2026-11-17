@@ -152,3 +152,5 @@ A loop should satisfy at least two of these:
 - It preserves learning for the next task.
 
 If a loop only adds steps without reducing risk, rework, or context cost, simplify, automate, replace, or stop it.
+
+Before parallel implementation, agree on interfaces, data semantics, and a minimal example when relevant. Choose checks for affected data periods, caches, layouts, interactions, and recovery paths. Generate artifacts before rendering and validating them.
